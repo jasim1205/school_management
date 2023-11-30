@@ -24,8 +24,8 @@ class UpdateRequest extends FormRequest
         $id=encryptor('decrypt',$r->uptoken);
         return [
             'teachId'=>'required',
-            'EmailAddress'=>'nullable|unique:users,email,'.$id,
-            'contactNumber_en'=>'required|unique:users,contact_no_en,'.$id
+            'EmailAddress'=>'nullable|unique:teachers,email,'.$id,
+            'contactNumber_en'=>'required|unique:teachers,contact_no_en,'.$id
         ];
     }
 }

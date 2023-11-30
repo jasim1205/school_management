@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="{{asset('public/assets/css/semi-dark.css')}}"/>
         <link rel="stylesheet" href="{{asset('public/assets/css/header-colors.css')}}"/>
         <title>Syndron - Bootstrap 5 Admin Dashboard Template</title>
+		@stack('styles')
     </head>
 
 <body>
@@ -56,34 +57,82 @@
 						</div>
 						<div class="menu-title">Dashboard</div>
 					</a>
-					<ul>
+					<!-- <ul>
 						<li> <a href="index.html"><i class='bx bx-radio-circle'></i>eCommerce</a>
 						</li>
 						<li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Analytics</a>
 						</li>
-					</ul>
+					</ul> -->
+				</li>
+				<li>
+					<a href="{{route('user.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">User List</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('school.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">School</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('teacher.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Teacher Manegement</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('student.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Student Manegement</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('routine.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Routine Manegement</div>
+					</a>
 				</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="bx bx-category"></i>
 						</div>
-						<div class="menu-title">Application</div>
+						<div class="menu-title">Academic Details</div>
 					</a>
 					<ul>
-						<li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
+						<li> <a href="{{route('classes.index')}}"><i class='bx bx-radio-circle'></i>Class List</a>
 						</li>
-						<li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
+						<li> <a href="{{route('section.index')}}"><i class='bx bx-radio-circle'></i>Section List</a>
 						</li>
-						<li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
+						<li> <a href="{{route('subject.index')}}"><i class='bx bx-radio-circle'></i>Subject List</a>
 						</li>
-						<li> <a href="app-contact-list.html"><i class='bx bx-radio-circle'></i>Contatcs</a>
+						<li> <a href="{{route('session.index')}}"><i class='bx bx-radio-circle'></i>Session List</a>
 						</li>
-						<li> <a href="app-to-do.html"><i class='bx bx-radio-circle'></i>Todo List</a>
+						<li> <a href="{{route('exam.index')}}"><i class='bx bx-radio-circle'></i>Exam List</a>
 						</li>
-						<li> <a href="app-invoice.html"><i class='bx bx-radio-circle'></i>Invoice</a>
+						<li> <a href="{{route('group.index')}}"><i class='bx bx-radio-circle'></i>Group List</a>
 						</li>
-						<li> <a href="app-fullcalender.html"><i class='bx bx-radio-circle'></i>Calendar</a>
+						<li> <a href="{{route('period.index')}}"><i class='bx bx-radio-circle'></i>Period List</a>
 						</li>
+						<li> <a href="{{route('weekday.index')}}"><i class='bx bx-radio-circle'></i>Weekday List</a>
+						</li>
+						<li> <a href="{{route('department.index')}}"><i class='bx bx-radio-circle'></i>Department List</a>
+						</li>
+						<li> <a href="{{route('designation.index')}}"><i class='bx bx-radio-circle'></i>Designation List</a>
+						</li>
+						<li> <a href="{{route('assignsubject.index')}}"><i class='bx bx-radio-circle'></i>Assign Subject List</a>
+						</li>
+						<li> <a href="{{route('assignsection.index')}}"><i class='bx bx-radio-circle'></i>Assign Section List</a>
+						</li>
+						<li> <a href="{{route('assigngroup.index')}}"><i class='bx bx-radio-circle'></i>Assign Group List</a>
+						</li>
+						
 					</ul>
 				</li>
 				<li class="menu-label">UI Elements</li>
@@ -1180,6 +1229,7 @@
 	<script src="{{asset('public/assets/js/index.js')}}"></script>
 	<!--app JS-->
 	<script src="{{asset('public/assets/js/app.js')}}"></script>
+	@stack('scripts')
 </body>
 
 

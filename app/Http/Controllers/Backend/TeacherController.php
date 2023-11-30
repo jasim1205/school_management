@@ -88,6 +88,7 @@ class TeacherController extends Controller
                 }
             }   
             else
+             dd($e);
                 return redirect()->back()->withInput()->with('error','Please try again');
         }catch(Exception $e){
             dd($e);
@@ -123,7 +124,7 @@ class TeacherController extends Controller
     {
         try{
             DB::beginTransaction();
-            $teacher = Teacher::findOrFail(\encryptor('decrypt',$id));
+            $teacher = Teacher::findOrFail(encryptor('decrypt',$id));
             $teacher->teacher_id=$request->teachId;
             $teacher->first_name_en=$request->fName_en;
             $teacher->first_name_bn=$request->fName_bn;
