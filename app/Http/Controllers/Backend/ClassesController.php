@@ -15,7 +15,7 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        $class = Classes::paginate(5);
+        $class = Classes::get();
         return view('Backend.classes.index',compact('class'));
     }
 

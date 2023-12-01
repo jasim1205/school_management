@@ -3,7 +3,7 @@
 
 @section('content')
 
- <!--breadcrumb-->
+    <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="breadcrumb-title pe-3">Tables</div>
         <div class="ps-3">
@@ -30,7 +30,7 @@
     </div>
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase">DataTable Import</h6>
-    <a href="{{route('teacher.create')}}" class="btn btn-lg py-3 btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+    <a href="{{route('teacher.create')}}" class="btn py-2 btn-info"><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
         <div class="card-body">

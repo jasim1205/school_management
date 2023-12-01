@@ -31,7 +31,7 @@
     </div>
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase">DataTable Import</h6>
-    <a href="{{route('classes.create')}}" class="btn btn-lg py-3 btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+    <a href="{{route('classes.create')}}" class="btn  btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
         <div class="card-body">
@@ -51,7 +51,7 @@
                                     <td>{{$value->class_name_en}}</td>
                                     <td>
                                         <div class="d-flex">
-                                        <a href="{{route('classes.edit',encryptor('encrypt',$value->id))}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i>
+                                        <a href="{{route('classes.edit',encryptor('encrypt',$value->id))}}" class="btn btn-primary shadow btn-sm sharp me-1"><i class="fa fa-pencil-alt"></i>
                                         </a>
                                         <form action="{{ route('classes.destroy', encryptor('encrypt',$value->id))}}" method="post">
                                             @csrf
@@ -75,9 +75,27 @@
             </div>
         </div>
     </div>
+
+@push('scripts');
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+$(document).ready(function() {
+    var table = $('#example2').DataTable({
+        lengthChange: false,
+        buttons: ['copy', 'excel', 'pdf', 'print']
+    });
+
+    table.buttons().container()
+        .appendTo('#example2_wrapper .col-md-6:eq(0)');
+});
+</script>
+@endpush
+
 @endsection
-
-
 
 
     

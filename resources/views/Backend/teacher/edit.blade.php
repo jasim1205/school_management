@@ -71,16 +71,7 @@
                                         </span>
                                     @endif
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <label for="status">Status</label>
-                                <select id="status" class="form-control" name="status">
-                                    <option value="1" @if(old('status',$teacher->status)==1) selected @endif>Active</option>
-                                    <option value="0" @if(old('status',$teacher->status)==0) selected @endif>Inactive</option>
-                                </select>
-                                @if($errors->has('status'))
-                                    <span class="text-danger"> {{ $errors->first('status') }}</span>
-                                @endif
-                            </div>
+                            
                             <div class="col-12 col-lg-6">
                                 <label for="fName_en">First Name (English)<i class="text-danger">*</i> </label>
                                             
@@ -155,7 +146,6 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <div class="form-group mb-3">
                                     <label for="subject">Subject<i class="text-danger">*</i></label>
                                     <input type="text" id="subject" class="form-control" value="{{ old('subject',$teacher->subject)}}" name="subject">
                                     @if($errors->has('subject'))
@@ -233,6 +223,20 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
+                                <label for="status">Status</label>
+                                <select id="status" class="form-control" name="status">
+                                    <option value="1" @if(old('status',$teacher->status)==1) selected @endif>Active</option>
+                                    <option value="0" @if(old('status',$teacher->status)==0) selected @endif>Inactive</option>
+                                </select>
+                                @if($errors->has('status'))
+                                    <span class="text-danger"> {{ $errors->first('status') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="image">Image</label>
+                                <input type="file" id="image" class="form-control" placeholder="Image" name="image">
+                            </div>
+                            <div class="col-12 col-lg-6">
                                <label for="password">Password <i class="text-danger">*</i></label>
                                 <input type="password" id="password" class="form-control" name="password"placeholder="Choose a safe one.." >
                                     @if($errors->has('password'))
@@ -240,11 +244,7 @@
                                     @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                    <label for="image">Image</label>
-                                    <input type="file" id="image" class="form-control" placeholder="Image" name="image">
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <button class="btn btn-success px-4" type="submit">Submit</button>
+                                <button class="btn btn-success px-5 py-1 mt-4" type="submit">Submit</button>
                             </div>
                         </div><!---end row-->
                     </div>

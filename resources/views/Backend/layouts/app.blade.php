@@ -7,6 +7,7 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <!--favicon-->
@@ -52,7 +53,7 @@
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
 				<li>
-					<a href="javascript:;" class="has-arrow">
+					<a href="{{route('dashboard')}}" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-home-alt'></i>
 						</div>
 						<div class="menu-title">Dashboard</div>
@@ -63,6 +64,13 @@
 						<li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Analytics</a>
 						</li>
 					</ul> -->
+				</li>
+				<li>
+					<a href="{{route('role.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Role</div>
+					</a>
 				</li>
 				<li>
 					<a href="{{route('user.index')}}">
@@ -86,11 +94,17 @@
 					</a>
 				</li>
 				<li>
-					<a href="{{route('student.index')}}">
+					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cookie'></i>
 						</div>
 						<div class="menu-title">Student Manegement</div>
 					</a>
+					<ul>
+						<li> <a href="{{route('student.index')}}"><i class='bx bx-radio-circle'></i>Student List</a>
+						</li>
+						<li> <a href="{{route('studentattendance.index')}}"><i class='bx bx-radio-circle'></i>Student Attendance</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a href="{{route('routine.index')}}">
@@ -1225,11 +1239,11 @@
 	<script src="{{asset('public/assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
 	<script src="{{asset('public/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 	<script src="{{asset('public/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
-	
+	@stack('scripts')
 	<script src="{{asset('public/assets/js/index.js')}}"></script>
 	<!--app JS-->
 	<script src="{{asset('public/assets/js/app.js')}}"></script>
-	@stack('scripts')
+	
 </body>
 
 
