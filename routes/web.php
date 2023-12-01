@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\RoutineController as routine;
 use App\Http\Controllers\Backend\StudentController as student;
 use App\Http\Controllers\Backend\ExamController as exam;
 use App\Http\Controllers\Backend\StudentAttendanceController as studentattendance;
+use App\Http\Controllers\Backend\FeesController as fee;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('weekday', weekday::class);
     Route::resource('routine', routine::class);
     Route::resource('exam', exam::class);
+    Route::resource('fee', fee::class);
     Route::resource('studentattendance', studentattendance::class);
     Route::get('routine/show/{class}', [RoutineController::class, 'showClassRoutine'])->name('routine.show');
     Route::get('userProfile', [auth::class, 'show'])->name('userProfile');
