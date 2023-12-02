@@ -25,10 +25,10 @@ return new class extends Migration
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->unsignedBigInteger('session_id')->index();
             $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
-            $table->string('sub_marks')->nullable();
-            $table->string('ob_marks')->nullable();
-            $table->string('prac_marks')->nullable();
-            $table->string('gp')->nullable();
+            $table->decimal('sub_marks',3,1)->nullable();
+            $table->decimal('ob_marks',3,1)->nullable();
+            $table->decimal('prac_marks')->nullable();
+            $table->string('gp',3,2)->nullable();
             $table->string('gl')->nullable();
             $table->integer('status')->default(1)->comment('1=>pass 0=>fail');
             $table->timestamps();

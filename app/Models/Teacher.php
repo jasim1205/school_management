@@ -31,4 +31,8 @@ class Teacher extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function teacherAtt()
+    {
+        return $this->hasMany(TeacherAttendance::class);
+    }
 }

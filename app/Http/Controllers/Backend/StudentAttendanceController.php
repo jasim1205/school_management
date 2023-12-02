@@ -35,25 +35,25 @@ class StudentAttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        try
-        {
-            $stuattendance = new StudentAttendance;
-            $stuattendance->student_id = $request->student_id;
-            $stuattendance->class_id = $request->class_id;
-            $stuattendance->att_date = $request->att_date;
-            $stuattendance->status = $request->status;
-            if($stuattendance->save()){
-                $this->notice::success('Data successfully Saved');
-                return redirect()->route('studentattendance.index');
+        try {
+            foreach ($request->attendance as $attendanceData) {
+                    $stuattendance = new StudentAttendance;
+                    $stuattendance->student_id = $attendanceData['student_id'];
+                    $stuattendance->class_id = $attendanceData['class_id'];
+                    $stuattendance->att_date = $request->att_date;
+                    $stuattendance->status = $attendanceData['status'];
+
+                    if ($stuattendance->save()) {
+                        $this->notice::success('Data successfully saved');
+                        return redirect()->route('studentattendance.index');
+                    }
             }
-
-
         }
-        catch(Exception $e)
-        {
+        catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error','Please  again');
+            return redirect()->back()->withInput()->with('error', 'Please try again');
         }
+        
     }
 
     /**

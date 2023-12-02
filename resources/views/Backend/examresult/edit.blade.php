@@ -48,7 +48,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="exam_id" id="roleId">
+                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="exam_id" id="">
                                     <option value="">Select Exam</option>
                                 @forelse($exam as $e)
                                     <option value="{{$e->id}}" {{ old('exam_id',$examresult->exam_id)==$e->id?"selected":""}}> {{ $e->exam_name}}</option>

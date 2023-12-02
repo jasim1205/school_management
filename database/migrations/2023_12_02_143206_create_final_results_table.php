@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('student_attendances', function (Blueprint $table) {
+        Schema::create('final_results', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id')->index();
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->unsignedBigInteger('class_id')->index();
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
-            $table->date('att_date');
-            $table->integer('status')->default(1)->comment('1=>present 0=>absent');
+            $table->unsignedBigInteger('exam_id')->index();
+            $table->foreign('exam_id')->references('id')->on('exams')->onDelete('cascade');
+            $table->unsignedBigInteger('student_id')->index();
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->integer('total_marks');
+            $table->integer('total_gp')->nullable();
+            $table->string('total_gl')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('student_attendances');
+        Schema::dropIfExists('final_results');
     }
 };

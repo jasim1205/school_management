@@ -23,4 +23,10 @@ class Student extends Model
     public function examresult(){
         return $this->hasMany(ExamResult::class);
     }
+    public function fresult(){
+        return $this->hasMany(FinalResult::class);
+    }
+    public function studentfee(){
+        return $this->hasMany(StudentFee::class);
+    }
 }

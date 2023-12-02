@@ -36,8 +36,8 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('image');
-            $table->string('presect_address_en');
-            $table->string('parmanent_address_bn');
+            $table->string('present_address_en');
+            $table->string('parmanent_address_en');
              $table->integer('status')->default(1)->comment('1=>active 0=>inactive');
             $table->timestamps();
             $table->softDeletes();

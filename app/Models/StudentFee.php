@@ -5,14 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StudentAttendance extends Model
+class StudentFee extends Model
 {
     use HasFactory;
-    public function student()
-    {
+    public function student(){
         return $this->belongsTo(Student::class);
-    }
-    public function class(){
-        return $this->belongsTo(Classes::class);
     }
 }

@@ -30,7 +30,7 @@
     </div>
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase">DataTable Import</h6>
-    <a href="{{route('teacher.create')}}" class="btn py-2 btn-info"><i class="fa fa-plus">ADD NEW</i></a>
+    <a href="{{route('teacher.create')}}" class="btn btn-info"><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
         <div class="card-body">
@@ -87,14 +87,14 @@
                                     <td>@if($t->status==1){{__('Active')}} @else{{__('Inactive')}} @endif</td>
                                     <td>
                                     <div class="d-flex">
-                                        <a href="{{route('teacher.edit',encryptor('encrypt',$t->id))}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="{{route('teacher.show',encryptor('encrypt',$t->id))}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
+                                        <a href="{{route('teacher.edit',encryptor('encrypt',$t->id))}}" class="me-2"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('teacher.show',encryptor('encrypt',$t->id))}}" class=""><i class="fa fa-eye"></i></a>
 
                                         <form action="{{ route('teacher.destroy', encrypt($t->id)) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" style="border:none">
-                                                <span class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash text-white"></i></span>
+                                                <span class=""><i class="fa fa-trash text-danger"></i></span>
                                             </button>
                                         </form>
                                         

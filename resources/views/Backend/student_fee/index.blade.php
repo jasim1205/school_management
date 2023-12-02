@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Result List')
+@section('title','Student fee List')
 
 @section('content')
 
@@ -30,7 +30,7 @@
 </div>
 <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase">DataTable Import</h6>
-    <a href="{{route('examresult.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+    <a href="{{route('studentfee.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
         <div class="card-body">
@@ -39,57 +39,39 @@
                     <thead>
                         <tr>
                             <th scope="col">{{__('#SL')}}</th>
-                            <th scope="col">{{__('Exam')}}</th>
                             <th scope="col">{{__('Student')}}</th>
-                            <th scope="col">{{__('Class Name')}}</th>
-                            <th scope="col">{{__('Section')}}</th>
-                            <th scope="col">{{__('Subject')}}</th>
-                            <th scope="col">{{__('Session')}}</th> 
-                            <th scope="col">{{__('Subjective Marks')}}</th> 
-                            <th scope="col">{{__('Objective Marks')}}</th> 
-                            <th scope="col">{{__('Practical')}}</th>
-                            <th scope="col">{{__('GPA')}}</th>
-                            <th scope="col">{{__('Grade Letter')}}</th>
-                            <th scope="col">{{__('Status')}}</th>
+                            <th scope="col">{{__('Total Fee')}}</th>
+                            <th scope="col">{{__('Month')}}</th> 
+                            <th scope="col">{{__('Year')}}</th>
                             <th class="white-space-nowrap">{{__('Action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @forelse($examresult as $value)
+                      @forelse($studentfee as $value)
                         <tr role="row" class="odd">
                             <td>{{++$loop->index}}</td>
-                            <td>{{$value->exam->exam_name}}</td>
                             <td>{{$value->student->first_name_en}} {{$value->student->last_name_en}}</td>
-                            <td>{{$value->class->class_name_en}}</td>
-                            <td>{{$value->section->section_name_en}}</td>
-                            <td>{{$value->subject->subject_name_en}}</td>
-                            <td>{{$value->session->session_year_en}}</td>
-                            <td>{{$value->sub_marks}}</td>
-                            <td>{{$value->ob_marks}}</td>
-                            <td>{{$value->prac_marks}}</td>
-                            
-                            <td>{{$value->gp}}</td>
-                            <td>{{$value->gl}}</td>
-                            <td>@if($value->status==1){{'Pass'}} @else {{'__Fail'}} @endif</td>
+                            <td>{{$value->total_fees}}</td>
+                            <td>{{$value->fee_month}}</td>
+                            <td>{{$value->fee_year}}</td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{route('examresult.edit',encryptor('encrypt', $value->id))}}">
+                                    <a href="{{route('studentfee.edit',encryptor('encrypt', $value->id))}}">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form id="" action="{{ route('examresult.destroy',encryptor('encrypt', $value->id))}}" method="post">
+                                    <form id="" action="{{ route('studentfee.destroy',encryptor('encrypt', $value->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button style="background: none; border: none;" type="submit">
                                             <i class="fa fa-trash text-danger"></i>
                                         </button>
                                     </form>
-
                                 </div>
                             </td>                                        
                         </tr>
                         @empty
                         <tr>
-                            <th colspan="19" class="text-center">No Pruduct Found</th>
+                            <th colspan="9" class="text-center">No Pruduct Found</th>
                         </tr>
                         @endforelse
                     </tbody>

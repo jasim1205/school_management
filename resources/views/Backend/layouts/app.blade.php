@@ -94,6 +94,13 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{route('teacheratt.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Teacher Attendance</div>
+					</a>
+				</li>
+				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cookie'></i>
 						</div>
@@ -154,6 +161,20 @@
 						<div class="parent-icon"><i class='bx bx-cookie'></i>
 						</div>
 						<div class="menu-title">Fee Management</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('examresult.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Result Management</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('finalresult.index')}}">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Final Result</div>
 					</a>
 				</li>
 				<li class="menu-label">UI Elements</li>
