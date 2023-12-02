@@ -30,8 +30,8 @@
     </div>
 </div>
 <!--end breadcrumb-->
-<h6 class="mb-0 text-uppercase">DataTable Import</h6>
- <a href="{{route('fee.create')}}" class="btn btn-lg py-3 btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+<h6 class="mb-0 text-uppercase mb-2">DataTable Import</h6>
+ <a href="{{route('fee.create')}}" class="btn btn py-1 btn-primary" ><i class="fa fa-plus">ADD NEW</i></a>
 <hr/>
 <div class="card">
     <div class="card-body">

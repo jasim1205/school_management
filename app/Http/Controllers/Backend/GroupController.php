@@ -12,7 +12,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $group = Group::paginate(10);
+        $group = Group::get();
         return view('backend.group.index',compact('group'));
     }
 

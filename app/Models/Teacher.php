@@ -27,4 +27,8 @@ class Teacher extends Model
     {
         return $this->hasMany(Routine::class);
     }
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }

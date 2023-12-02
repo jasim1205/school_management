@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>PreSchool</title>
 
         <!-- Fonts -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <!--favicon-->
-        <link rel="icon" href="{{asset('public/assets/images/favicon-32x32.png')}}" type="image/png"/>
+        <link rel="icon" href="{{asset('public/assets/images/logo.png')}}" type="image/png"/>
         <!--plugins-->
         <link href="{{asset('public/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
         <link href="{{asset('public/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
@@ -42,11 +42,11 @@
 		<div class="sidebar-wrapper" data-simplebar="true">
 			<div class="sidebar-header">
 				<div>
-					<img src="{{asset('public/assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
+					<img src="{{asset('public/assets/images/logo.png')}}" class="" alt="logo icon">
 				</div>
-				<div>
-					<h4 class="logo-text">Syndron</h4>
-				</div>
+				<!-- <div>
+					<h4 class="logo-text">Pre-School</h4>
+				</div> -->
 				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
 				</div>
 			 </div>
@@ -149,14 +149,14 @@
 						
 					</ul>
 				</li>
-				<li class="menu-label">UI Elements</li>
 				<li>
-					<a href="widgets.html">
+					<a href="{{route('fee.index')}}">
 						<div class="parent-icon"><i class='bx bx-cookie'></i>
 						</div>
-						<div class="menu-title">Widgets</div>
+						<div class="menu-title">Fee Management</div>
 					</a>
 				</li>
+				<li class="menu-label">UI Elements</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cart'></i>
@@ -1034,7 +1034,7 @@
 					</div>
 					<div class="user-box dropdown px-3">
 						<a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="{{asset('public/assets/images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
+							<img src="{{asset('public/uploads/teachers/'.request()->session()->get('image'))}}" class="user-img" alt="user avatar">
 							<div class="user-info">
 								<p class="user-name mb-0">Pauline Seitz</p>
 								<p class="designattion mb-0">Web Designer</p>
@@ -1054,7 +1054,7 @@
 							<li>
 								<div class="dropdown-divider mb-0"></div>
 							</li>
-							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
+							<li><a class="dropdown-item d-flex align-items-center" href="{{route('logOut')}}"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
 							</li>
 						</ul>
 					</div>
@@ -1243,6 +1243,9 @@
 	<script src="{{asset('public/assets/js/index.js')}}"></script>
 	<!--app JS-->
 	<script src="{{asset('public/assets/js/app.js')}}"></script>
+	<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
 	
 </body>
 

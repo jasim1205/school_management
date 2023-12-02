@@ -10,7 +10,7 @@
             
             <!-- table bordered -->
             <div class="table-responsive"><div>
-                <a class="pull-right fs-1 btn  btn-primary" href="{{route('role.create')}}"><i class="fa fa-plus"></i>Add New</a>
+                <a class="pull-right fs-1 btn py-0 btn-primary" href="{{route('role.create')}}"><i class="fa fa-plus"></i></a>
             </div>
                 <table class="table table-bordered mb-0">
                     <thead>
@@ -28,13 +28,13 @@
                             <td>{{$p->name}}</td>
                             <td>{{$p->identity}}</td>
                             <td >
-                                <a href="{{route('role.edit',encryptor('encrypt',$p->id))}}">Edit
+                                <a href="{{route('role.edit',encryptor('encrypt',$p->id))}}">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="{{route('permission.list',encryptor('encrypt',$p->id))}}">list
+                                <a href="{{route('permission.list',encryptor('encrypt',$p->id))}}">
                                     <i class="fa fa-unlock"></i>
                                 </a>
-                                <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">delete
+                                <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                     <i class="fa fa-trash"></i>
                                 </a>
                                 <form id="form{{$p->id}}" action="{{route('role.destroy',encryptor('encrypt',$p->id))}}" method="post">

@@ -16,4 +16,7 @@ class Subject extends Model
     public function routine(){
         return $this->hasMany(Routine::class);
     }
+    public function examresult(){
+        return $this->hasMany(ExamResult::class);
+    }
 }
