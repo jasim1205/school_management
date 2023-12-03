@@ -1002,14 +1002,6 @@
     });
 </script>
     <script>
-        // toastr.options = {
-        //     "closeButton": true,
-        //     "progressBar": true,
-        // }
-        //  toastr.info("kaiser");
-        // @if (Session::has('error'))
-        //     toastr.success("{{ session('error') }}");
-        // @endif
         @if(Session::has('message'))
         toastr.success("{{ session('message') }}", { closeButton: true, progressBar: true });
     @endif
@@ -1031,10 +1023,12 @@
     <script src="{{ asset('public/assets/js/index.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('public/assets/js/app.js') }}"></script>
-<script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
+	<script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
 	<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 	<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
     @stack('scripts');
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 	
 </body>
 
