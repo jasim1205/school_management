@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Add Fee List')
+@section('title','Edit List')
 
 @section('content')
 
@@ -39,8 +39,9 @@
         </div>
         <div class="card-body">
             <div class="bs-stepper-content">
-                <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('studentfee.store')}}">
+                <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('studentfee.update',encryptor('encrypt',$studentfee->id))}}">
                     @csrf
+                    @method('Patch')
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
@@ -50,7 +51,7 @@
                                 <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
                                     <option value="">Select Student</option>
                                 @forelse($student as $s)
-                                    <option value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
+                                    <option value="{{$s->id}}" {{ old('student_id',$studentfee->student_id)==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
                                 @empty
                                     <option value="">No Role found</option>
                                 @endforelse
@@ -63,7 +64,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Total Fees</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                 <input type="text" id="total_fees" class="form-control" value="{{ old('total_fees')}}" name="total_fees">
+                                 <input type="text" id="total_fees" class="form-control" value="{{ old('total_fees',$studentfee->total_fees)}}" name="total_fees">
                                 @if($errors->has('total_fees'))
                                     <span class="text-danger"> {{ $errors->first('total_fees') }}</span>
                                 @endif
@@ -80,7 +81,7 @@
                                     @endphp
                                                                             
                                     @foreach($months as $month => $monthName)
-                                    <option @if($month == request()->get('month')) selected @endif value="{{ $month }}">{{ $monthName }}</option>
+                                    <option @if($month == request()->get('month',$studentfee->fee_month)) selected @endif value="{{ $month }}">{{ $monthName }}</option>
                                     @endforeach
 
                                 </select>
@@ -94,7 +95,7 @@
                                     
                                                                             
                                     @foreach($years as $year => $yearName)
-                                    <option @if($month == request()->get('year')) selected @endif value="{{ $year }}">{{ $yearName }}</option>
+                                    <option @if($month == request()->get('year',$studentfee->fee_year)) selected @endif value="{{ $year }}">{{ $yearName }}</option>
                                     @endforeach
 
                                 </select>

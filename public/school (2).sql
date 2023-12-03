@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2023 at 08:24 AM
+-- Generation Time: Dec 03, 2023 at 07:25 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -50,7 +50,8 @@ INSERT INTO `classes` (`id`, `class_name_en`, `class_name_bn`, `created_at`, `up
 (7, 'Class-7', NULL, '2023-11-26 17:37:24', '2023-11-26 17:37:24', NULL),
 (8, 'Class-8', NULL, '2023-11-26 17:39:49', '2023-11-26 17:39:49', NULL),
 (9, 'Class-9', NULL, '2023-11-26 17:40:03', '2023-11-26 17:40:03', NULL),
-(10, 'Class-10', NULL, '2023-11-26 17:40:17', '2023-11-26 17:40:17', NULL);
+(10, 'Class-10', NULL, '2023-11-26 17:40:17', '2023-11-26 17:40:17', NULL),
+(11, 'Class-11', NULL, '2023-12-02 21:13:27', '2023-12-02 21:13:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,16 @@ CREATE TABLE `class_sections` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `class_sections`
+--
+
+INSERT INTO `class_sections` (`id`, `class_id`, `section_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2023-12-02 23:43:51', '2023-12-02 23:43:51', NULL),
+(2, 1, 2, '2023-12-02 23:43:51', '2023-12-02 23:43:51', NULL),
+(3, 1, 3, '2023-12-02 23:43:51', '2023-12-02 23:43:51', NULL),
+(4, 1, 4, '2023-12-02 23:43:51', '2023-12-02 23:43:51', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +107,21 @@ CREATE TABLE `class_subjects` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `class_subjects`
+--
+
+INSERT INTO `class_subjects` (`id`, `class_id`, `subject_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2023-12-02 21:18:38', '2023-12-02 23:42:30', '2023-12-02 23:42:30'),
+(2, 1, 2, '2023-12-02 21:18:38', '2023-12-02 23:42:30', '2023-12-02 23:42:30'),
+(3, 1, 3, '2023-12-02 21:18:38', '2023-12-02 23:42:30', '2023-12-02 23:42:30'),
+(4, 1, 4, '2023-12-02 21:18:38', '2023-12-02 23:42:30', '2023-12-02 23:42:30'),
+(5, 1, 5, '2023-12-02 21:18:38', '2023-12-02 23:42:30', '2023-12-02 23:42:30'),
+(6, 1, 6, '2023-12-02 21:18:38', '2023-12-02 23:42:30', '2023-12-02 23:42:30'),
+(7, 1, 1, '2023-12-02 23:42:30', '2023-12-02 23:42:30', NULL),
+(8, 1, 2, '2023-12-02 23:42:30', '2023-12-02 23:42:30', NULL),
+(9, 1, 3, '2023-12-02 23:42:31', '2023-12-02 23:42:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -183,10 +209,10 @@ CREATE TABLE `exam_results` (
   `section_id` bigint(20) UNSIGNED NOT NULL,
   `subject_id` bigint(20) UNSIGNED NOT NULL,
   `session_id` bigint(20) UNSIGNED NOT NULL,
-  `sub_marks` varchar(255) DEFAULT NULL,
-  `ob_marks` varchar(255) DEFAULT NULL,
-  `prac_marks` varchar(255) DEFAULT NULL,
-  `gp` varchar(255) DEFAULT NULL,
+  `sub_marks` decimal(3,1) DEFAULT NULL,
+  `ob_marks` decimal(3,1) DEFAULT NULL,
+  `prac_marks` decimal(8,2) DEFAULT NULL,
+  `gp` varchar(3) DEFAULT NULL,
   `gl` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=>pass 0=>fail',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -199,7 +225,7 @@ CREATE TABLE `exam_results` (
 --
 
 INSERT INTO `exam_results` (`id`, `exam_id`, `student_id`, `class_id`, `section_id`, `subject_id`, `session_id`, `sub_marks`, `ob_marks`, `prac_marks`, `gp`, `gl`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 1, 1, '50', '50', '50', '3.25', 'A+', 1, '2023-12-02 00:35:41', '2023-12-02 01:23:54', NULL);
+(1, 1, 1, 1, 1, 1, 1, '50.0', '50.0', '52.00', '325', 'A+', 1, '2023-12-02 11:06:58', '2023-12-02 11:07:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -215,6 +241,33 @@ CREATE TABLE `fees` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `final_results`
+--
+
+CREATE TABLE `final_results` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `class_id` bigint(20) UNSIGNED NOT NULL,
+  `exam_id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `total_marks` int(11) NOT NULL,
+  `total_gp` int(11) DEFAULT NULL,
+  `total_gl` varchar(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `final_results`
+--
+
+INSERT INTO `final_results` (`id`, `class_id`, `exam_id`, `student_id`, `total_marks`, `total_gp`, `total_gl`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, 1, 400, 425, 'A', '2023-12-02 10:48:30', '2023-12-02 11:55:23', NULL),
+(2, 2, 1, 2, 400, 425, 'B', '2023-12-02 11:36:40', '2023-12-02 11:56:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -280,7 +333,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21, '2023_11_27_171850_create_exams_table', 1),
 (22, '2023_11_29_175031_create_student_attendances_table', 1),
 (23, '2023_12_01_085324_create_fees_table', 2),
-(25, '2023_12_02_042318_create_exam_results_table', 3);
+(26, '2023_12_02_122521_create_teacher_attendances_table', 4),
+(27, '2023_12_02_042318_create_exam_results_table', 5),
+(28, '2023_12_02_143206_create_final_results_table', 5),
+(29, '2023_12_02_180053_create_student_fees_table', 6);
 
 -- --------------------------------------------------------
 
@@ -382,6 +438,14 @@ CREATE TABLE `routines` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `routines`
+--
+
+INSERT INTO `routines` (`id`, `class_id`, `weekday_id`, `period_id`, `subject_id`, `teacher_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 1, 1, 1, 1, 3, '2023-12-02 21:08:16', '2023-12-02 21:08:16', NULL),
+(5, 1, 1, 2, 2, 2, '2023-12-02 21:10:47', '2023-12-02 21:10:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -540,7 +604,34 @@ INSERT INTO `student_attendances` (`id`, `student_id`, `class_id`, `att_date`, `
 (1, 3, 3, '2023-11-30', 1, '2023-11-29 17:55:20', '2023-11-29 17:55:20', NULL),
 (2, 3, 3, '2023-11-30', 1, '2023-11-29 17:56:08', '2023-11-29 17:56:08', NULL),
 (3, 3, 3, '2023-11-30', 1, '2023-11-29 18:02:55', '2023-11-29 18:02:55', NULL),
-(4, 3, 3, '2023-11-30', 1, '2023-11-29 18:43:28', '2023-11-29 18:43:28', NULL);
+(4, 3, 3, '2023-11-30', 1, '2023-11-29 18:43:28', '2023-11-29 18:43:28', NULL),
+(5, 1, 1, '2023-12-02', 0, '2023-12-02 08:29:09', '2023-12-02 08:29:09', NULL),
+(6, 1, 1, '2023-12-02', 1, '2023-12-02 08:30:28', '2023-12-02 08:30:28', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_fees`
+--
+
+CREATE TABLE `student_fees` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `total_fees` decimal(8,2) NOT NULL,
+  `fee_month` varchar(255) NOT NULL,
+  `fee_year` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_fees`
+--
+
+INSERT INTO `student_fees` (`id`, `student_id`, `total_fees`, `fee_month`, `fee_year`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '400.00', 'December', '2023', '2023-12-02 23:30:54', '2023-12-02 23:57:11', NULL),
+(2, 2, '400.00', 'December', '2023', '2023-12-02 23:34:00', '2023-12-02 23:34:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -617,6 +708,34 @@ INSERT INTO `teachers` (`id`, `teacher_id`, `role_id`, `first_name_en`, `first_n
 (1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', '10000.00', 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '4901701492197.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-01 22:43:17', NULL),
 (2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '4411701232338.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-11-28 16:32:18', NULL),
 (3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', '80000.00', 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '9211701327260.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-11-29 18:54:20', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teacher_attendances`
+--
+
+CREATE TABLE `teacher_attendances` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `teacher_id` bigint(20) UNSIGNED NOT NULL,
+  `att_date` date NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=>present 0=>absent',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `teacher_attendances`
+--
+
+INSERT INTO `teacher_attendances` (`id`, `teacher_id`, `att_date`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2023-12-02', 1, '2023-12-02 08:19:57', '2023-12-02 08:19:57', NULL),
+(2, 2, '2023-12-02', 1, '2023-12-02 08:19:57', '2023-12-02 08:19:57', NULL),
+(3, 3, '2023-12-02', 1, '2023-12-02 08:19:57', '2023-12-02 08:19:57', NULL),
+(4, 1, '2023-12-02', 0, '2023-12-02 08:22:01', '2023-12-02 08:22:01', NULL),
+(5, 2, '2023-12-02', 1, '2023-12-02 08:22:01', '2023-12-02 08:22:01', NULL),
+(6, 3, '2023-12-02', 1, '2023-12-02 08:22:01', '2023-12-02 08:22:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -754,6 +873,15 @@ ALTER TABLE `fees`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `final_results`
+--
+ALTER TABLE `final_results`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `final_results_class_id_index` (`class_id`),
+  ADD KEY `final_results_exam_id_index` (`exam_id`),
+  ADD KEY `final_results_student_id_index` (`student_id`);
+
+--
 -- Indexes for table `groups`
 --
 ALTER TABLE `groups`
@@ -850,6 +978,13 @@ ALTER TABLE `student_attendances`
   ADD KEY `student_attendances_class_id_index` (`class_id`);
 
 --
+-- Indexes for table `student_fees`
+--
+ALTER TABLE `student_fees`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_fees_student_id_index` (`student_id`);
+
+--
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
@@ -867,6 +1002,13 @@ ALTER TABLE `teachers`
   ADD KEY `teachers_role_id_foreign` (`role_id`),
   ADD KEY `teachers_department_id_index` (`department_id`),
   ADD KEY `teachers_designation_id_index` (`designation_id`);
+
+--
+-- Indexes for table `teacher_attendances`
+--
+ALTER TABLE `teacher_attendances`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `teacher_attendances_teacher_id_index` (`teacher_id`);
 
 --
 -- Indexes for table `users`
@@ -893,7 +1035,7 @@ ALTER TABLE `week_days`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `class_groups`
@@ -905,13 +1047,13 @@ ALTER TABLE `class_groups`
 -- AUTO_INCREMENT for table `class_sections`
 --
 ALTER TABLE `class_sections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `class_subjects`
 --
 ALTER TABLE `class_subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -944,6 +1086,12 @@ ALTER TABLE `fees`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `final_results`
+--
+ALTER TABLE `final_results`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
@@ -953,7 +1101,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `periods`
@@ -983,7 +1131,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `routines`
 --
 ALTER TABLE `routines`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `schools`
@@ -1013,7 +1161,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `student_attendances`
 --
 ALTER TABLE `student_attendances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `student_fees`
+--
+ALTER TABLE `student_fees`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -1026,6 +1180,12 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `teachers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `teacher_attendances`
+--
+ALTER TABLE `teacher_attendances`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1076,6 +1236,14 @@ ALTER TABLE `exam_results`
   ADD CONSTRAINT `exam_results_subject_id_foreign` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `final_results`
+--
+ALTER TABLE `final_results`
+  ADD CONSTRAINT `final_results_class_id_foreign` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `final_results_exam_id_foreign` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `final_results_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `permissions`
 --
 ALTER TABLE `permissions`
@@ -1106,12 +1274,24 @@ ALTER TABLE `student_attendances`
   ADD CONSTRAINT `student_attendances_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `student_fees`
+--
+ALTER TABLE `student_fees`
+  ADD CONSTRAINT `student_fees_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `teachers`
 --
 ALTER TABLE `teachers`
   ADD CONSTRAINT `teachers_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `teachers_designation_id_foreign` FOREIGN KEY (`designation_id`) REFERENCES `designations` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `teachers_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `teacher_attendances`
+--
+ALTER TABLE `teacher_attendances`
+  ADD CONSTRAINT `teacher_attendances_teacher_id_foreign` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users`

@@ -13,7 +13,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subject = Subject::paginate(10);
+        $subject = Subject::get();
         return view('backend.subject.index',compact('subject'));
     }
 
