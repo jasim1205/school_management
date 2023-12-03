@@ -36,7 +36,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
-                    <thead>
+                    <thead class="bg-dark text-white">
                         <tr>
                             <th scope="col">{{__('#SL')}}</th>
                             <th scope="col">{{__('TeacherId')}}</th>
@@ -117,3 +117,21 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+@endpush

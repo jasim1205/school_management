@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Final Result List')
+@section('title','Payment List')
 
 @section('content')
 
@@ -30,7 +30,7 @@
 </div>
 <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase">DataTable Import</h6>
-    <a href="{{route('finalresult.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+    <a href="{{route('feepayment.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
         <div class="card-body">
@@ -39,31 +39,35 @@
                     <thead>
                         <tr>
                             <th scope="col">{{__('#SL')}}</th>
-                            <th scope="col">{{__('Exam')}}</th>
-                            <th scope="col">{{__('Student')}}</th>
+                            <th scope="col">{{__('Student Roll')}}</th>
+                            <th scope="col">{{__('Student Name')}}</th>
                             <th scope="col">{{__('Class Name')}}</th>
-                            <th scope="col">{{__('Total Marks')}}</th> 
-                            <th scope="col">{{__('Total GPA')}}</th>
-                            <th scope="col">{{__('Total Grade Letter')}}</th>
+                            <th scope="col">{{__('Fee Type')}}</th>
+                            <th scope="col">{{__('Month')}}</th> 
+                            <th scope="col">{{__('Year')}}</th>
+                            <th scope="col">{{__('Amount')}}</th>
+                            <th scope="col">{{__('Status')}}</th>
                             <th class="white-space-nowrap">{{__('Action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @forelse($finalResult as $value)
+                      @forelse($feepayment as $value)
                         <tr role="row" class="odd">
                             <td>{{++$loop->index}}</td>
-                            <td>{{$value->exam->exam_name}}</td>
-                            <td>{{$value->student->first_name_en}} {{$value->student->last_name_en}}</td>
+                            <td>{{$value->s_roll->roll}}</td>
+                            <td>{{$value->s_name->first_name_en}} {{$value->s_name->last_name_en}}</td>
                             <td>{{$value->class->class_name_en}}</td>
-                            <td>{{$value->total_marks}}</td>
-                            <td>{{$value->total_gp}}</td>
-                            <td>{{$value->total_gl}}</td>
+                            <td>{{$value->fee->fee_name}}</td>
+                            <td>{{$value->fee_month}}</td>
+                            <td>{{$value->fee_year}}</td>
+                            <td>{{$value->amount}}</td>
+                            <td style="color: @if($value->status==1) green @else red @endif;">@if($value->status==1){{__('Paid')}} @else{{__('Unpaid')}} @endif</td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{route('finalresult.edit',encryptor('encrypt', $value->id))}}">
+                                    <a href="{{route('feepayment.edit',encryptor('encrypt', $value->id))}}">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form id="" action="{{ route('finalresult.destroy',encryptor('encrypt', $value->id))}}" method="post">
+                                    <form id="" action="{{ route('feepayment.destroy',encryptor('encrypt', $value->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button style="background: none; border: none;" type="submit">
@@ -75,7 +79,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <th colspan="9" class="text-center">No Pruduct Found</th>
+                            <th colspan="10" class="text-center">No Pruduct Found</th>
                         </tr>
                         @endforelse
                     </tbody>
@@ -85,21 +89,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        var table = $('#example2').DataTable({
-            lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'print']
-        });
-
-        table.buttons().container()
-            .appendTo('#example2_wrapper .col-md-6:eq(0)');
-    });
-</script>
-@endpush

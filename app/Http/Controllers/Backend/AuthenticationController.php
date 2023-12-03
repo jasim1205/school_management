@@ -72,8 +72,9 @@ class AuthenticationController extends Controller
                 'role'=>encryptor('encrypt',$user->role->name),
                 'roleIdentity'=>encryptor('encrypt',$user->role->identity),
                 'language'=>encryptor('encrypt',$user->language),
+                'Contact'=>encryptor('encrypt',$user->contact_no_en),
                 'image'=>$user->image ?? 'no-image.png',
-                'image'=>$user->teacher?->image
+                'image'=>$user->teacher?->image,
             ]
         );
     }

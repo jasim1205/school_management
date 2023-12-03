@@ -37,7 +37,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
-                    <thead>
+                    <thead class="bg-dark text-white">
                         <tr>
                             <th>{{__('#SL')}}</th>
                             <th>{{__('Class Name')}}</th>
@@ -51,13 +51,13 @@
                                     <td>{{$value->class_name_en}}</td>
                                     <td>
                                         <div class="d-flex">
-                                        <a href="{{route('classes.edit',encryptor('encrypt',$value->id))}}" class="btn btn-primary shadow btn-sm sharp me-1"><i class="fa fa-pencil-alt"></i>
+                                        <a href="{{route('classes.edit',encryptor('encrypt',$value->id))}}" class="btn btn-sm m-0"><i class="fa fa-edit text-primary"></i>
                                         </a>
                                         <form action="{{ route('classes.destroy', encryptor('encrypt',$value->id))}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" style="border:none">
-                                                <span class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash text-white"></i></span>
+                                            <button type="submit" style="border:none;background:none;">
+                                                <span class="btn btn-sm m-0"><i class="fa fa-trash text-danger"></i></span>
                                             </button>
                                         </form>
                                             
@@ -77,5 +77,23 @@
     </div>
 
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+@endpush
 
     

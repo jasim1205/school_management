@@ -166,6 +166,8 @@
 					<ul>
 						<li> <a href="{{route('fee.index')}}"><i class='bx bx-radio-circle'></i>Fee list</a>
 						</li>
+						<li> <a href="{{route('feepayment.index')}}"><i class='bx bx-radio-circle'></i>Student Payment</a>
+						</li>
 						<li> <a href="{{route('studentfee.index')}}"><i class='bx bx-radio-circle'></i>Student Fee</a>
 						</li>
 					</ul>
@@ -177,9 +179,9 @@
 						<div class="menu-title">Result Management</div>
 					</a>
 					<ul>
-						<li> <a href="{{route('finalresult.index')}}"><i class='bx bx-radio-circle'></i>Result</a>
+						<li> <a href="{{route('examresult.index')}}"><i class='bx bx-radio-circle'></i> Result</a>
 						</li>
-						<li> <a href="{{route('examresult.index')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
+						<li> <a href="{{route('finalresult.index')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
 						</li>
 					</ul>
 				</li>
@@ -778,12 +780,12 @@
 						<a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							<img src="{{asset('public/uploads/teachers/'.request()->session()->get('image'))}}" class="user-img" alt="user avatar">
 							<div class="user-info">
-								<p class="user-name mb-0">Pauline Seitz</p>
-								<p class="designattion mb-0">Web Designer</p>
+								<p class="user-name mb-0">{{encryptor('decrypt',request()->session()->get('userName'))}}</p>
+								<p class="designattion mb-0">{{encryptor('decrypt',request()->session()->get('role')) }}</p>
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
-							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+							<li><a class="dropdown-item d-flex align-items-center" href="{{route('userProfile')}}"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
 							</li>
 							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
 							</li>
@@ -985,22 +987,7 @@
 
 
 
-    <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        var table = $('#example2').DataTable({
-            lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'print']
-        });
-
-        table.buttons().container()
-            .appendTo('#example2_wrapper .col-md-6:eq(0)');
-    });
-</script>
+    
     <script>
         @if(Session::has('message'))
         toastr.success("{{ session('message') }}", { closeButton: true, progressBar: true });

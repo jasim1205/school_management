@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('student_fees', function (Blueprint $table) {
             $table->id();
-             $table->unsignedBigInteger('student_id')->index();
+            $table->unsignedBigInteger('student_id')->index();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->decimal('total_fees');
-            $table->date('fee_month');
-            $table->year('fee_year');
+            $table->string('fee_month');
+            $table->string('fee_year');
             $table->timestamps();
             $table->softDeletes();
         });

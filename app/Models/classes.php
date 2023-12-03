@@ -31,4 +31,7 @@ class Classes extends Model
     public function fresult(){
         return $this->hasMany(FinalResult::class);
     }
+    public function stu_feepayment(){
+        return $this->hasMany(StudentFeePayment::class);
+    }
 }

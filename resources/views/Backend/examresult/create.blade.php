@@ -9,7 +9,7 @@
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
-                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                <li class="breadcrumb-item"><a href="{{javascript:;}}"><i class="bx bx-home-alt"></i></a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Wizard</li>
             </ol>
@@ -47,7 +47,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="exam_id" id="roleId">
+                                <select class="default-select wide form-control" id="validationCustom05" name="exam_id" id="roleId">
                                     <option value="">Select Exam</option>
                                 @forelse($exam as $e)
                                     <option value="{{$e->id}}" {{ old('exam_id')==$e->id?"selected":""}}> {{ $e->exam_name}}</option>
@@ -63,7 +63,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="student_id" id="">
+                                <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
                                     <option value="">Select Student</option>
                                 @forelse($student as $s)
                                     <option value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
@@ -79,7 +79,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Class Name</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="class_id" id="">
+                                <select class="default-select wide form-control" id="validationCustom05" name="class_id" id="">
                                     <option value="">Select Class</option>
                                 @forelse($classes as $c)
                                     <option value="{{$c->id}}" {{ old('class_id')==$c->id?"selected":""}}> {{ $c->class_name_en}}</option>
@@ -97,7 +97,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Section</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="section_id" id="">
+                                <select class="default-select wide form-control" id="validationCustom05" name="section_id" id="">
                                     <option value="">Select Section</option>
                                 @forelse($section as $s)
                                     <option value="{{$s->id}}" {{ old('section_id')==$s->id?"selected":""}}> {{ $s->section_name_en}}</option>
@@ -114,7 +114,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Session</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="session_id" id="">
+                                <select class="default-select wide form-control" id="validationCustom05" name="session_id" id="">
                                     <option value="">Select Session</option>
                                 @forelse($session as $s)
                                     <option value="{{$s->id}}" {{ old('session_id')==$s->id?"selected":""}}> {{ $s->session_year_en}}</option>
@@ -131,7 +131,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Subject</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="subject_id" id="">
+                                <select class="default-select wide form-control" id="validationCustom05" name="subject_id" id="">
                                     <option value="">Select Subject</option>
                                 @forelse($subject as $s)
                                     <option value="{{$s->id}}" {{ old('subject_id')==$s->id?"selected":""}}> {{ $s->subject_name_en}}</option>

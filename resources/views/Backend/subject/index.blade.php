@@ -51,15 +51,15 @@
                             
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{route('subject.edit',encryptor('encrypt',$value->id))}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i>
+                                    <a href="{{route('subject.edit',encryptor('encrypt',$value->id))}}" class=""><i class="fas fa-edit"></i>
                                     </a>
                                     <form id=""
                                             action="{{ route('subject.destroy', encrypt($value->id)) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" style="border:none">
-                                                <span class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash text-white"></i></span>
+                                            <button type="submit" style="border:none;background:none;">
+                                                <span class=""><i class="fa fa-trash text-danger"></i></span>
                                                 
                                             </button>
                                     </form>
@@ -79,3 +79,21 @@
 </div>
 
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+@endpush

@@ -10,42 +10,44 @@
         <form action="{{route('teacheratt.store')}}" method="post">
             @csrf
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-6">
                     <div class="form-group">
                         <label for="">Attendance Date</label>
                         <input type="date"  value="<?= date('Y-m-d') ?>"  name="att_date" id="" class="form-control">
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="form-group col-12">
-                    <table id="example2" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Teacher</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($teacher as $t)
+            <div class="card mt-2">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example2" class="table table-striped table-bordered">
+                            <thead class="bg-dark text-white">
                                 <tr>
-                                    <td>{{ $t->first_name_en }} {{ $t->last_name_en }}
-                                        <input type="hidden" name="attendance[{{ $t->id }}][teacher_id]" value="{{ $t->id }}">
-                                    </td>
-                                    <td>
-                                        <select name="attendance[{{ $t->id }}][status]" class="form-control">
-                                            <option value="1">Present</option>
-                                            <option value="0">Absent</option>
-                                        </select>
-                                    </td>
+                                    <th>Teacher</th>
+                                    <th>Status</th>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3">No data Found</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @forelse($teacher as $t)
+                                    <tr>
+                                        <td>{{ $t->first_name_en }} {{ $t->last_name_en }}
+                                            <input type="hidden" name="attendance[{{ $t->id }}][teacher_id]" value="{{ $t->id }}">
+                                        </td>
+                                        <td>
+                                            <select name="attendance[{{ $t->id }}][status]" class="form-control">
+                                                <option value="1">Present</option>
+                                                <option value="0">Absent</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3">No data Found</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="mb-3 row">

@@ -40,7 +40,7 @@
                 <thead>
                     <tr>
                         <th scope="col">{{__('#SL')}}</th>
-                        <th scope="col">{{__('Fees Name')}}</th>
+                        <th scope="col">{{__('Fees Type')}}</th>
                         <th scope="col">{{__('Amount')}}</th>
                         
                         <th class="white-space-nowrap">{{__('Action') }}</th>
@@ -54,13 +54,13 @@
                         <td>{{$f->amount}}</td>
                         <td>
                             <div class="d-flex">
-                                <a href="{{route('fee.edit',encryptor('encrypt',$f->id))}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i>
+                                <a href="{{route('fee.edit',encryptor('encrypt',$f->id))}}" class=""><i class="fas fa-edit"></i>
                             </a>
                             <form action="{{ route('fee.destroy', encryptor('encrypt',$f->id))}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" style="border:none">
-                                    <span class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash text-white"></i></span>
+                                    <span class=""><i class="fa fa-trash text-danger"></i></span>
                                 </button>
                             </form>
                                 
