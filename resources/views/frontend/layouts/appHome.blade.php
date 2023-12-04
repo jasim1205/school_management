@@ -99,7 +99,7 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item @@about">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="{{route('about')}}">About</a>
             </li>
             <li class="nav-item @@courses">
               <a class="nav-link" href="courses.html">COURSES</a>

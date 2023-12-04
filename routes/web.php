@@ -96,7 +96,7 @@ Route::get('/', function () {
 });
 Route::get('/about', function () {
     return view('frontend/component/about');
-});
+})->name('about');
 // Route::get('/', function () {
 //     return view('backend.dashboard');
 // })->name('dashboard');
