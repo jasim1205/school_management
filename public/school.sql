@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 08:16 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 04, 2023 at 07:55 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -83,6 +83,15 @@ CREATE TABLE `class_sections` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `class_sections`
+--
+
+INSERT INTO `class_sections` (`id`, `class_id`, `section_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2023-12-03 21:06:43', '2023-12-03 21:06:43', NULL),
+(2, 1, 2, '2023-12-03 21:06:43', '2023-12-03 21:06:43', NULL),
+(3, 1, 3, '2023-12-03 21:06:43', '2023-12-03 21:06:43', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +106,17 @@ CREATE TABLE `class_subjects` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `class_subjects`
+--
+
+INSERT INTO `class_subjects` (`id`, `class_id`, `subject_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2023-12-03 21:04:02', '2023-12-03 21:04:02', NULL),
+(2, 1, 2, '2023-12-03 21:04:02', '2023-12-03 21:04:02', NULL),
+(3, 1, 3, '2023-12-03 21:04:02', '2023-12-03 21:04:02', NULL),
+(4, 1, 4, '2023-12-03 21:04:02', '2023-12-03 21:04:02', NULL),
+(5, 1, 5, '2023-12-03 21:04:02', '2023-12-03 21:04:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -200,14 +220,14 @@ CREATE TABLE `exam_results` (
 --
 
 INSERT INTO `exam_results` (`id`, `exam_id`, `student_id`, `class_id`, `section_id`, `subject_id`, `session_id`, `sub_marks`, `ob_marks`, `prac_marks`, `gp`, `gl`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 50.0, 50.0, 52.00, 3.25, 'A+', 1, '2023-12-02 11:06:58', '2023-12-03 11:10:15', NULL),
-(2, 1, 1, 1, 1, 2, 1, 30.0, 25.0, 25.00, 3.24, 'A+', 1, '2023-12-03 11:09:59', '2023-12-03 11:09:59', NULL),
-(3, 1, 1, 1, 1, 3, 1, 40.0, 25.0, 20.00, 5, 'A+', 1, '2023-12-03 11:11:10', '2023-12-03 11:11:10', NULL),
-(4, 1, 1, 1, 1, 4, 1, 35.0, 25.0, 15.00, 4.5, 'A', 1, '2023-12-03 11:11:51', '2023-12-03 11:11:51', NULL),
-(5, 1, 1, 1, 1, 5, 1, 40.0, 25.0, 25.00, 5, 'A+', 1, '2023-12-03 11:12:53', '2023-12-03 11:12:53', NULL),
-(6, 1, 1, 1, 1, 6, 1, 30.0, 25.0, 20.00, 4.5, 'A', 1, '2023-12-03 11:13:45', '2023-12-03 11:13:45', NULL),
-(7, 1, 1, 1, 1, 7, 1, 40.0, 20.0, 23.00, 5, 'A+', 1, '2023-12-03 11:14:35', '2023-12-03 11:14:35', NULL),
-(8, 1, 1, 1, 1, 8, 1, 30.0, 20.0, 20.00, 4.5, 'A', 1, '2023-12-03 11:16:44', '2023-12-03 11:16:44', NULL);
+(1, 1, 1, 1, 1, 1, 1, '50.0', '50.0', '52.00', 3.25, 'A+', 1, '2023-12-02 11:06:58', '2023-12-03 11:10:15', NULL),
+(2, 1, 1, 1, 1, 2, 1, '30.0', '25.0', '25.00', 3.24, 'A+', 1, '2023-12-03 11:09:59', '2023-12-03 11:09:59', NULL),
+(3, 1, 1, 1, 1, 3, 1, '40.0', '25.0', '20.00', 5, 'A+', 1, '2023-12-03 11:11:10', '2023-12-03 11:11:10', NULL),
+(4, 1, 1, 1, 1, 4, 1, '35.0', '25.0', '15.00', 4.5, 'A', 1, '2023-12-03 11:11:51', '2023-12-03 11:11:51', NULL),
+(5, 1, 1, 1, 1, 5, 1, '40.0', '25.0', '25.00', 5, 'A+', 1, '2023-12-03 11:12:53', '2023-12-03 11:12:53', NULL),
+(6, 1, 1, 1, 1, 6, 1, '30.0', '25.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:13:45', '2023-12-03 11:13:45', NULL),
+(7, 1, 1, 1, 1, 7, 1, '40.0', '20.0', '23.00', 5, 'A+', 1, '2023-12-03 11:14:35', '2023-12-03 11:14:35', NULL),
+(8, 1, 1, 1, 1, 8, 1, '30.0', '20.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:16:44', '2023-12-03 11:16:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -229,11 +249,15 @@ CREATE TABLE `fees` (
 --
 
 INSERT INTO `fees` (`id`, `fee_name`, `amount`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Mid Term Exam Fee', 500.00, '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
-(2, 'Half Yearly Exam Fee', 1000.00, '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
-(3, 'Yearly Exam Fee', 1500.00, '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
-(4, 'Class Test', 200.00, '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
-(5, 'Hostel Fees', 2000.00, '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL);
+(1, 'Mid Term Exam Fee', '500.00', '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
+(2, 'Half Yearly Exam Fee', '1000.00', '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
+(3, 'Yearly Exam Fee', '1500.00', '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
+(4, 'Class Test', '200.00', '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
+(5, 'Hostel Fees', '2000.00', '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL),
+(6, 'Admission Fee', '1000.00', '2023-12-03 21:32:42', '2023-12-03 21:32:42', NULL),
+(7, 'Transport', '2000.00', '2023-12-03 21:34:27', '2023-12-03 21:34:27', NULL),
+(8, 'Monthly Fee', '500.00', '2023-12-03 21:36:52', '2023-12-03 21:36:52', NULL),
+(9, 'Other', '500.00', '2023-12-03 21:37:06', '2023-12-03 21:37:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -330,8 +354,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (27, '2023_12_02_042318_create_exam_results_table', 5),
 (28, '2023_12_02_143206_create_final_results_table', 5),
 (29, '2023_12_02_180053_create_student_fees_table', 6),
-(30, '2023_12_03_062207_create_student_fee_details_table', 7),
-(34, '2023_12_03_123300_create_student_fee_payments_table', 8);
+(34, '2023_12_03_123300_create_student_fee_payments_table', 8),
+(35, '2023_12_03_062207_create_student_fee_details_table', 9);
 
 -- --------------------------------------------------------
 
@@ -617,7 +641,7 @@ CREATE TABLE `student_fees` (
 --
 
 INSERT INTO `student_fees` (`id`, `student_id`, `total_fees`, `fee_month`, `fee_year`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 400.00, 'December', '2023', '2023-12-03 11:06:29', '2023-12-03 11:06:29', NULL);
+(1, 1, '400.00', 'December', '2023', '2023-12-03 11:06:29', '2023-12-03 11:06:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -627,8 +651,14 @@ INSERT INTO `student_fees` (`id`, `student_id`, `total_fees`, `fee_month`, `fee_
 
 CREATE TABLE `student_fee_details` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `fee_id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `fee_amount` decimal(8,2) NOT NULL,
+  `fee_month` varchar(255) NOT NULL,
+  `fee_year` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -658,8 +688,8 @@ CREATE TABLE `student_fee_payments` (
 --
 
 INSERT INTO `student_fee_payments` (`id`, `class_id`, `student_roll`, `student_name`, `fee_id`, `fee_month`, `fee_year`, `amount`, `payment_date`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 'December', '2023', 500.00, '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
-(4, 1, 7, 7, 1, 'December', '2023', 500.00, '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
+(1, 1, 1, 1, 1, 'December', '2023', '500.00', '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
+(4, 1, 7, 7, 1, 'December', '2023', '500.00', '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -733,9 +763,9 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `teacher_id`, `role_id`, `first_name_en`, `first_name_bn`, `last_name_en`, `last_name_bn`, `father_name`, `mother_name`, `gender`, `date_of_birth`, `place_of_birth`, `subject`, `salary`, `email`, `contact_no_en`, `contact_no_bn`, `department_id`, `designation_id`, `image`, `present_address`, `parmanent_address`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', 10000.00, 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '4901701492197.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-01 22:43:17', NULL),
-(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', 80000.00, 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '4411701232338.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-11-28 16:32:18', NULL),
-(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', 80000.00, 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '9211701327260.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-11-29 18:54:20', NULL);
+(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', '10000.00', 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '4901701492197.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-01 22:43:17', NULL),
+(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '4411701232338.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-11-28 16:32:18', NULL),
+(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', '80000.00', 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '9211701327260.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-11-29 18:54:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -1016,7 +1046,9 @@ ALTER TABLE `student_fees`
 -- Indexes for table `student_fee_details`
 --
 ALTER TABLE `student_fee_details`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_fee_details_fee_id_index` (`fee_id`),
+  ADD KEY `student_fee_details_student_id_index` (`student_id`);
 
 --
 -- Indexes for table `student_fee_payments`
@@ -1091,13 +1123,13 @@ ALTER TABLE `class_groups`
 -- AUTO_INCREMENT for table `class_sections`
 --
 ALTER TABLE `class_sections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `class_subjects`
 --
 ALTER TABLE `class_subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -1127,7 +1159,7 @@ ALTER TABLE `exam_results`
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `final_results`
@@ -1145,7 +1177,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `periods`
@@ -1334,6 +1366,13 @@ ALTER TABLE `student_attendances`
 --
 ALTER TABLE `student_fees`
   ADD CONSTRAINT `student_fees_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `student_fee_details`
+--
+ALTER TABLE `student_fee_details`
+  ADD CONSTRAINT `student_fee_details_fee_id_foreign` FOREIGN KEY (`fee_id`) REFERENCES `fees` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `student_fee_details_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `student_fee_payments`

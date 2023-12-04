@@ -1,6 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Add payment')
-
+@section('title','Fee details List')
 @section('content')
 
 <!--breadcrumb-->
@@ -24,12 +23,11 @@
     <div class="card">
         <div class="card-body">
             <div class="bs-stepper-content">
-                <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('feepayment.store')}}">
+                <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('feedetail.store')}}">
                     @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">
-
-                            <div class="col-12 col-lg-4">
+                            <div class="col-12 col-lg-6">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Class Name</strong>
                                 <span class="text-danger">*</span>
                                 </label>
@@ -45,7 +43,7 @@
                                     <span class="text-danger"> {{ $errors->first('class_id') }}</span>
                                 @endif
                             </div>
-                             <div class="col-12 col-lg-4">
+                             <div class="col-12 col-lg-6">
                                  <label class="col-lg-4 col-form-label" for=""><strong>Month</strong>
                                 <span class="text-danger">*</span>
                                 </label>
@@ -60,7 +58,22 @@
                                     <span class="text-danger"> {{ $errors->first('fee_month') }}</span>
                                 @endif
                             </div>
-                            
+                            <div class="col-12 col-lg-6">
+                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
+                                <span class="text-danger">*</span>
+                                </label>
+                                <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
+                                    <option value="">Select Student</option>
+                                @forelse($student as $s)
+                                    <option value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
+                                @empty
+                                    <option value="">No Role found</option>
+                                @endforelse
+                                </select>
+                                @if($errors->has('student_id'))
+                                    <span class="text-danger"> {{ $errors->first('student_id') }}</span>
+                                @endif
+                            </div>
                             <div class="col-12 col-lg-4">
                                 <label class="col-lg-4 col-form-label" for=""><strong>Year</strong>
                                 <span class="text-danger">*</span>
@@ -77,21 +90,6 @@
                                     <span class="text-danger"> {{ $errors->first('fee_year') }}</span>
                                 @endif
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Fees Type</strong><i class="text-danger">*</i> 
-                                </label>
-                                 <select class="default-select wide form-control" id="validationCustom05" name="fee_id" id="">
-                                    <option value="">Select Fee Type</option>
-                                @forelse($fees as $s)
-                                    <option value="{{$s->id}}" {{ old('fee_id')==$s->id?"selected":""}}> {{ $s->fee_name}}</option>
-                                @empty
-                                    <option value="">No Role found</option>
-                                @endforelse
-                                </select>
-                                @if($errors->has('fee_id'))
-                                    <span class="text-danger"> {{ $errors->first('fee_id') }}</span>
-                                @endif
-                            </div>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -101,31 +99,19 @@
                                                     <th>Roll</th>
                                                     <th>Student</th>
                                                     <th>Amount</th>
-                                                    <th>Payment Date</th>
-                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($student as $s)
+                                                @foreach($fees as $value)
                                                 <tr>
-                                                    <td>{{ $s->roll }}
-                                                        <input type="hidden" name="student_roll" value="{{ $s->id }}">
-                                                    </td>
-                                                    <td>{{ $s->first_name_en }} {{ $s->last_name_en }}
-                                                        <input type="hidden" name="student_name" value="{{ $s->id }}">
-                                                    </td>
-                                                
                                                     <td>
-                                                        <input type="text" id="amount" class="form-control" value="{{ old('amount')}}" name="amount">
+                                                       {{$value->fee_name}} 
                                                     </td>
                                                     <td>
-                                                        <input type="date" id="payment_date" class="form-control" value="{{ old('payment_date')}}" name="payment_date">
+                                                        {{$value->amount}}
                                                     </td>
                                                     <td>
-                                                    <select id="status" class="form-control" name="status">
-                                                            <option value="1" @if(old('status')==1) selected @endif>paid</option>
-                                                            <option value="0" @if(old('status')==0) selected @endif>unpaid</option>
-                                                        </select>
+                                                        <input type="checkbox" name="" id="">
                                                     </td>
                                                 </tr>
                                                 @endforeach

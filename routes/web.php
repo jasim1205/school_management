@@ -30,6 +30,7 @@ use App\Http\Controllers\Backend\ExamResultController as examresult;
 use App\Http\Controllers\Backend\FinalResultController as finalresult;
 use App\Http\Controllers\Backend\StudentFeeController as studentfee;
 use App\Http\Controllers\Backend\StudentFeePaymentController as feepayment;
+use App\Http\Controllers\Backend\StudentFeeDetailsController as feedetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('exam', exam::class);
     Route::resource('fee', fee::class);
     Route::resource('feepayment', feepayment::class);
+    Route::resource('feedetail', feedetail::class);
     Route::resource('studentfee', studentfee::class);
     Route::resource('examresult', examresult::class);
     Route::resource('finalresult', finalresult::class);

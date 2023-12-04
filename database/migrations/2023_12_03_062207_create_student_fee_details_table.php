@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('student_fee_details', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('fee_id')->index();
+            $table->foreign('fee_id')->references('id')->on('fees')->onDelete('cascade');
+            $table->unsignedBigInteger('student_id')->index();
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->decimal('fee_amount');
+            $table->string('fee_month');
+            $table->string('fee_year');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

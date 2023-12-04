@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\StudentFeeDetails;
+use App\Models\Classes;
+use App\Models\Student;
+use App\Models\Fees;
 use Illuminate\Http\Request;
 
 class StudentFeeDetailsController extends Controller
@@ -12,7 +15,8 @@ class StudentFeeDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $feedetail = StudentFeeDetails::get();
+        return view('backend.feedetails.index',compact('feedetail'));
     }
 
     /**
@@ -20,7 +24,31 @@ class StudentFeeDetailsController extends Controller
      */
     public function create()
     {
-        //
+        $months = [
+        'January' => 'January',
+        'February' => 'February',
+        'March' => 'March',
+        'April' => 'April',
+        'May' => 'May',
+        'June' => 'June',
+        'July' => 'July',
+        'August' => 'August',
+        'September' => 'September',
+        'October' => 'October',
+        'November' => 'November',
+        'December' => 'December'
+        ];
+        $years = [
+        '2023' => '2023',
+        '2024' => '2024',
+        '2025' => '2025',
+        '2026' => '2026',
+        '2027' => '2027'
+        ];
+        $classes = Classes::get();
+        $student = Student::get();
+        $fees = Fees::get();
+        return view('backend.feedetails.create',compact('classes','student','fees','months','years'));
     }
 
     /**
