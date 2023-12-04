@@ -83,9 +83,10 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Student $student)
+    public function show($id)
     {
-        //
+        $student = Student::findOrFail(encryptor('decrypt',$id));
+        return view('backend.students.show',compact('student'));
     }
 
     /**

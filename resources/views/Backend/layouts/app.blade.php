@@ -88,22 +88,22 @@
 					</a>
 				</li>
 				<li>
-					<a href="{{route('teacher.index')}}">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="fas fa-chalkboard-teacher"></i>
 						</div>
 						<div class="menu-title">Teacher Manegement</div>
 					</a>
+					<ul>
+						<li> <a href="{{route('teacher.index')}}"><i class='bx bx-radio-circle'></i>Teacher List</a>
+						</li>
+						<li> <a href="{{route('teacheratt.index')}}"><i class='bx bx-radio-circle'></i>Teacher Attendance</a>
+						</li>
+					</ul>
 				</li>
-				<li>
-					<a href="{{route('teacheratt.index')}}">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
-						</div>
-						<div class="menu-title">Teacher Attendance</div>
-					</a>
-				</li>
+				
 				<li>
 					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						<div class="parent-icon"><i class="fas fa-graduation-cap"></i>
 						</div>
 						<div class="menu-title">Student Manegement</div>
 					</a>

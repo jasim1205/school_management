@@ -38,24 +38,12 @@
                 <table id="example2" class="table table-striped table-bordered">
                     <thead class="bg-dark text-white">
                         <tr>
-                            <th scope="col">{{__('#SL')}}</th>
                             <th scope="col">{{__('TeacherId')}}</th>
-                            <th scope="col">{{__('Image')}}</th>
                             <th scope="col">{{__('Name')}}</th>
                             <th scope="col">{{__('Role') }}</th>
-                            <th scope="col">{{__('Father Name')}}</th>
-                            <th scope="col">{{__('Mother Name')}}</th> 
                             <th scope="col">{{__('Gender')}}</th> 
                             <th scope="col">{{__('Date of Birth')}}</th> 
-                            <th scope="col">{{__('Place of Birth')}}</th>
-                            <th scope="col">{{__('Subject')}}</th>
-                            <th scope="col">{{__('Department')}}</th>
-                            <th scope="col">{{__('Designation')}}</th>
-                            <th scope="col">{{__('Salary')}}</th>
-                            <th scope="col">{{__('Email')}}</th>
                             <th scope="col">{{__('Contact')}}</th>
-                            <th scope="col">{{__('Present Address')}}</th>
-                            <th scope="col">{{__('Parmanent Address')}}</th>
                             <th scope="col">{{__('Status')}}</th>
                             <th class="white-space-nowrap">{{__('Action') }}</th>
                         </tr>
@@ -63,27 +51,16 @@
                     <tbody>
                       @forelse($teacher as $t)
                                 <tr role="row" class="odd">
-                                    <td>{{++$loop->index}}</td>
+                                   
                                     <td>{{$t->teacher_id}}</td>
+                                    
                                     <td>
                                         <img width="50px" class="rounded-circle" src="{{asset('public/uploads/teachers/'.$t->image)}}" alt="">
-                                    </td>
-                                    <td>{{$t->first_name_en}} {{$t->last_name_en}}</td>
+                                        {{$t->first_name_en}} {{$t->last_name_en}}</td>
                                     <td>{{$t->role?->name }}</td>
-                                    <td>{{$t->father_name}}</td>
-                                    <td>{{$t->mother_name}}</td>
                                     <td>{{$t->gender}}</td>
                                     <td>{{$t->date_of_birth}}</td>
-                                    <td>{{$t->place_of_birth}}</td>
-                                    <td>{{$t->subject}}</td>
-                                    <td>{{$t->department?->department_name}}
-                                    </td>
-                                    <td>{{$t->designation?->designation_name}}</td>
-                                    <td>{{$t->salary}}</td>
-                                    <td>{{$t->email}}</td>
                                     <td>{{$t->contact_no_en}}</td>
-                                    <td>{{$t->present_address}}</td>
-                                    <td>{{$t->parmanent_address}}</td>
                                     <td>@if($t->status==1){{__('Active')}} @else{{__('Inactive')}} @endif</td>
                                     <td>
                                     <div class="d-flex">
