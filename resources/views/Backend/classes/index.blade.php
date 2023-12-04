@@ -37,7 +37,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
-                    <thead class="bg-dark text-white">
+                    <thead class="">
                         <tr>
                             <th>{{__('#SL')}}</th>
                             <th>{{__('Class Name')}}</th>
@@ -51,13 +51,13 @@
                                     <td>{{$value->class_name_en}}</td>
                                     <td>
                                         <div class="d-flex">
-                                        <a href="{{route('classes.edit',encryptor('encrypt',$value->id))}}" class="btn btn-sm m-0"><i class="fa fa-edit text-primary"></i>
+                                        <a href="{{route('classes.edit',encryptor('encrypt',$value->id))}}" class=""><i class="fa fa-edit text-primary"></i>
                                         </a>
                                         <form action="{{ route('classes.destroy', encryptor('encrypt',$value->id))}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" style="border:none;background:none;">
-                                                <span class="btn btn-sm m-0"><i class="fa fa-trash text-danger"></i></span>
+                                                <span class=""><i class="fa fa-trash text-danger"></i></span>
                                             </button>
                                         </form>
                                             

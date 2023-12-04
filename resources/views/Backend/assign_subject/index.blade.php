@@ -34,20 +34,14 @@
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        <div class="card-header">
-            
-        </div>
         <div class="card-body">
             <div class="bs-stepper-content">
                 <form class="form" method="post"action="{{route('assignsubject.store')}}">
             @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
-
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
-                                <label>Class Name</label>
+                                <label><strong>Class Name</strong></label>
                                 <select  id="class_id" name="class_id" required class="form-control" onchange="change_location(this.value)">
                                     <option value="">Select Class</option>
                                     @forelse($classes as $class)
@@ -56,6 +50,9 @@
                                     <option value="">No Class found</option>
                                     @endforelse
                                 </select>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <button class="btn btn-success px-4 mt-4" type="submit">Submit</button>
                             </div>
                         </div>
                         <div class="row g-3">
@@ -69,9 +66,7 @@
                                 </div>
                                 @endforeach
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <button class="btn btn-success px-4" type="submit">Submit</button>
-                            </div>
+                            
                         </div><!---end row-->
                     </div>
                 </form>

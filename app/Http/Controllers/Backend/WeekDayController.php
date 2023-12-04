@@ -12,7 +12,7 @@ class WeekDayController extends Controller
      */
     public function index()
     {
-        $weekDay = WeekDay::paginate(5);
+        $weekDay = WeekDay::get();
         return view('backend.weekday.index',compact('weekDay'));
     }
 

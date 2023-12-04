@@ -55,13 +55,13 @@
                         <td>{{date('d-M-Y',strtotime($e->end_date))}}</td>
                         <td>
                             <div class="d-flex">
-                                <a href="{{route('exam.edit',encryptor('encrypt',$e->id))}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i>
+                                <a href="{{route('exam.edit',encryptor('encrypt',$e->id))}}" class=""><i class="fas fa-edit"></i>
                             </a>
                             <form action="{{ route('exam.destroy', encryptor('encrypt',$e->id))}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" style="border:none">
-                                    <span class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash text-white"></i></span>
+                                    <span class=""><i class="fa fa-trash text-danger"></i></span>
                                 </button>
                             </form>
                                 
@@ -79,7 +79,22 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+@endpush
