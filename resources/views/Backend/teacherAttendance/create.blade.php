@@ -7,7 +7,7 @@
     <div class="row">
     </div>
     <div class="row">
-        <form action="{{route('teacheratt.store')}}" method="post">
+        <form action="{{route('teacherattend.store')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-lg-6">

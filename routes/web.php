@@ -23,8 +23,8 @@ use App\Http\Controllers\Backend\WeekDayController as weekday;
 use App\Http\Controllers\Backend\RoutineController as routine;
 use App\Http\Controllers\Backend\StudentController as student;
 use App\Http\Controllers\Backend\ExamController as exam;
-use App\Http\Controllers\Backend\StudentAttendanceController as studentattendance;
-use App\Http\Controllers\Backend\TeacherAttendanceController as teacheratt;
+use App\Http\Controllers\Backend\StudentAttendanceController as studentattend;
+use App\Http\Controllers\Backend\TeacherAttendanceController as teacherattend;
 use App\Http\Controllers\Backend\FeesController as fee;
 use App\Http\Controllers\Backend\ExamResultController as examresult;
 use App\Http\Controllers\Backend\FinalResultController as finalresult;
@@ -81,8 +81,19 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('studentfee', studentfee::class);
     Route::resource('examresult', examresult::class);
     Route::resource('finalresult', finalresult::class);
-    Route::resource('studentattendance', studentattendance::class);
-    Route::resource('teacheratt', teacheratt::class);
+
+//student attendance
+
+    Route::resource('studentattend', studentattend::class);
+    Route::get('studentattend/show/{id}', [studentattend::class,'show'])->name('studentattend.show');
+    Route::get('studentattend/singleedit/{id}', [studentattend::class, 'singleedit'])->name('studentattend.singleedit');
+    Route::post('studentattend/singleedit/{id}', [studentattend::class, 'update'])->name('studentupdate');
+
+//teacher attendance
+    Route::resource('teacherattend', teacherattend::class);
+    Route::get('teacherattend/singleedit/{id}', [teacherattend::class, 'singleedit'])->name('teacherattend.singleedit');
+    Route::post('teacherattend/singleedit/{id}', [teacherattend::class, 'update'])->name('update');
+
     Route::get('routine/show/{class}', [RoutineController::class, 'showClassRoutine'])->name('routine.show');
     Route::get('userProfile', [auth::class, 'show'])->name('userProfile');
 });

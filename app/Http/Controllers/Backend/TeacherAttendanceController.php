@@ -14,8 +14,8 @@ class TeacherAttendanceController extends Controller
      */
     public function index()
     {
-        $teacherAtt = TeacherAttendance::get();
-        return view('backend.teacherAtt.index',compact('teacherAtt'));
+        $teacherAttend = TeacherAttendance::get();
+        return view('backend.teacherAttendance.index',compact('teacherAttend'));
     }
 
     /**
@@ -23,8 +23,9 @@ class TeacherAttendanceController extends Controller
      */
     public function create()
     {
+        
         $teacher = Teacher::get();
-        return view('backend.teacherAtt.create',compact('teacher'));
+        return view('backend.teacherAttendance.create',compact('teacher'));
     }
 
     /**
@@ -34,14 +35,13 @@ class TeacherAttendanceController extends Controller
     {
       try {
             foreach ($request->attendance as $attendanceData) {
-                    $teacherAtt = new TeacherAttendance;
-                    $teacherAtt->teacher_id = $attendanceData['teacher_id'];
-                    $teacherAtt->att_date = $request->att_date;
-                    $teacherAtt->status = $attendanceData['status'];
-
-                    if ($teacherAtt->save()) {
+                    $teacherAttend = new TeacherAttendance;
+                    $teacherAttend->teacher_id = $attendanceData['teacher_id'];
+                    $teacherAttend->att_date = $request->att_date;
+                    $teacherAttend->status = $attendanceData['status'];
+                    if ($teacherAttend->save()) {
                         $this->notice::success('Data successfully saved');
-                        return redirect()->route('teacheratt.index');
+                        return redirect()->route('teacherattend.index');
                     }
             }
         }
@@ -54,11 +54,16 @@ class TeacherAttendanceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TeacherAttendance $teacherAttendance)
+    public function show($id)
     {
-        
+        $teacherAttend = TeacherAttendance::get();
+        return view('backend.teacherAttendance.show',compact('teacherAttend'));
     }
-
+    public function singleedit($id)
+    {
+        $attend = TeacherAttendance::findOrFail(encryptor('decrypt',$id));
+        return view('backend.teacherAttendance.single',compact('attend'));
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -70,9 +75,12 @@ class TeacherAttendanceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TeacherAttendance $teacherAttendance)
+    public function update(Request $request, $id)
     {
-        //
+        $attend = TeacherAttendance::findOrFail(encryptor('decrypt',$id));
+        $attend->status = $request->status;
+        if($attend->save())
+            return redirect()->route('teacherattend.singleedit');
     }
 
     /**

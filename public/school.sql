@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 08:44 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Dec 05, 2023 at 07:24 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -211,14 +211,14 @@ CREATE TABLE `exam_results` (
 --
 
 INSERT INTO `exam_results` (`id`, `exam_id`, `student_id`, `class_id`, `section_id`, `subject_id`, `session_id`, `sub_marks`, `ob_marks`, `prac_marks`, `gp`, `gl`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 1, 1, '50.0', '50.0', '52.00', 3.25, 'A+', 1, '2023-12-02 11:06:58', '2023-12-03 11:10:15', NULL),
-(2, 1, 1, 1, 1, 2, 1, '30.0', '25.0', '25.00', 3.24, 'A+', 1, '2023-12-03 11:09:59', '2023-12-03 11:09:59', NULL),
-(3, 1, 1, 1, 1, 3, 1, '40.0', '25.0', '20.00', 5, 'A+', 1, '2023-12-03 11:11:10', '2023-12-03 11:11:10', NULL),
-(4, 1, 1, 1, 1, 4, 1, '35.0', '25.0', '15.00', 4.5, 'A', 1, '2023-12-03 11:11:51', '2023-12-03 11:11:51', NULL),
-(5, 1, 1, 1, 1, 5, 1, '40.0', '25.0', '25.00', 5, 'A+', 1, '2023-12-03 11:12:53', '2023-12-03 11:12:53', NULL),
-(6, 1, 1, 1, 1, 6, 1, '30.0', '25.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:13:45', '2023-12-03 11:13:45', NULL),
-(7, 1, 1, 1, 1, 7, 1, '40.0', '20.0', '23.00', 5, 'A+', 1, '2023-12-03 11:14:35', '2023-12-03 11:14:35', NULL),
-(8, 1, 1, 1, 1, 8, 1, '30.0', '20.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:16:44', '2023-12-03 11:16:44', NULL);
+(1, 1, 1, 1, 1, 1, 1, 50.0, 50.0, 52.00, 3.25, 'A+', 1, '2023-12-02 11:06:58', '2023-12-03 11:10:15', NULL),
+(2, 1, 1, 1, 1, 2, 1, 30.0, 25.0, 25.00, 3.24, 'A+', 1, '2023-12-03 11:09:59', '2023-12-03 11:09:59', NULL),
+(3, 1, 1, 1, 1, 3, 1, 40.0, 25.0, 20.00, 5, 'A+', 1, '2023-12-03 11:11:10', '2023-12-03 11:11:10', NULL),
+(4, 1, 1, 1, 1, 4, 1, 35.0, 25.0, 15.00, 4.5, 'A', 1, '2023-12-03 11:11:51', '2023-12-03 11:11:51', NULL),
+(5, 1, 1, 1, 1, 5, 1, 40.0, 25.0, 25.00, 5, 'A+', 1, '2023-12-03 11:12:53', '2023-12-03 11:12:53', NULL),
+(6, 1, 1, 1, 1, 6, 1, 30.0, 25.0, 20.00, 4.5, 'A', 1, '2023-12-03 11:13:45', '2023-12-03 11:13:45', NULL),
+(7, 1, 1, 1, 1, 7, 1, 40.0, 20.0, 23.00, 5, 'A+', 1, '2023-12-03 11:14:35', '2023-12-03 11:14:35', NULL),
+(8, 1, 1, 1, 1, 8, 1, 30.0, 20.0, 20.00, 4.5, 'A', 1, '2023-12-03 11:16:44', '2023-12-03 11:16:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -240,14 +240,14 @@ CREATE TABLE `fees` (
 --
 
 INSERT INTO `fees` (`id`, `fee_name`, `amount`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Mid Term Exam Fee', '500.00', '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
-(2, 'Half Yearly Exam Fee', '1000.00', '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
-(3, 'Yearly Exam Fee', '1500.00', '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
-(4, 'Class Test', '200.00', '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
-(5, 'Hostel Fees', '2000.00', '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL),
-(6, 'Admission Fee', '10000.00', '2023-12-05 01:08:16', '2023-12-05 01:08:16', NULL),
-(7, 'Monthly Fee', '500.00', '2023-12-05 01:08:34', '2023-12-05 01:08:34', NULL),
-(8, 'Transport', '2000.00', '2023-12-05 01:08:48', '2023-12-05 01:08:48', NULL);
+(1, 'Mid Term Exam Fee', 500.00, '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
+(2, 'Half Yearly Exam Fee', 1000.00, '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
+(3, 'Yearly Exam Fee', 1500.00, '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
+(4, 'Class Test', 200.00, '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
+(5, 'Hostel Fees', 2000.00, '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL),
+(6, 'Admission Fee', 10000.00, '2023-12-05 01:08:16', '2023-12-05 01:08:16', NULL),
+(7, 'Monthly Fee', 500.00, '2023-12-05 01:08:34', '2023-12-05 01:08:34', NULL),
+(8, 'Transport', 2000.00, '2023-12-05 01:08:48', '2023-12-05 01:08:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -646,12 +646,13 @@ CREATE TABLE `student_attendances` (
 --
 
 INSERT INTO `student_attendances` (`id`, `student_id`, `class_id`, `att_date`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, 3, '2023-11-30', 1, '2023-11-29 17:55:20', '2023-11-29 17:55:20', NULL),
+(1, 3, 3, '2023-11-30', 1, '2023-11-29 17:55:20', '2023-12-05 11:38:54', NULL),
 (2, 3, 3, '2023-11-30', 1, '2023-11-29 17:56:08', '2023-11-29 17:56:08', NULL),
 (3, 3, 3, '2023-11-30', 1, '2023-11-29 18:02:55', '2023-11-29 18:02:55', NULL),
 (4, 3, 3, '2023-11-30', 1, '2023-11-29 18:43:28', '2023-11-29 18:43:28', NULL),
-(5, 1, 1, '2023-12-02', 0, '2023-12-02 08:29:09', '2023-12-02 08:29:09', NULL),
-(6, 1, 1, '2023-12-02', 1, '2023-12-02 08:30:28', '2023-12-02 08:30:28', NULL);
+(5, 1, 1, '2023-12-02', 1, '2023-12-02 08:29:09', '2023-12-05 11:30:22', NULL),
+(6, 1, 1, '2023-12-02', 1, '2023-12-02 08:30:28', '2023-12-02 08:30:28', NULL),
+(7, 1, 1, '2023-12-05', 1, '2023-12-05 06:11:39', '2023-12-05 06:11:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -675,7 +676,7 @@ CREATE TABLE `student_fees` (
 --
 
 INSERT INTO `student_fees` (`id`, `student_id`, `total_fees`, `fee_month`, `fee_year`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, '400.00', 'December', '2023', '2023-12-03 11:06:29', '2023-12-03 11:06:29', NULL);
+(1, 1, 400.00, 'December', '2023', '2023-12-03 11:06:29', '2023-12-03 11:06:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -716,8 +717,8 @@ CREATE TABLE `student_fee_payments` (
 --
 
 INSERT INTO `student_fee_payments` (`id`, `class_id`, `student_roll`, `student_name`, `fee_id`, `fee_month`, `fee_year`, `amount`, `payment_date`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 'December', '2023', '500.00', '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
-(4, 1, 7, 7, 1, 'December', '2023', '500.00', '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
+(1, 1, 1, 1, 1, 'December', '2023', 500.00, '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
+(4, 1, 7, 7, 1, 'December', '2023', 500.00, '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -791,11 +792,11 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `teacher_id`, `role_id`, `first_name_en`, `first_name_bn`, `last_name_en`, `last_name_bn`, `father_name`, `mother_name`, `gender`, `date_of_birth`, `place_of_birth`, `subject`, `salary`, `email`, `contact_no_en`, `contact_no_bn`, `department_id`, `designation_id`, `image`, `present_address`, `parmanent_address`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', '10000.00', 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '1561701696842.png', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-04 07:34:02', NULL),
-(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-04 07:33:51', NULL),
-(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', '80000.00', 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
-(4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', '10000.00', 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
-(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', '10000.00', 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
+(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', 10000.00, 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '1561701696842.png', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-04 07:34:02', NULL),
+(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', 80000.00, 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-04 07:33:51', NULL),
+(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', 80000.00, 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
+(4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', 10000.00, 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
+(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', 10000.00, 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -818,12 +819,14 @@ CREATE TABLE `teacher_attendances` (
 --
 
 INSERT INTO `teacher_attendances` (`id`, `teacher_id`, `att_date`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, '2023-12-02', 1, '2023-12-02 08:19:57', '2023-12-02 08:19:57', NULL),
+(1, 1, '2023-12-02', 1, '2023-12-02 08:19:57', '2023-12-05 11:27:12', NULL),
 (2, 2, '2023-12-02', 1, '2023-12-02 08:19:57', '2023-12-02 08:19:57', NULL),
 (3, 3, '2023-12-02', 1, '2023-12-02 08:19:57', '2023-12-02 08:19:57', NULL),
-(4, 1, '2023-12-02', 0, '2023-12-02 08:22:01', '2023-12-02 08:22:01', NULL),
+(4, 1, '2023-12-02', 1, '2023-12-02 08:22:01', '2023-12-05 09:25:11', NULL),
 (5, 2, '2023-12-02', 1, '2023-12-02 08:22:01', '2023-12-02 08:22:01', NULL),
-(6, 3, '2023-12-02', 1, '2023-12-02 08:22:01', '2023-12-02 08:22:01', NULL);
+(6, 3, '2023-12-02', 1, '2023-12-02 08:22:01', '2023-12-02 08:22:01', NULL),
+(7, 1, '2023-12-05', 1, '2023-12-05 05:53:53', '2023-12-05 05:53:53', NULL),
+(8, 1, '2023-12-05', 1, '2023-12-05 06:12:13', '2023-12-05 06:12:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -1267,7 +1270,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `student_attendances`
 --
 ALTER TABLE `student_attendances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `student_fees`
@@ -1303,7 +1306,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `teacher_attendances`
 --
 ALTER TABLE `teacher_attendances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`

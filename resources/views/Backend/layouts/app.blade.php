@@ -96,7 +96,7 @@
 					<ul>
 						<li> <a href="{{route('teacher.index')}}"><i class='bx bx-radio-circle'></i>Teacher List</a>
 						</li>
-						<li> <a href="{{route('teacheratt.index')}}"><i class='bx bx-radio-circle'></i>Teacher Attendance</a>
+						<li> <a href="{{route('teacherattend.index')}}"><i class='bx bx-radio-circle'></i>Teacher Attendance</a>
 						</li>
 					</ul>
 				</li>
@@ -110,7 +110,7 @@
 					<ul>
 						<li> <a href="{{route('student.index')}}"><i class='bx bx-radio-circle'></i>Student List</a>
 						</li>
-						<li> <a href="{{route('studentattendance.index')}}"><i class='bx bx-radio-circle'></i>Student Attendance</a>
+						<li> <a href="{{route('studentattend.index')}}"><i class='bx bx-radio-circle'></i>Student Attendance</a>
 						</li>
 					</ul>
 				</li>

@@ -24,7 +24,7 @@
     <div class="card">
         <div class="card-body">
             <div class="bs-stepper-content">
-                <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('feepayment.store')}}">
+                <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('studentattend.store')}}">
                     @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">

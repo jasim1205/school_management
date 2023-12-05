@@ -22,6 +22,13 @@
     <a href="{{route('examresult.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
+        <div class="card-header">
+            <div class="text-center">
+                <h2>ABC English School $ College</h2>
+                <h4>Exam Name</h4>
+                <p>Session</p>
+            </div>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
