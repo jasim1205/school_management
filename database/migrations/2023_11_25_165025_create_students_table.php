@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('student_id')->unique();
             $table->integer('roll');
             $table->string('first_name_en');
-            $table->string('first_name_bn');
+            $table->string('first_name_bn')->nullable();
             $table->string('last_name_en');
-            $table->string('last_name_bn');
+            $table->string('last_name_bn')->nullable();
             $table->date('date_of_birth');
             $table->string('place_of_birth')->nullable();
             $table->string('father_name');

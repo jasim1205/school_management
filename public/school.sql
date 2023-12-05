@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 06:42 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 05, 2023 at 04:39 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -200,14 +200,14 @@ CREATE TABLE `exam_results` (
 --
 
 INSERT INTO `exam_results` (`id`, `exam_id`, `student_id`, `class_id`, `section_id`, `subject_id`, `session_id`, `sub_marks`, `ob_marks`, `prac_marks`, `gp`, `gl`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 50.0, 50.0, 52.00, 3.25, 'A+', 1, '2023-12-02 11:06:58', '2023-12-03 11:10:15', NULL),
-(2, 1, 1, 1, 1, 2, 1, 30.0, 25.0, 25.00, 3.24, 'A+', 1, '2023-12-03 11:09:59', '2023-12-03 11:09:59', NULL),
-(3, 1, 1, 1, 1, 3, 1, 40.0, 25.0, 20.00, 5, 'A+', 1, '2023-12-03 11:11:10', '2023-12-03 11:11:10', NULL),
-(4, 1, 1, 1, 1, 4, 1, 35.0, 25.0, 15.00, 4.5, 'A', 1, '2023-12-03 11:11:51', '2023-12-03 11:11:51', NULL),
-(5, 1, 1, 1, 1, 5, 1, 40.0, 25.0, 25.00, 5, 'A+', 1, '2023-12-03 11:12:53', '2023-12-03 11:12:53', NULL),
-(6, 1, 1, 1, 1, 6, 1, 30.0, 25.0, 20.00, 4.5, 'A', 1, '2023-12-03 11:13:45', '2023-12-03 11:13:45', NULL),
-(7, 1, 1, 1, 1, 7, 1, 40.0, 20.0, 23.00, 5, 'A+', 1, '2023-12-03 11:14:35', '2023-12-03 11:14:35', NULL),
-(8, 1, 1, 1, 1, 8, 1, 30.0, 20.0, 20.00, 4.5, 'A', 1, '2023-12-03 11:16:44', '2023-12-03 11:16:44', NULL);
+(1, 1, 1, 1, 1, 1, 1, '50.0', '50.0', '52.00', 3.25, 'A+', 1, '2023-12-02 11:06:58', '2023-12-03 11:10:15', NULL),
+(2, 1, 1, 1, 1, 2, 1, '30.0', '25.0', '25.00', 3.24, 'A+', 1, '2023-12-03 11:09:59', '2023-12-03 11:09:59', NULL),
+(3, 1, 1, 1, 1, 3, 1, '40.0', '25.0', '20.00', 5, 'A+', 1, '2023-12-03 11:11:10', '2023-12-03 11:11:10', NULL),
+(4, 1, 1, 1, 1, 4, 1, '35.0', '25.0', '15.00', 4.5, 'A', 1, '2023-12-03 11:11:51', '2023-12-03 11:11:51', NULL),
+(5, 1, 1, 1, 1, 5, 1, '40.0', '25.0', '25.00', 5, 'A+', 1, '2023-12-03 11:12:53', '2023-12-03 11:12:53', NULL),
+(6, 1, 1, 1, 1, 6, 1, '30.0', '25.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:13:45', '2023-12-03 11:13:45', NULL),
+(7, 1, 1, 1, 1, 7, 1, '40.0', '20.0', '23.00', 5, 'A+', 1, '2023-12-03 11:14:35', '2023-12-03 11:14:35', NULL),
+(8, 1, 1, 1, 1, 8, 1, '30.0', '20.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:16:44', '2023-12-03 11:16:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -229,11 +229,11 @@ CREATE TABLE `fees` (
 --
 
 INSERT INTO `fees` (`id`, `fee_name`, `amount`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Mid Term Exam Fee', 500.00, '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
-(2, 'Half Yearly Exam Fee', 1000.00, '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
-(3, 'Yearly Exam Fee', 1500.00, '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
-(4, 'Class Test', 200.00, '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
-(5, 'Hostel Fees', 2000.00, '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL);
+(1, 'Mid Term Exam Fee', '500.00', '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
+(2, 'Half Yearly Exam Fee', '1000.00', '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
+(3, 'Yearly Exam Fee', '1500.00', '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
+(4, 'Class Test', '200.00', '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
+(5, 'Hostel Fees', '2000.00', '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -605,8 +605,10 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`id`, `student_id`, `roll`, `first_name_en`, `first_name_bn`, `last_name_en`, `last_name_bn`, `date_of_birth`, `place_of_birth`, `father_name`, `mother_name`, `father_contact`, `mother_contact`, `gender`, `class_id`, `section_id`, `contact_no_en`, `contact_no_bn`, `email`, `username`, `password`, `image`, `present_address_en`, `parmanent_address_en`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 101, 1, 'kaiser', 'কাইছার', 'ahmed', 'আহমেদ', '2023-11-01', 'Chittagong', 'Morshed', 'Rahima', 123456, 12345678, 'male', 1, 1, 123456, '১২৩৪৫৬', 'kaiser@gmail.com', 'kaiser', '123', '5251701697890.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:04:57', NULL),
 (2, 102, 2, 'Raihan', 'রায়হান', 'Sazzad', 'সাজ্জাদ', '2023-11-02', '2023-11-02', 'Morshed', 'Rahima', 12345, 1234567, 'male', 2, 2, 12345, '১২৩৪৫', 'raihan@gmail.com', 'raihan', '123', '3541701699367.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:16:07', NULL),
-(3, 103, 3, 'Robiul', NULL, 'Hossain', NULL, '2023-11-02', '2023-11-02', 'Morshed', 'Rahima', 1234, 123456, 'male', 3, 3, 1234, '১২৩৪', 'robiul@gmail.com', 'robiul', '123', '4171701699517.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:18:37', NULL),
-(7, 104, 2, 'Istiak', 'ইসতিয়াক', 'ahmed', 'আহমেদ', '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 123456444, 1234567844, 'male', 1, 1, 1234444, NULL, 'kaiser@gmail.com', 'kaiser', '123', '2761701699527.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:18:47', NULL);
+(3, 103, 3, 'Robiul', NULL, 'Hossain', NULL, '2023-11-02', '2023-11-02', 'Morshed', 'Rahima', 1234, 123456, 'male', 2, 3, 1234, '১২৩৪', 'robiul@gmail.com', 'robiul', '123', '8251701746496.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 21:38:47', NULL),
+(7, 104, 2, 'Istiak', 'ইসতিয়াক', 'ahmed', 'আহমেদ', '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 123456444, 1234567844, 'male', 1, 1, 1234444, NULL, 'kaiser@gmail.com', 'kaiser', '123', '2761701699527.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:18:47', NULL),
+(12, 105, 2, 'Robiul', NULL, 'Hossain', NULL, '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 1, 1, 'male', 3, 1, 12, NULL, 'robiul@gmail.com', 'robiul', '123', '2761701699527.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 21:38:58', NULL),
+(13, 106, 3, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', '2023-12-01', '2023-12-01', 'Morshed', 'Rahima', 13, 13, 'male', 3, 1, 1, '১', 'ibrahim@gmail.com', 'ibrahim', '2', '4601701747504.jpg', 'Chiattagong', 'Dhaka', 1, '2023-12-04 21:38:24', '2023-12-04 21:39:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -659,7 +661,7 @@ CREATE TABLE `student_fees` (
 --
 
 INSERT INTO `student_fees` (`id`, `student_id`, `total_fees`, `fee_month`, `fee_year`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 400.00, 'December', '2023', '2023-12-03 11:06:29', '2023-12-03 11:06:29', NULL);
+(1, 1, '400.00', 'December', '2023', '2023-12-03 11:06:29', '2023-12-03 11:06:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -700,8 +702,8 @@ CREATE TABLE `student_fee_payments` (
 --
 
 INSERT INTO `student_fee_payments` (`id`, `class_id`, `student_roll`, `student_name`, `fee_id`, `fee_month`, `fee_year`, `amount`, `payment_date`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 'December', '2023', 500.00, '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
-(4, 1, 7, 7, 1, 'December', '2023', 500.00, '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
+(1, 1, 1, 1, 1, 'December', '2023', '500.00', '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
+(4, 1, 7, 7, 1, 'December', '2023', '500.00', '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -775,11 +777,11 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `teacher_id`, `role_id`, `first_name_en`, `first_name_bn`, `last_name_en`, `last_name_bn`, `father_name`, `mother_name`, `gender`, `date_of_birth`, `place_of_birth`, `subject`, `salary`, `email`, `contact_no_en`, `contact_no_bn`, `department_id`, `designation_id`, `image`, `present_address`, `parmanent_address`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', 10000.00, 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '1561701696842.png', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-04 07:34:02', NULL),
-(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', 80000.00, 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-04 07:33:51', NULL),
-(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', 80000.00, 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
-(4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', 10000.00, 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
-(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', 10000.00, 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
+(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', '10000.00', 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '1561701696842.png', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-04 07:34:02', NULL),
+(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-04 07:33:51', NULL),
+(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', '80000.00', 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
+(4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', '10000.00', 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
+(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', '10000.00', 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -1245,7 +1247,7 @@ ALTER TABLE `sessions`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `student_attendances`

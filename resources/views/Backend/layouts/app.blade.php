@@ -68,21 +68,21 @@
 				</li>
 				<li>
 					<a href="{{route('role.index')}}">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						<div class="parent-icon"><i class="fa-brands fa-r-project"></i>
 						</div>
 						<div class="menu-title">Role</div>
 					</a>
 				</li>
 				<li>
 					<a href="{{route('user.index')}}">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						<div class="parent-icon"><i class="fa-solid fa-users"></i>
 						</div>
 						<div class="menu-title">User List</div>
 					</a>
 				</li>
 				<li>
 					<a href="{{route('school.index')}}">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						<div class="parent-icon"><i class="fa-solid fa-school"></i>
 						</div>
 						<div class="menu-title">School</div>
 					</a>
@@ -116,7 +116,7 @@
 				</li>
 				<li>
 					<a href="{{route('routine.index')}}">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						<div class="parent-icon"><i class="fa-solid fa-calendar-days"></i>
 						</div>
 						<div class="menu-title">Routine Manegement</div>
 					</a>
@@ -159,7 +159,7 @@
 				</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						<div class="parent-icon"><i class="fa-solid fa-money-check-dollar"></i>
 						</div>
 						<div class="menu-title">Fee Management</div>
 					</a>
@@ -174,7 +174,7 @@
 				</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						<div class="parent-icon"><i class="fa-regular fa-folder-open"></i>
 						</div>
 						<div class="menu-title">Result Management</div>
 					</a>
