@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 04:39 AM
+-- Generation Time: Dec 05, 2023 at 08:44 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -97,6 +97,17 @@ CREATE TABLE `class_subjects` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `class_subjects`
+--
+
+INSERT INTO `class_subjects` (`id`, `class_id`, `subject_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2023-12-05 01:00:33', '2023-12-05 01:00:33', NULL),
+(2, 1, 2, '2023-12-05 01:00:33', '2023-12-05 01:00:33', NULL),
+(3, 1, 3, '2023-12-05 01:00:34', '2023-12-05 01:00:34', NULL),
+(4, 1, 4, '2023-12-05 01:00:34', '2023-12-05 01:00:34', NULL),
+(5, 1, 5, '2023-12-05 01:00:34', '2023-12-05 01:00:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +244,10 @@ INSERT INTO `fees` (`id`, `fee_name`, `amount`, `created_at`, `updated_at`, `del
 (2, 'Half Yearly Exam Fee', '1000.00', '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
 (3, 'Yearly Exam Fee', '1500.00', '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
 (4, 'Class Test', '200.00', '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
-(5, 'Hostel Fees', '2000.00', '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL);
+(5, 'Hostel Fees', '2000.00', '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL),
+(6, 'Admission Fee', '10000.00', '2023-12-05 01:08:16', '2023-12-05 01:08:16', NULL),
+(7, 'Monthly Fee', '500.00', '2023-12-05 01:08:34', '2023-12-05 01:08:34', NULL),
+(8, 'Transport', '2000.00', '2023-12-05 01:08:48', '2023-12-05 01:08:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -1145,7 +1159,7 @@ ALTER TABLE `class_sections`
 -- AUTO_INCREMENT for table `class_subjects`
 --
 ALTER TABLE `class_subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -1175,7 +1189,7 @@ ALTER TABLE `exam_results`
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `final_results`
