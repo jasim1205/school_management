@@ -166,6 +166,8 @@
 					<ul>
 						<li> <a href="{{route('fee.index')}}"><i class='bx bx-radio-circle'></i>Fee list</a>
 						</li>
+						<li> <a href="{{route('feedetail.index')}}"><i class='bx bx-radio-circle'></i>Student Fee Detail</a>
+						</li>
 						<li> <a href="{{route('feepayment.index')}}"><i class='bx bx-radio-circle'></i>Student Payment</a>
 						</li>
 						<li> <a href="{{route('studentfee.index')}}"><i class='bx bx-radio-circle'></i>Student Fee</a>
@@ -190,7 +192,7 @@
 		</div>
 		<!--end sidebar wrapper -->
 		<!--start header -->
-		<header>
+		<header class="header">
 			<div class="topbar d-flex align-items-center">
 				<nav class="navbar navbar-expand gap-3">
 					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
