@@ -23,8 +23,8 @@
 
 <!--start stepper two-->
 <div class="heading">
-    <h6 class="text-uppercase">Linear Stepper</h6>
-    <a href="{{route('routine.create')}}" class="btn btn-lg py-3 btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+    <h3 class="text-uppercase text-center">Class Routine</h3>
+    <a href="{{route('routine.create')}}" class=""><i class="fa fa-plus">ADD NEW</i></a>
 </div>
 
 <hr>

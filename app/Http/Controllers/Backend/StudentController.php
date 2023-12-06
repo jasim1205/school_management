@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student = Student::paginate(10);
+        $student = Student::get();
         return view('backend.students.index',compact('student'));
     }
 

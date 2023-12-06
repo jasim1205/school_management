@@ -35,7 +35,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example2" class="table table-striped table-bordered">
+                <table id="example" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>{{__('#SL')}}</th>
@@ -69,7 +69,7 @@
                             
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{route('user.edit',encryptor('encrypt',$d->id))}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i>
+                                    <a href="{{route('user.edit',encryptor('encrypt',$d->id))}}" class=""><i class="fas fa-edit"></i>
                                     </a>
                                     
 
@@ -80,7 +80,7 @@
                                         @csrf
                                         @method('delete')
                                         <button type="submit" style="border:none">
-                                            <span class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash text-white"></i></span>
+                                            <span class=""><i class="fa fa-trash text-danger"></i></span>
                                             
                                         </button>
                                     </form>
@@ -100,3 +100,22 @@
     </div>
 
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+@endpush
