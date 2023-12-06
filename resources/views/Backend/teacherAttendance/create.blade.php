@@ -11,10 +11,10 @@
             @csrf
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="">Attendance Date</label>
-                        <input type="date"  value="<?= date('Y-m-d') ?>"  name="att_date" id="" class="form-control">
-                    </div>
+                        <div class="form-group">
+                            <label for="">Attendance Date</label>
+                            <input type="date"  value="<?= date('Y-m-d') ?>"  name="att_date" id="" class="form-control">
+                        </div>
                 </div>
             </div>
             <div class="card mt-2">
@@ -31,7 +31,9 @@
                                 @forelse($teacher as $t)
                                     <tr>
                                         <td>{{ $t->first_name_en }} {{ $t->last_name_en }}
-                                            <input type="hidden" name="attendance[{{ $t->id }}][teacher_id]" value="{{ $t->id }}">
+                                        <input type="hidden" name="attendance[{{ $t->id }}][teacher_id]" value="{{ $t->id }}">
+                                        <input type="hidden" name="teacher_id" value="{{ $t->id }}">
+                                         <input type="hidden" name="attendance[{{ $t->id }}][att_date]" value="{{ old('att_date', date('Y-m-d')) }}">
                                         </td>
                                         <td>
                                             <select name="attendance[{{ $t->id }}][status]" class="form-control">

@@ -64,7 +64,7 @@
     <div class="card-header text-center">
         <h3 >ABC School & College</h3>
         <h5>Class routine: Session(2023-2024)</h5>
-        <p>Class:</p>
+        <p>Class:{{$class_id}}</p>
     </div>
     <div class="card-body" id="printable-area">
         <div class="table-responsive">

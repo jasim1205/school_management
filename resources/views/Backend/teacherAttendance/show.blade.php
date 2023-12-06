@@ -6,10 +6,9 @@
     <div class="row">
         <div class="card mt-2">
             <div class="card-header">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="">Attendance Date</label>
-                        <input type="date"  value=""  name="att_date" id="" class="form-control">
+                <div class="col-lg-12">
+                    <div class="form-group col-12 col-lg-6">
+                            <h4>Attendance Date: {{$att_date}}</h4>
                     </div>
                 </div>
             </div>

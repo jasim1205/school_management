@@ -6,6 +6,7 @@ use App\Models\TeacherAttendance;
 use App\Models\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class TeacherAttendanceController extends Controller
 {
@@ -14,7 +15,7 @@ class TeacherAttendanceController extends Controller
      */
     public function index()
     {
-        $teacherAttend = TeacherAttendance::get();
+        $teacherAttend = DB::select("SELECT teacher_attendances.att_date,sum(if(`status`=1,1,0)) as present,sum(if(`status`=0,1,0)) as absent FROM `teacher_attendances` order by teacher_attendances.att_date DESC");
         return view('backend.teacherAttendance.index',compact('teacherAttend'));
     }
 
@@ -23,7 +24,8 @@ class TeacherAttendanceController extends Controller
      */
     public function create()
     {
-        
+       
+        $teacher = array();
         $teacher = Teacher::get();
         return view('backend.teacherAttendance.create',compact('teacher'));
     }
@@ -34,30 +36,32 @@ class TeacherAttendanceController extends Controller
     public function store(Request $request)
     {
       try {
-            foreach ($request->attendance as $attendanceData) {
+            TeacherAttendance::where('att_date',$request->attendance[$request->teacher_id]['att_date'])->delete();
+            foreach ($request->attendance as $attendanceData) 
+                 {
                     $teacherAttend = new TeacherAttendance;
                     $teacherAttend->teacher_id = $attendanceData['teacher_id'];
-                    $teacherAttend->att_date = $request->att_date;
+                    $teacherAttend->att_date = $attendanceData['att_date'];
                     $teacherAttend->status = $attendanceData['status'];
-                    if ($teacherAttend->save()) {
-                        $this->notice::success('Data successfully saved');
-                        return redirect()->route('teacherattend.index');
-                    }
+                    $teacherAttend->save();
             }
-        }
-        catch (Exception $e) {
+
+            $this->notice::success('Data successfully saved');
+            return redirect()->route('teacherattend.index');
+        } catch (Exception $e) {
             dd($e);
             return redirect()->back()->withInput()->with('error', 'Please try again');
         }
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($att_date)
     {
-        $teacherAttend = TeacherAttendance::get();
-        return view('backend.teacherAttendance.show',compact('teacherAttend'));
+        $teacherAttend = TeacherAttendance::where('att_date',$att_date)->get();
+        return view('backend.teacherAttendance.show',compact('teacherAttend','att_date'));
     }
     public function singleedit($id)
     {
@@ -80,7 +84,7 @@ class TeacherAttendanceController extends Controller
         $attend = TeacherAttendance::findOrFail(encryptor('decrypt',$id));
         $attend->status = $request->status;
         if($attend->save())
-            return redirect()->route('teacherattend.singleedit');
+            return redirect()->route('teacherattend.show',[$attend->att_date]);
     }
 
     /**

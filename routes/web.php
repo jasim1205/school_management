@@ -90,7 +90,13 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::post('studentattend/singleedit/{id}', [studentattend::class, 'update'])->name('studentupdate');
 
 //teacher attendance
-    Route::resource('teacherattend', teacherattend::class);
+
+    Route::get('teacherattend', [teacherattend::class,'index'])->name('teacherattend.index');
+    Route::get('teacherattend/create', [teacherattend::class,'create'])->name('teacherattend.create');
+    Route::post('teacherattend', [teacherattend::class,'store'])->name('teacherattend.store');
+    Route::get('teacherattend/show/{att_date}', [teacherattend::class,'show'])->name('teacherattend.show');
+
+
     Route::get('teacherattend/singleedit/{id}', [teacherattend::class, 'singleedit'])->name('teacherattend.singleedit');
     Route::post('teacherattend/singleedit/{id}', [teacherattend::class, 'update'])->name('update');
 

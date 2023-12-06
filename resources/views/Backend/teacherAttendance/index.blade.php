@@ -49,11 +49,13 @@
                                 <tr role="row" class="odd">
                                     <td>{{++$loop->index}}</td>
                                     <td>{{$t->att_date}}</td>
-                                    <td>@if($t->status==1){{__('Present')}} @else{{__('Absent')}} @endif</td>
-                                    <td>@if($t->status==0){{__('Absent')}} @else{{__('Present')}} @endif</td>
+                                    <td>{{$t->present}}</td>
+                                    <td>{{$t->absent}}</td>
+                                    
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{route('teacherattend.show',encryptor('encrypt',$t->id))}}" class=""><i class="fas fa-eye"></i>
+                                            <a href="{{ route('teacherattend.show', ['att_date' => $t->att_date]) }}"><i class="fas fa-eye"></i></a>
+
                                         </a>
                                         </div>												
                                     </td>												
