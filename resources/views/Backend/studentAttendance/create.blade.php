@@ -24,11 +24,9 @@
     <div class="card">
         <div class="card-body">
             <div class="bs-stepper-content">
-                <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('studentattend.store')}}">
-                    @csrf
-                    <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
+                <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
+                    <form method="get" action="">    
                         <div class="row g-3">
-
                             <div class="col-12 col-lg-4">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Class Name</strong>
                                 <span class="text-danger">*</span>
@@ -45,15 +43,20 @@
                                     <span class="text-danger"> {{ $errors->first('class_id') }}</span>
                                 @endif
                             </div>
-                            <div class="col-12 col-lg-2 mt-5">
-                                <button type="submit" class="btn btn-info">Search</button>
-                            </div>
                             <div class="form-group col-12 col-lg-6">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Attendance Date</strong>
                                 <span class="text-danger">*</span>
                                 </label>
                                 <input type="date"  value="<?= date('Y-m-d') ?>"  name="att_date" id="" class="form-control">
                             </div>
+                            <div class="col-12 col-lg-2 mt-5">
+                                <button type="submit" class="btn btn-info">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form method="post" action="{{route('studentattend.store')}}">
+                        @csrf
+                        <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -70,11 +73,13 @@
                                                 @forelse($student as $s)
                                                 <tr>
                                                     <td>{{ $s->class?->class_name_en }}
-                                                        <input type="hidden" name="attendance[{{ $s->id }}][class_id]" value="{{ $s->id }}">
+                                                        <input type="hidden" name="attendance[{{ $s->id }}][class_id]" value="{{ $s->class_id }}">
+                                                        <input type="hidden" name="attendance[{{ $s->id }}][att_date]" value="{{ $_GET['att_date'] }}">
                                                     </td>
                                                     <td>{{ $s->roll }}</td>
                                                     <td>{{ $s->first_name_en }} {{ $s->last_name_en }}
                                                         <input type="hidden" name="attendance[{{ $s->id }}][student_id]" value="{{ $s->id }}">
+                                                        <input type="hidden" name="student_id" value="{{ $s->id }}">
                                                     </td>
                                                     <td>
                                                         <select name="attendance[{{ $s->id }}][status]" class="form-control">
@@ -96,9 +101,9 @@
                             <div class="col-12 col-lg-6">
                                 <button class="btn btn-success px-4" type="submit">Submit</button>
                             </div>
-                        </div><!---end row-->
-                    </div>
-                </form>
+                        </form>
+                    </div><!---end row-->
+                </div>
             </div>
         </div>
     </div>

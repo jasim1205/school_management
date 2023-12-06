@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\StudentFee;
+use App\Models\StudentFeeDetails;
+use App\Models\Classes;
 use App\Models\Student;
+use App\Models\Fees;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -23,31 +26,9 @@ class StudentFeeController extends Controller
      */
     public function create()
     { 
-        $months = [
-        'January' => 'January',
-        'February' => 'February',
-        'March' => 'March',
-        'April' => 'April',
-        'May' => 'May',
-        'June' => 'June',
-        'July' => 'July',
-        'August' => 'August',
-        'September' => 'September',
-        'October' => 'October',
-        'November' => 'November',
-        'December' => 'December'
-        ];
-        $years = [
-        '2023' => '2023',
-        '2024' => '2024',
-        '2024' => '2025',
-        '2026' => '2026',
-        '2027' => '2027'
-        ];
-        $currentMonth = now()->format('m');
-        $currentYear = now()->format('Y');
-        $student = Student::get();
-        return view('backend.student_fee.create',compact('student','currentMonth','currentYear','months','years'));
+        $classes = Classes::get();
+        $fees = Fees::get();
+        return view('backend.student_fee.create',compact('classes','fees'));
     }
 
     /**
@@ -55,22 +36,45 @@ class StudentFeeController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $studentfee = new StudentFee;
-            $studentfee->student_id = $request->student_id;
-            $studentfee->total_fees = $request->total_fees;
-            $studentfee->fee_month = $request->fee_month;
-            $studentfee->fee_year = $request->fee_year;
-            if($studentfee->save())
-                $this->notice::success('Data successfully saved');
-                return redirect()->route('studentfee.index');
-
-        }catch(Exception $e){
+        try {
+            StudentFeeDetails::where('class_id',$request->class_id)
+            ->where('fee_month',$request->fee_month)
+            ->where('fee_year',$request->fee_year)->delete();
+            
+            $students=Student::where('class_id',$request->class_id)->pluck('id');
+            
+            if($students){
+                foreach($students as $student_id){
+                    $total_fee=0;
+                    foreach ($request->fee_id as $fee_id) {
+                        $total_fee+=$request->fee_amount[$fee_id];
+                        $sf = new StudentFeeDetails;
+                        $sf->fee_id = $fee_id;
+                        $sf->student_id = $student_id;
+                        $sf->class_id = $request->class_id;
+                        $sf->fee_amount = $request->fee_amount[$fee_id];
+                        $sf->fee_month = $request->fee_month;
+                        $sf->fee_year = $request->fee_year;
+                        $sf->save();
+                    }
+                    $stufee= new Studentfee;
+                    $stufee->student_id=$student_id;
+                    $stufee->total_fees=$total_fee;
+                    $stufee->fee_month = $request->fee_month;
+                    $stufee->fee_year = $request->fee_year;
+                    $stufee->save();
+                }
+            }
+            
+            $this->notice::success('Data successfully saved');
+            return redirect()->route('studentfee.index');
+        }
+        catch (Exception $e) {
             dd($e);
-            $this->notice::error('due to wrong! Please try again');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Please try again');
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -85,32 +89,12 @@ class StudentFeeController extends Controller
      */
     public function edit($id)
     {
-        $months = [
-        'January' => 'January',
-        'February' => 'February',
-        'March' => 'March',
-        'April' => 'April',
-        'May' => 'May',
-        'June' => 'June',
-        'July' => 'July',
-        'August' => 'August',
-        'September' => 'September',
-        'October' => 'October',
-        'November' => 'November',
-        'December' => 'December'
-        ];
-        $years = [
-        '2023' => '2023',
-        '2024' => '2024',
-        '2024' => '2025',
-        '2026' => '2026',
-        '2027' => '2027'
-        ];
-        $currentMonth = now()->format('m');
-        $currentYear = now()->format('Y');
-        $student = Student::get();
-        $studentfee = StudentFee::findOrFail('encryptor'('decrypt',$id));
-        return view('backend.student_fee.edit',compact('student','currentMonth','currentYear','months','years','studentfee'));
+        $stu_fe=StudentFee::findOrFail('encryptor'('decrypt',$id));
+        $student = Student::findOrFail($stu_fe->student_id);
+        $studentfee = StudentFeeDetails::where('student_id',$stu_fe->student_id)
+        ->where('fee_month',$stu_fe->fee_month)
+        ->where('fee_year',$stu_fe->fee_year)->get();
+        return view('backend.student_fee.edit',compact('student','studentfee'));
     }
 
     /**
@@ -118,20 +102,28 @@ class StudentFeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try{
-            $studentfee = StudentFee::findOrFail('encryptor'('decrypt',$id));
-            $studentfee->student_id = $request->student_id;
-            $studentfee->total_fees = $request->total_fees;
-            $studentfee->fee_month = $request->fee_month;
-            $studentfee->fee_year = $request->fee_year;
-            if($studentfee->save())
-                $this->notice::success('Data successfully saved');
-                return redirect()->route('studentfee.index');
+        try {
+            $total_fee=0;
+            foreach ($request->id as $id) {
+                $total_fee+=$request->fee_amount[$id];
+                $sf = StudentFeeDetails::find($id);
+                $sf->fee_amount = $request->fee_amount[$id];
+                $sf->save();
+            }
+            /* student total fee */
+            $stufee= Studentfee::where('student_id',$sf->student_id)
+            ->where('fee_month',$sf->fee_month)
+            ->where('fee_year',$sf->fee_year)->first();
 
-        }catch(Exception $e){
+            $stufee->total_fees=$total_fee;
+            $stufee->save();
+                
+            $this->notice::success('Data successfully saved');
+            return redirect()->route('studentfee.index');
+        }
+        catch (Exception $e) {
             dd($e);
-            $this->notice::error('due to wrong! Please try again');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Please try again');
         }
     }
 
@@ -140,8 +132,11 @@ class StudentFeeController extends Controller
      */
     public function destroy($id)
     {
-        $studentfee = StudentFee::findOrFail('encryptor'('decrypt',$id));
-        if($studentfee->delete())
+        $stu_fe = StudentFee::findOrFail('encryptor'('decrypt',$id));
+        StudentFeeDetails::where('student_id',$stu_fe->student_id)
+        ->where('fee_month',$stu_fe->fee_month)
+        ->where('fee_year',$stu_fe->fee_year)->delete();
+        if($stu_fe->delete())
             $this->notice::success('Data successfully Deleted');
             return back();
 

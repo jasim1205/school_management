@@ -1,6 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Add Fee List')
-
+@section('title','Fee details List')
 @section('content')
 
 <!--breadcrumb-->
@@ -15,18 +14,6 @@
             </ol>
         </nav>
     </div>
-    <div class="ms-auto">
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary">Settings</button>
-            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                <a class="dropdown-item" href="javascript:;">Another action</a>
-                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-            </div>
-        </div>
-    </div>
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
@@ -34,73 +21,88 @@
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        <div class="card-header">
-            
-        </div>
         <div class="card-body">
             <div class="bs-stepper-content">
                 <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('studentfee.store')}}">
                     @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">
-                            <div class="col-12 col-lg-6">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
+                            <div class="col-12 col-lg-4">
+                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Class Name</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
-                                    <option value="">Select Student</option>
-                                @forelse($student as $s)
-                                    <option value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
-                                @empty
-                                    <option value="">No Role found</option>
-                                @endforelse
+                                <select  id="class_id" name="class_id" required class="form-control">
+                                    <option value="">Select Class</option>
+                                    @forelse($classes as $class)
+                                    <option {{old('class_id')==$class->id}} value="{{$class->id}}" >{{$class->class_name_en}}</option>
+                                    @empty
+                                    <option value="">No Class found</option>
+                                    @endforelse
                                 </select>
-                                @if($errors->has('student_id'))
-                                    <span class="text-danger"> {{ $errors->first('student_id') }}</span>
+                                @if($errors->has('class_id'))
+                                    <span class="text-danger"> {{ $errors->first('class_id') }}</span>
                                 @endif
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Total Fees</strong>
+                            
+                            <div class="col-12 col-lg-4">
+                                <label class="col-lg-4 col-form-label" for=""><strong>Year</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                 <input type="text" id="total_fees" class="form-control" value="{{ old('total_fees')}}" name="total_fees">
-                                @if($errors->has('total_fees'))
-                                    <span class="text-danger"> {{ $errors->first('total_fees') }}</span>
-                                @endif
-                                
-                            </div>
-                        
-                           
-                            <div class="col-12 col-lg-6">
-                                <label for="userName_en"><strong>Month</strong><i class="text-danger">*</i> </label>
-                               <select name="fee_month" class="form-control">
-                                    @php
-                                    $currMonth = date('m');
-                                    $currMonthName = date('F');
-                                    @endphp
-                                                                            
-                                    @foreach($months as $month => $monthName)
-                                    <option @if($month == request()->get('month')) selected @endif value="{{ $month }}">{{ $monthName }}</option>
-                                    @endforeach
-
-                                </select>
-                                @if($errors->has('total_gp'))
-                                    <span class="text-danger"> {{ $errors->first('total_gp') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for=""><strong>Year</strong><i class="text-danger">*</i> </label>
                                <select name="fee_year" class="form-control">
-                                    
-                                                                            
-                                    @foreach($years as $year => $yearName)
-                                    <option @if($month == request()->get('year')) selected @endif value="{{ $year }}">{{ $yearName }}</option>
-                                    @endforeach
+                                   <option value="">Select Year</option>
+                                   @for($i=2023; $i<=date('Y')+1; $i++)
+                                        <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
+                                </select>
+                                @if($errors->has('fee_year'))
+                                    <span class="text-danger"> {{ $errors->first('fee_year') }}</span>
+                                @endif
+                            </div>
+                             <div class="col-12 col-lg-4">
+                                 <label class="col-lg-4 col-form-label" for=""><strong>Month</strong>
+                                <span class="text-danger">*</span>
+                                </label>
+                               <select name="fee_month" class="form-control">
+                                    <option value="">Select Month</option>                                        
+                                    @for($i=1; $i<=12; $i++)
+                                        <option value="{{date('m', strtotime('2020-'.$i.'-01'))}}">{{date('F', strtotime('2020-'.$i.'-01'))}}</option>
+                                    @endfor
 
                                 </select>
-                                @if($errors->has('total_gl'))
-                                    <span class="text-danger"> {{ $errors->first('total_gl') }}</span>
+                                @if($errors->has('fee_month'))
+                                    <span class="text-danger"> {{ $errors->first('fee_month') }}</span>
                                 @endif
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example2" class="table table-striped table-bordered">
+                                            <thead class="bg-dark text-white">
+                                                <tr>
+                                                    <th>Fee</th>
+                                                    <th>Amount</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($fees as $value)
+                                                <tr>
+                                                    <td>
+                                                       {{$value->fee_name}} 
+                                                    </td>
+                                                    <td>
+                                                        {{$value->amount}}
+                                                        <input type="hidden" name="fee_amount[{{$value->id}}]" value="{{$value->amount}}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" name="fee_id[{{$value->id}}]" value="{{$value->id}}">
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <button class="btn btn-success px-4" type="submit">Submit</button>

@@ -164,14 +164,9 @@
 						<div class="menu-title">Fee Management</div>
 					</a>
 					<ul>
-						<li> <a href="{{route('fee.index')}}"><i class='bx bx-radio-circle'></i>Fee list</a>
-						</li>
-						<li> <a href="{{route('feedetail.index')}}"><i class='bx bx-radio-circle'></i>Student Fee Detail</a>
-						</li>
-						<li> <a href="{{route('feepayment.index')}}"><i class='bx bx-radio-circle'></i>Student Payment</a>
-						</li>
-						<li> <a href="{{route('studentfee.index')}}"><i class='bx bx-radio-circle'></i>Student Fee</a>
-						</li>
+						<li> <a href="{{route('fee.index')}}"><i class='bx bx-radio-circle'></i>Fee list</a></li>
+						<li> <a href="{{route('feepayment.index')}}"><i class='bx bx-radio-circle'></i>Student Payment</a></li>
+						<li> <a href="{{route('studentfee.index')}}"><i class='bx bx-radio-circle'></i>Student Fee</a></li>
 					</ul>
 				</li>
 				<li>

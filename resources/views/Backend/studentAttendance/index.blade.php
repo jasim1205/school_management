@@ -37,25 +37,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                     @forelse($studentAttend as $s) 
-                                <tr role="row" class="odd">
-                                    <td>{{++$loop->index}}</td>
-                                    <td>{{$s->att_date}}</td>
-                                    <td>{{$s->class?->class_name_en}}</td>
-                                    <td>@if($s->status==1){{__('Present')}} @else{{__('Absent')}} @endif</td>
-                                    <td>@if($s->status==0){{__('Absent')}} @else{{__('Present')}} @endif</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="{{route('studentattend.show',encryptor('encrypt',$s->id))}}" class=""><i class="fas fa-eye"></i>
-                                        </a>
-                                        </div>												
-                                    </td>												
-                                </tr>
-                            @empty
-                                <tr>
-                                    <th colspan="3" class="text-center">Data not found</th>
-                                </tr>
-                            @endforelse  
+                        @forelse($studentAttend as $s) 
+                            <tr role="row" class="odd">
+                                <td>{{++$loop->index}}</td>
+                                <td>{{$s->att_date}}</td>
+                                <td>{{$s->class_name_en}}</td>
+                                <td>{{$s->present}}</td>
+                                <td>{{$s->absent}}</td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{route('studentattend.show',[$s->id,$s->att_date])}}" class=""><i class="fas fa-eye"></i>
+                                    </a>
+                                    </div>												
+                                </td>												
+                            </tr>
+                        @empty
+                            <tr>
+                                <th colspan="3" class="text-center">Data not found</th>
+                            </tr>
+                        @endforelse  
                     </tbody>
                     
                 </table>
