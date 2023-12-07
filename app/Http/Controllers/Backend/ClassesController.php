@@ -7,6 +7,7 @@ use App\Models\Classes;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Crypt;
+use Toastr;
 
 class ClassesController extends Controller
 {

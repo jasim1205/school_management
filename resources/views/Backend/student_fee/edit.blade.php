@@ -38,14 +38,12 @@
                                 <label class="col-lg-4 col-form-label" for=""><strong>Year</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select name="fee_year" class="form-control" disabled>
+                                <select name="fee_year" class="form-control" readonly>
                                     <option value="">Select Year</option>
                                     @for($i=2023; $i<=date('Y')+1; $i++)
                                         <option value="{{ $i }}" @if($i == $studentfee->first()->fee_year) selected @endif>{{ $i }}</option>
                                     @endfor
                                 </select>
-                               
-                                
                             </div>
                              <div class="col-12 col-lg-4">
                                  <label class="col-lg-4 col-form-label" for=""><strong>Month</strong>
