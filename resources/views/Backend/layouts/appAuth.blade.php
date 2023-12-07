@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="{{asset('public/assets/images/favicon-32x32.png')}}" type="image/png" />
+	<link rel="icon" href="{{asset('public/assets/images/logo.png')}}" type="image/png"/>
 	<!--plugins-->
 	<link href="{{asset('public/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
 	<link href="{{asset('public/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
@@ -22,7 +22,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 	<link href="{{asset('public/assets/css/app.css')}}" rel="stylesheet">
 	<link href="{{asset('public/assets/css/icons.css')}}" rel="stylesheet">
-	<title>Syndron - Bootstrap 5 Admin Dashboard Template</title>
+	<title>PreSchool</title>
 </head>
 
 <body class="">

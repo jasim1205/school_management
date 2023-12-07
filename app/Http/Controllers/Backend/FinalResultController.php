@@ -23,11 +23,14 @@ class FinalResultController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $exam = Exam::get();
         $classes = Classes::get();
-        $student = Student::get();
+        $student = array();
+        if($request->class_id){
+            $student = Student::where('class_id',$request->class_id)->get();
+        }
         return view('backend.finalresult.create',compact('exam','classes','student'));
     }
 

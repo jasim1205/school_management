@@ -101,8 +101,8 @@
                             <div class="col-12 col-lg-6">
                                 <button class="btn btn-success px-4" type="submit">Submit</button>
                             </div>
-                        </form>
-                    </div><!---end row-->
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

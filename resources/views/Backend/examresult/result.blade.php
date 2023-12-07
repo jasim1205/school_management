@@ -44,7 +44,7 @@
                         <select  id="class_id" name="class_id" required class="form-control">
                             <option value="">Select Class</option>
                             @forelse($classes as $class)
-                            <option {{old('class_id')}} value="{{$class->id}}" >{{$class->class_name_en}}</option>
+                            <option {{old('class_id')==$class->id}} value="{{$class->id}}" >{{$class->class_name_en}}</option>
                             @empty
                             <option value="">No Class found</option>
                             @endforelse
@@ -73,21 +73,6 @@
 
  <div class="col-12">
     <div class="card">
-        <div class="card-header">
-            <div class="col-lg-6">
-                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
-                <span class="text-danger">*</span>
-                </label>
-                <select class="default-select wide form-control" id="validationCustom05" name="exam_id" id="">
-                        <option value="">Select Exam</option>
-                    @forelse($exam as $e)
-                        <option value="{{$e->id}}" {{ old('exam_id')==$e->id?"selected":""}}> {{ $e->exam_name}}</option>
-                    @empty
-                        <option value="">No Role found</option>
-                    @endforelse
-                </select>
-            </div>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
@@ -132,7 +117,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="7">No data Found</td>
+                            <td colspan="3">No data Found</td>
                         </tr>
                         @endforelse
                     </tbody>
