@@ -32,7 +32,8 @@
         <link rel="stylesheet" href="{{asset('public/assets/css/semi-dark.css')}}"/>
         <link rel="stylesheet" href="{{asset('public/assets/css/header-colors.css')}}"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-        <title>Syndron - Bootstrap 5 Admin Dashboard Template</title>
+        <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+		<title>SMS </title>
 		@stack('styles')
     </head>
 
@@ -980,30 +981,7 @@
     <script src="{{ asset('public/assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
     <script src="{{ asset('public/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('public/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
-
-
-    
-    <script>
-        @if(Session::has('message'))
-        toastr.success("{{ session('message') }}", { closeButton: true, progressBar: true });
-    @endif
-
-    @if(Session::has('error'))
-        toastr.error("{{ session('error') }}", { closeButton: true, progressBar: true });
-    @endif
-
-    @if(Session::has('info'))
-        toastr.info("{{ session('info') }}", { closeButton: true, progressBar: true });
-    @endif
-
-    @if(Session::has('warning'))
-        toastr.warning("{{ session('warning') }}", { closeButton: true, progressBar: true });
-    @endif
-    </script>
-
-
+   
     <script src="{{ asset('public/assets/js/index.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('public/assets/js/app.js') }}"></script>
@@ -1012,7 +990,7 @@
 	<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
     @stack('scripts');
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-        {!! Toastr::message() !!}
+    {!! Toastr::message() !!}
 	
 </body>
 

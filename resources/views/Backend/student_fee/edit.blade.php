@@ -29,33 +29,13 @@
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">
                             <div class="col-12 col-lg-4">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
-                                <span class="text-danger">*</span>
-                                </label>
-                                <input type="text" name="student_id" id="" value="{{ old('student_id',$student->first_name_en)}} {{$student->last_name_en}}" class="form-control"  readonly>
+                                <label ><strong>Student: {{ $student->first_name_en }} {{$student->last_name_en}}</strong></label>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <label class="col-lg-4 col-form-label" for=""><strong>Year</strong>
-                                <span class="text-danger">*</span>
-                                </label>
-                                <select name="fee_year" class="form-control" readonly>
-                                    <option value="">Select Year</option>
-                                    @for($i=2023; $i<=date('Y')+1; $i++)
-                                        <option value="{{ $i }}" @if($i == $studentfee->first()->fee_year) selected @endif>{{ $i }}</option>
-                                    @endfor
-                                </select>
+                                <label><strong>Year : {{$studentfee->first()->fee_year}}</strong></label>
                             </div>
                              <div class="col-12 col-lg-4">
-                                 <label class="col-lg-4 col-form-label" for=""><strong>Month</strong>
-                                <span class="text-danger">*</span>
-                                </label>
-                                <select name="fee_month" class="form-control" disabled>
-                                    <option value="">Select Month</option>
-                                      @for($i=1; $i<=12; $i++)
-                                        <option value="{{date('m', strtotime('2020-'.$i.'-01'))}}" @if($i == $studentfee->first()->fee_month) selected @endif>{{date('F', strtotime('2020-'.$i.'-01'))}}</option>
-                                    @endfor
-                                </select>
-                               
+                                <label><strong>Month: {{date('F', strtotime('2020-'.$studentfee->first()->fee_month.'-01'))}}</strong></label>
                             </div>
                             <div class="card">
                                 <div class="card-body">

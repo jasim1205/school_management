@@ -104,10 +104,10 @@ class StudentFeeController extends Controller
     {
         try {
             $total_fee=0;
-            foreach ($request->id as $id) {
-                $total_fee+=$request->fee_amount[$id];
-                $sf = StudentFeeDetails::find($id);
-                $sf->fee_amount = $request->fee_amount[$id];
+            foreach ($request->fee_amount as $fee_id=>$fee_amount) {
+                $total_fee+=$fee_amount;
+                $sf = StudentFeeDetails::find($fee_id);
+                $sf->fee_amount = $fee_amount;
                 $sf->save();
             }
             /* student total fee */
@@ -117,7 +117,7 @@ class StudentFeeController extends Controller
 
             $stufee->total_fees=$total_fee;
             $stufee->save();
-                
+
             $this->notice::success('Data successfully saved');
             return redirect()->route('studentfee.index');
         }
