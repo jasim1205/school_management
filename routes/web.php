@@ -77,8 +77,12 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('fee', fee::class);
     Route::resource('feepayment', feepayment::class);
     Route::resource('studentfee', studentfee::class);
+
+
+//student Result
     Route::resource('examresult', examresult::class);
     Route::resource('finalresult', finalresult::class);
+    Route::get('finalresult/individual/{id}',[finalresult::class,'individual'])->name('individual');
 
 //student attendance
 

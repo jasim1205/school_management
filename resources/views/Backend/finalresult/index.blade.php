@@ -63,6 +63,9 @@
                                     <a href="{{route('finalresult.edit',encryptor('encrypt', $value->id))}}">
                                         <i class="fa fa-edit"></i>
                                     </a>
+                                    <a href="{{route('individual',encryptor('encrypt', $value->id))}}">
+                                        Individual
+                                    </a>
                                     <form id="" action="{{ route('finalresult.destroy',encryptor('encrypt', $value->id))}}" method="post">
                                         @csrf
                                         @method('delete')

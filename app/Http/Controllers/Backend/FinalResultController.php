@@ -75,6 +75,11 @@ class FinalResultController extends Controller
         return view('backend.finalresult.edit',compact('exam','classes','student','finalresult'));
     }
 
+    public function individual($id)
+    {
+        $individual = FinalResult::findOrFail(encryptor('decrypt',$id));
+        return view('backend.finalresult.individual',compact('individual'));
+    }
     /**
      * Update the specified resource in storage.
      */
