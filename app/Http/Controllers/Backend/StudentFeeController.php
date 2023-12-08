@@ -95,7 +95,7 @@ class StudentFeeController extends Controller
         $studentfee = StudentFeeDetails::where('student_id',$stu_fe->student_id)
         ->where('fee_month',$stu_fe->fee_month)
         ->where('fee_year',$stu_fe->fee_year)->get();
-        return view('backend.student_fee.edit',compact('student','studentfee','stu_fe'));
+        return view('backend.student_fee.edit',compact('student','studentfee','stu_fe','fee'));
     }
 
     /**
@@ -144,9 +144,12 @@ class StudentFeeController extends Controller
     }
 
     public function paymentslip($id){
-        $stufe=StudentFee::findOrFail('encryptor'('decrypt',$id));
-        $studentfee = StudentFeeDetails::where('student_id',$stufe->student_id);
-        return view('backend.student_fee.paymentslip',compact('stufe','studentfee'));
+        $stu_fe=StudentFee::findOrFail('encryptor'('decrypt',$id));
+        $student = Student::findOrFail($stu_fe->student_id);
+        $studentfee = StudentFeeDetails::where('student_id',$stu_fe->student_id)
+        ->where('fee_month',$stu_fe->fee_month)
+        ->where('fee_year',$stu_fe->fee_year)->get();
+        return view('backend.student_fee.paymentslip',compact('stu_fe','studentfee'));
     }
     /**
      * Remove the specified resource from storage.
