@@ -145,28 +145,32 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="userName_en"><strong>Subjective Marks</strong><i class="text-danger">*</i> </label>
+                                <label for=""><strong>Subjective Marks</strong><i class="text-danger">*</i> </label>
                                 <input type="text" id="sub_marks" class="form-control" value="{{ old('sub_marks')}}" name="sub_marks">
                                 @if($errors->has('sub_marks'))
                                     <span class="text-danger"> {{ $errors->first('sub_marks') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="userName_en"><strong>Objective Marks</strong><i class="text-danger">*</i> </label>
+                                <label for=""><strong>Objective Marks</strong><i class="text-danger">*</i> </label>
                                 <input type="text" id="ob_marks" class="form-control" value="{{ old('ob_marks')}}" name="ob_marks">
                                 @if($errors->has('ob_marks'))
                                     <span class="text-danger"> {{ $errors->first('ob_marks') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="userName_en"><strong>Practical Marks</strong><i class="text-danger">*</i> </label>
+                                <label for=""><strong>Practical Marks</strong><i class="text-danger">*</i> </label>
                                 <input type="text" id="prac_marks" class="form-control" value="{{ old('prac_marks')}}" name="prac_marks">
                                 @if($errors->has('prac_marks'))
                                     <span class="text-danger"> {{ $errors->first('prac_marks') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="userName_en"><strong>GPA Marks</strong><i class="text-danger">*</i> </label>
+                                <label for=""><strong>Total</strong><i class="text-danger">*</i> </label>
+                                <input type="text" id="total" class="form-control" value="{{ old('total')}}" name="total">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for=""><strong>GPA Marks</strong><i class="text-danger">*</i> </label>
                                 <input type="text" id="gp" class="form-control" value="{{ old('gp')}}" name="gp">
                                 @if($errors->has('gp'))
                                     <span class="text-danger"> {{ $errors->first('gp') }}</span>
@@ -190,7 +194,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <button class="btn btn-success px-4" type="submit">Submit</button>
+                                <button class="btn btn-success px-4 mt-4" type="submit">Submit</button>
                             </div>
                         </div><!---end row-->
                     </div>
@@ -202,3 +206,65 @@
 <!--end stepper two--> 
 
 @endsection
+@push('scripts')
+    <script>
+        function calculateTotal() {
+            var subMarks = parseFloat(document.getElementById('sub_marks').value) || 0;
+            var obMarks = parseFloat(document.getElementById('ob_marks').value) || 0;
+            var pracMarks = parseFloat(document.getElementById('prac_marks').value) || 0;
+
+            var total = subMarks + obMarks + pracMarks;
+            document.getElementById('total').value = total;
+            calculateGPA();
+            calculateGI();
+        }
+
+        document.getElementById('sub_marks').addEventListener('input', calculateTotal);
+        document.getElementById('ob_marks').addEventListener('input', calculateTotal);
+        document.getElementById('prac_marks').addEventListener('input', calculateTotal);
+
+        function calculateGPA() {
+            var totalMarks = parseFloat(document.getElementById('total').value) || 0;
+
+            var gpa = 0;
+
+            if (totalMarks >= 80) {
+                gpa = 5.00;
+            } else if (totalMarks >= 70) {
+                gpa = 4.00;
+            } else if (totalMarks >= 60) {
+                gpa = 3.5;
+            } else if (totalMarks >= 50) {
+                gpa = 3.00;
+            } else if (totalMarks >= 40) {
+                gpa = 2.0;
+            } else {
+                gpa = F;
+            }
+
+            document.getElementById('gp').value = gpa;
+        }
+
+        document.getElementById('total').addEventListener('input', calculateGPA);
+
+        function calculateGI(){
+             let totalMarks = parseFloat(document.getElementById('total').value) || 0;
+             let gI = 0;
+             if (totalMarks >= 80) {
+                gI = 'A+';
+            } else if (totalMarks >= 70) {
+                gI = 'A';
+            } else if (totalMarks >= 60) {
+                gI = 'A-';
+            } else if (totalMarks >= 50) {
+                gI ='B';
+            } else if (totalMarks >= 40) {
+                gI = 'C';
+            } else {
+                gI = 'F';
+            }
+            document.getElementById('gl').value = gI;
+        }
+        document.getElementById('total').addEventListener('input', calculateGI);
+    </script>
+@endpush

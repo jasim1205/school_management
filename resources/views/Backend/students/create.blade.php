@@ -60,16 +60,7 @@
                                     <span class="text-danger"> {{ $errors->first('roll') }}</span>
                                 @endif
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <label for="status">Status</label>
-                                <select id="status" class="form-control" name="status">
-                                    <option value="1" @if(old('status')==1) selected @endif>Active</option>
-                                    <option value="0" @if(old('status')==0) selected @endif>Inactive</option>
-                                </select>
-                                @if($errors->has('status'))
-                                    <span class="text-danger"> {{ $errors->first('status') }}</span>
-                                @endif
-                            </div>
+                            
                             <div class="col-12 col-lg-6">
                                 <label for="fname_en">First Name (English)<i class="text-danger">*</i> </label>
                                 
@@ -131,6 +122,24 @@
                                     <span class="text-danger"> {{ $errors->first('mother_contact') }}</span>
                                 @endif
                             </div>
+                            <div class="col-12 col-lg-6">
+                               <label for="username">User Name</label>
+                                <input type="text" id="username" class="form-control" value="{{ old('username')}}" name="username">
+                                @if($errors->has('username'))
+                                    <span class="text-danger"> {{ $errors->first('username') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="status">Status</label>
+                                <select id="status" class="form-control" name="status">
+                                    <option value="1" @if(old('status')==1) selected @endif>Active</option>
+                                    <option value="0" @if(old('status')==0) selected @endif>Inactive</option>
+                                </select>
+                                @if($errors->has('status'))
+                                    <span class="text-danger"> {{ $errors->first('status') }}</span>
+                                @endif
+                            </div>
+                            
                             <div class="col-12 col-lg-6">
                                 <label for="gender">Gender</label>
                                 <select id="status" class="form-control" name="gender">
@@ -200,13 +209,7 @@
                                     <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
                                 @endif
                             </div>
-                            <div class="col-12 col-lg-6">
-                               <label for="username">User Name</label>
-                                <input type="text" id="username" class="form-control" value="{{ old('username')}}" name="username">
-                                @if($errors->has('username'))
-                                    <span class="text-danger"> {{ $errors->first('username') }}</span>
-                                @endif
-                            </div>
+                            
                             <div class="col-12 col-lg-6">
                                <label for="present_address">Present Address</label>
                                 <textarea name="present_address_en" id="present_address_en" cols="30" rows="10" class="form-control"></textarea>
@@ -221,6 +224,7 @@
                                     <span class="text-danger"> {{ $errors->first('parmanent_address_en') }}</span>
                                 @endif
                             </div>
+                            
                             <div class="col-12 col-lg-6">
                                <label for="password">Password <i class="text-danger">*</i></label>
                                 <input type="password" id="password" class="form-control" name="password"placeholder="Choose a safe one.." >

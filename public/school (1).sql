@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 08:34 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Dec 08, 2023 at 06:07 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -200,6 +200,7 @@ CREATE TABLE `exam_results` (
   `prac_marks` decimal(8,2) DEFAULT NULL,
   `gp` float DEFAULT NULL,
   `gl` varchar(255) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=>pass 0=>fail',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -210,15 +211,15 @@ CREATE TABLE `exam_results` (
 -- Dumping data for table `exam_results`
 --
 
-INSERT INTO `exam_results` (`id`, `exam_id`, `student_id`, `class_id`, `section_id`, `subject_id`, `session_id`, `sub_marks`, `ob_marks`, `prac_marks`, `gp`, `gl`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 1, 1, '50.0', '50.0', '52.00', 3.25, 'A+', 1, '2023-12-02 11:06:58', '2023-12-03 11:10:15', NULL),
-(2, 1, 1, 1, 1, 2, 1, '30.0', '25.0', '25.00', 3.24, 'A+', 1, '2023-12-03 11:09:59', '2023-12-03 11:09:59', NULL),
-(3, 1, 1, 1, 1, 3, 1, '40.0', '25.0', '20.00', 5, 'A+', 1, '2023-12-03 11:11:10', '2023-12-03 11:11:10', NULL),
-(4, 1, 1, 1, 1, 4, 1, '35.0', '25.0', '15.00', 4.5, 'A', 1, '2023-12-03 11:11:51', '2023-12-03 11:11:51', NULL),
-(5, 1, 1, 1, 1, 5, 1, '40.0', '25.0', '25.00', 5, 'A+', 1, '2023-12-03 11:12:53', '2023-12-03 11:12:53', NULL),
-(6, 1, 1, 1, 1, 6, 1, '30.0', '25.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:13:45', '2023-12-03 11:13:45', NULL),
-(7, 1, 1, 1, 1, 7, 1, '40.0', '20.0', '23.00', 5, 'A+', 1, '2023-12-03 11:14:35', '2023-12-03 11:14:35', NULL),
-(8, 1, 1, 1, 1, 8, 1, '30.0', '20.0', '20.00', 4.5, 'A', 1, '2023-12-03 11:16:44', '2023-12-03 11:16:44', NULL);
+INSERT INTO `exam_results` (`id`, `exam_id`, `student_id`, `class_id`, `section_id`, `subject_id`, `session_id`, `sub_marks`, `ob_marks`, `prac_marks`, `gp`, `gl`, `total`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 30.0, 30.0, 20.00, 5, 'A+', 80, 1, '2023-12-02 11:06:58', '2023-12-08 10:39:52', NULL),
+(2, 1, 1, 1, 1, 2, 1, 30.0, 25.0, 20.00, 4, 'A', 75, 1, '2023-12-03 11:09:59', '2023-12-08 10:40:19', NULL),
+(3, 1, 1, 1, 1, 3, 1, 40.0, 25.0, 20.00, 5, 'A+', 85, 1, '2023-12-03 11:11:10', '2023-12-08 09:58:07', NULL),
+(4, 1, 1, 1, 1, 4, 1, 35.0, 25.0, 15.00, 4, 'A', 75, 1, '2023-12-03 11:11:51', '2023-12-08 10:29:40', NULL),
+(5, 1, 1, 1, 1, 5, 1, 40.0, 25.0, 25.00, 5, 'A+', 90, 1, '2023-12-03 11:12:53', '2023-12-08 10:40:43', NULL),
+(6, 1, 1, 1, 1, 6, 1, 30.0, 25.0, 20.00, 4, 'A', 75, 1, '2023-12-03 11:13:45', '2023-12-08 10:40:58', NULL),
+(7, 1, 1, 1, 1, 7, 1, 40.0, 20.0, 23.00, 5, 'A+', 83, 1, '2023-12-03 11:14:35', '2023-12-08 10:41:15', NULL),
+(8, 1, 1, 1, 1, 8, 1, 30.0, 20.0, 10.00, 3.5, 'A-', 60, 1, '2023-12-03 11:16:44', '2023-12-08 10:43:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -240,14 +241,14 @@ CREATE TABLE `fees` (
 --
 
 INSERT INTO `fees` (`id`, `fee_name`, `amount`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Mid Term Exam Fee', '500.00', '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
-(2, 'Half Yearly Exam Fee', '1000.00', '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
-(3, 'Yearly Exam Fee', '1500.00', '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
-(4, 'Class Test', '200.00', '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
-(5, 'Hostel Fees', '2000.00', '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL),
-(6, 'Admission Fee', '10000.00', '2023-12-05 01:08:16', '2023-12-05 01:08:16', NULL),
-(7, 'Monthly Fee', '500.00', '2023-12-05 01:08:34', '2023-12-05 01:08:34', NULL),
-(8, 'Transport', '2000.00', '2023-12-05 01:08:48', '2023-12-05 01:08:48', NULL);
+(1, 'Mid Term Exam Fee', 500.00, '2023-12-03 06:21:30', '2023-12-03 06:22:32', NULL),
+(2, 'Half Yearly Exam Fee', 1000.00, '2023-12-03 06:21:50', '2023-12-03 06:22:24', NULL),
+(3, 'Yearly Exam Fee', 1500.00, '2023-12-03 06:22:12', '2023-12-03 06:22:12', NULL),
+(4, 'Class Test', 200.00, '2023-12-03 06:44:04', '2023-12-03 06:44:04', NULL),
+(5, 'Hostel Fees', 2000.00, '2023-12-03 06:44:29', '2023-12-03 06:44:29', NULL),
+(6, 'Admission Fee', 10000.00, '2023-12-05 01:08:16', '2023-12-05 01:08:16', NULL),
+(7, 'Monthly Fee', 500.00, '2023-12-05 01:08:34', '2023-12-05 01:08:34', NULL),
+(8, 'Transport', 2000.00, '2023-12-05 01:08:48', '2023-12-05 01:08:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -274,7 +275,8 @@ CREATE TABLE `final_results` (
 
 INSERT INTO `final_results` (`id`, `class_id`, `exam_id`, `student_id`, `total_marks`, `total_gp`, `total_gl`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1, 1, 400, 425, 'A', '2023-12-02 10:48:30', '2023-12-02 11:55:23', NULL),
-(2, 2, 1, 2, 400, 425, 'B', '2023-12-02 11:36:40', '2023-12-02 11:56:42', NULL);
+(2, 2, 1, 2, 400, 425, 'B', '2023-12-02 11:36:40', '2023-12-02 11:56:42', NULL),
+(3, 3, 1, 13, 400, NULL, 'A', '2023-12-07 10:57:34', '2023-12-07 10:57:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -642,7 +644,7 @@ CREATE TABLE `students` (
   `image` varchar(255) NOT NULL,
   `present_address_en` varchar(255) NOT NULL,
   `parmanent_address_en` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=>active 0=>inactive',
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=>active,0=>inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -653,12 +655,14 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `student_id`, `roll`, `first_name_en`, `first_name_bn`, `last_name_en`, `last_name_bn`, `date_of_birth`, `place_of_birth`, `father_name`, `mother_name`, `father_contact`, `mother_contact`, `gender`, `class_id`, `section_id`, `contact_no_en`, `contact_no_bn`, `email`, `username`, `password`, `image`, `present_address_en`, `parmanent_address_en`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 101, 1, 'kaiser', 'কাইছার', 'ahmed', 'আহমেদ', '2023-11-01', 'Chittagong', 'Morshed', 'Rahima', 123456, 12345678, 'male', 1, 1, 123456, '১২৩৪৫৬', 'kaiser@gmail.com', 'kaiser', '123', '5251701697890.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:04:57', NULL),
-(2, 102, 2, 'Raihan', 'রায়হান', 'Sazzad', 'সাজ্জাদ', '2023-11-02', '2023-11-02', 'Morshed', 'Rahima', 12345, 1234567, 'male', 2, 2, 12345, '১২৩৪৫', 'raihan@gmail.com', 'raihan', '123', '3541701699367.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:16:07', NULL),
-(3, 103, 3, 'Robiul', NULL, 'Hossain', NULL, '2023-11-02', '2023-11-02', 'Morshed', 'Rahima', 1234, 123456, 'male', 2, 3, 1234, '১২৩৪', 'robiul@gmail.com', 'robiul', '123', '8251701746496.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 21:38:47', NULL),
-(7, 104, 2, 'Istiak', 'ইসতিয়াক', 'ahmed', 'আহমেদ', '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 123456444, 1234567844, 'male', 1, 1, 1234444, NULL, 'kaiser@gmail.com', 'kaiser', '123', '2761701699527.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 08:18:47', NULL),
-(12, 105, 2, 'Robiul', NULL, 'Hossain', NULL, '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 1, 1, 'male', 3, 1, 12, NULL, 'robiul@gmail.com', 'robiul', '123', '2761701699527.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-04 21:38:58', NULL),
-(13, 106, 3, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', '2023-12-01', '2023-12-01', 'Morshed', 'Rahima', 13, 13, 'male', 3, 1, 1, '১', 'ibrahim@gmail.com', 'ibrahim', '2', '4601701747504.jpg', 'Chiattagong', 'Dhaka', 1, '2023-12-04 21:38:24', '2023-12-04 21:39:06', NULL);
+(1, 101, 1, 'kaiser', 'কাইছার', 'ahmed', 'আহমেদ', '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 123456, 12345678, 'male', 1, 1, 1, NULL, 'kaiser@gmail.com', 'kaiser', '123', '5251701697890.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-08 10:54:28', NULL),
+(2, 102, 2, 'Raihan', 'রায়হান', 'Sazzad', 'সাজ্জাদ', '2023-11-02', '2023-11-02', 'Morshed', 'Rahima', 12345, 1234567, 'male', 2, 2, 2, '১২৩৪৫', 'raihan@gmail.com', 'raihan', '123', '3541701699367.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-08 10:52:35', NULL),
+(3, 103, 3, 'Robiul', NULL, 'Hossain', NULL, '2023-11-02', '2023-11-02', 'Morshed', 'Rahima', 1234, 123456, 'male', 2, 3, 3, '১২৩৪', 'robiul@gmail.com', 'robiul', '123', '8251701746496.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-08 10:54:14', NULL),
+(7, 104, 2, 'Istiak', 'ইসতিয়াক', 'ahmed', 'আহমেদ', '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 123456444, 1234567844, 'male', 1, 1, 4, NULL, 'kaiser@gmail.com', 'kaiser', '123', '2761701699527.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-08 10:51:55', NULL),
+(12, 105, 2, 'Robiul', NULL, 'Hossain', NULL, '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 1, 1, 'male', 3, 1, 5, NULL, 'robiul@gmail.com', 'robiul', '123', '2761701699527.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-08 10:51:45', NULL),
+(13, 106, 3, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', '2023-12-01', '2023-12-01', 'Morshed', 'Rahima', 13, 13, 'male', 3, 1, 6, NULL, 'ibrahim@gmail.com', 'ibrahim', '2', '4601701747504.jpg', 'Chiattagong', 'Dhaka', 1, '2023-12-04 21:38:24', '2023-12-08 10:51:15', NULL),
+(16, 107, 1, 'Sharmin', NULL, 'akter', NULL, '2023-11-01', '2023-11-01', 'Morshed', 'Rahima', 0, 0, 'female', 4, 4, 7, NULL, 'sharmin@gmail.com', 'sharmin', '123', '7181702054914.jpg', 'Chittagong', 'Dhaka', 1, '2023-11-29 15:53:09', '2023-12-08 11:01:55', NULL),
+(17, 108, 2, 'Maksuda', NULL, 'Akter', NULL, '2023-12-01', '2023-12-01', 'Morshed', 'Rahima', 9, 9, 'female', 4, 1, 8, NULL, 'amksuda@gmail.com', 'maksuda', '8', '4561702054936.jpg', 'Chiattagong', 'Dhaka', 1, '2023-12-04 21:38:24', '2023-12-08 11:02:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -699,9 +703,11 @@ INSERT INTO `student_attendances` (`id`, `student_id`, `class_id`, `att_date`, `
 CREATE TABLE `student_fees` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
+  `class_id` bigint(11) UNSIGNED NOT NULL,
   `total_fees` decimal(8,2) NOT NULL,
   `fee_month` varchar(255) NOT NULL,
   `fee_year` varchar(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0 COMMENT '0=>unpaid,1=>paid',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -711,18 +717,11 @@ CREATE TABLE `student_fees` (
 -- Dumping data for table `student_fees`
 --
 
-INSERT INTO `student_fees` (`id`, `student_id`, `total_fees`, `fee_month`, `fee_year`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, '400.00', 'December', '2023', '2023-12-03 11:06:29', '2023-12-06 12:35:45', '2023-12-06 12:35:45'),
-(2, 1, '13700.00', '02', '2023', '2023-12-06 01:40:01', '2023-12-06 12:36:35', '2023-12-06 12:36:35'),
-(3, 7, '13700.00', '02', '2023', '2023-12-06 01:40:02', '2023-12-06 12:36:34', '2023-12-06 12:36:34'),
-(4, 1, '3000.00', '12', '2023', '2023-12-06 01:40:30', '2023-12-06 12:36:33', '2023-12-06 12:36:33'),
-(5, 7, '3000.00', '12', '2023', '2023-12-06 01:40:30', '2023-12-06 12:36:31', '2023-12-06 12:36:31'),
-(6, 1, '4700.00', '12', '2023', '2023-12-06 12:37:01', '2023-12-06 22:45:33', NULL),
-(7, 7, '6200.00', '12', '2023', '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(8, 2, '2200.00', '12', '2023', '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(9, 3, '2200.00', '12', '2023', '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(10, 12, '3200.00', '12', '2023', '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL),
-(11, 13, '3200.00', '12', '2023', '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL);
+INSERT INTO `student_fees` (`id`, `student_id`, `class_id`, `total_fees`, `fee_month`, `fee_year`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, 4200.00, '12', '2023', 1, '2023-12-07 21:43:02', '2023-12-07 22:57:33', NULL),
+(2, 7, 1, 3700.00, '12', '2023', 1, '2023-12-07 21:43:02', '2023-12-07 23:14:56', NULL),
+(3, 2, 2, 14500.00, '12', '2023', 1, '2023-12-07 21:46:33', '2023-12-07 23:27:15', NULL),
+(4, 3, 2, 14500.00, '12', '2023', 1, '2023-12-07 21:46:33', '2023-12-07 23:51:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -748,28 +747,22 @@ CREATE TABLE `student_fee_details` (
 --
 
 INSERT INTO `student_fee_details` (`id`, `fee_id`, `student_id`, `class_id`, `fee_amount`, `fee_month`, `fee_year`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(17, 3, 1, 1, '1500.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(18, 4, 1, 1, '200.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(19, 5, 1, 1, '500.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 22:45:33', NULL),
-(20, 7, 1, 1, '500.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(21, 8, 1, 1, '2000.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(22, 3, 7, 1, '1500.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(23, 4, 7, 1, '200.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(24, 5, 7, 1, '2000.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(25, 7, 7, 1, '500.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(26, 8, 7, 1, '2000.00', '12', 2023, '2023-12-06 12:37:01', '2023-12-06 12:37:01', NULL),
-(27, 3, 2, 2, '1500.00', '12', 2023, '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(28, 4, 2, 2, '200.00', '12', 2023, '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(29, 7, 2, 2, '500.00', '12', 2023, '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(30, 3, 3, 2, '1500.00', '12', 2023, '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(31, 4, 3, 2, '200.00', '12', 2023, '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(32, 7, 3, 2, '500.00', '12', 2023, '2023-12-06 12:37:22', '2023-12-06 12:37:22', NULL),
-(33, 2, 12, 3, '1000.00', '12', 2023, '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL),
-(34, 4, 12, 3, '200.00', '12', 2023, '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL),
-(35, 5, 12, 3, '2000.00', '12', 2023, '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL),
-(36, 2, 13, 3, '1000.00', '12', 2023, '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL),
-(37, 4, 13, 3, '200.00', '12', 2023, '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL),
-(38, 5, 13, 3, '2000.00', '12', 2023, '2023-12-06 12:37:41', '2023-12-06 12:37:41', NULL);
+(39, 1, 1, 1, 1000.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 22:17:44', NULL),
+(40, 2, 1, 1, 1000.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 21:43:02', NULL),
+(41, 4, 1, 1, 200.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 21:43:02', NULL),
+(42, 5, 1, 1, 2000.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 21:43:02', NULL),
+(43, 1, 7, 1, 500.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 21:43:02', NULL),
+(44, 2, 7, 1, 1000.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 21:43:02', NULL),
+(45, 4, 7, 1, 200.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 21:43:02', NULL),
+(46, 5, 7, 1, 2000.00, '12', '2023', '2023-12-07 21:43:02', '2023-12-07 21:43:02', NULL),
+(51, 5, 2, 2, 2000.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL),
+(52, 6, 2, 2, 10000.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL),
+(53, 7, 2, 2, 500.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL),
+(54, 8, 2, 2, 2000.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL),
+(55, 5, 3, 2, 2000.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL),
+(56, 6, 3, 2, 10000.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL),
+(57, 7, 3, 2, 500.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL),
+(58, 8, 3, 2, 2000.00, '12', '2023', '2023-12-07 21:46:33', '2023-12-07 21:46:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -798,8 +791,8 @@ CREATE TABLE `student_fee_payments` (
 --
 
 INSERT INTO `student_fee_payments` (`id`, `class_id`, `student_roll`, `student_name`, `fee_id`, `fee_month`, `fee_year`, `amount`, `payment_date`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 1, 1, 'December', '2023', '500.00', '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
-(4, 1, 7, 7, 1, 'December', '2023', '500.00', '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
+(1, 1, 1, 1, 1, 'December', '2023', 500.00, '2023-12-04', 1, '2023-12-03 08:28:54', '2023-12-03 09:08:39', NULL),
+(4, 1, 7, 7, 1, 'December', '2023', 500.00, '2023-12-02', 1, '2023-12-03 12:30:18', '2023-12-03 12:30:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -873,11 +866,11 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `teacher_id`, `role_id`, `first_name_en`, `first_name_bn`, `last_name_en`, `last_name_bn`, `father_name`, `mother_name`, `gender`, `date_of_birth`, `place_of_birth`, `subject`, `salary`, `email`, `contact_no_en`, `contact_no_bn`, `department_id`, `designation_id`, `image`, `present_address`, `parmanent_address`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', '10000.00', 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '1561701696842.png', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-04 07:34:02', NULL),
-(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-04 07:33:51', NULL),
-(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', '80000.00', 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
-(4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', '10000.00', 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
-(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', '10000.00', 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
+(1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', 10000.00, 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '1561701696842.png', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-04 07:34:02', NULL),
+(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', 80000.00, 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-04 07:33:51', NULL),
+(3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', 80000.00, 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
+(4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', 10000.00, 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
+(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', 10000.00, 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -904,7 +897,12 @@ INSERT INTO `teacher_attendances` (`id`, `teacher_id`, `att_date`, `status`, `cr
 (10, 2, '2023-12-07', 1, '2023-12-06 20:59:04', '2023-12-06 20:59:04', NULL),
 (11, 3, '2023-12-07', 1, '2023-12-06 20:59:04', '2023-12-06 20:59:04', NULL),
 (12, 4, '2023-12-07', 1, '2023-12-06 20:59:04', '2023-12-06 20:59:04', NULL),
-(13, 5, '2023-12-07', 1, '2023-12-06 20:59:04', '2023-12-06 20:59:04', NULL);
+(13, 5, '2023-12-07', 1, '2023-12-06 20:59:04', '2023-12-06 20:59:04', NULL),
+(14, 1, '2023-12-08', 0, '2023-12-08 07:02:39', '2023-12-08 07:02:39', NULL),
+(15, 2, '2023-12-08', 1, '2023-12-08 07:02:39', '2023-12-08 07:02:39', NULL),
+(16, 3, '2023-12-08', 1, '2023-12-08 07:02:39', '2023-12-08 07:02:39', NULL),
+(17, 4, '2023-12-08', 0, '2023-12-08 07:02:39', '2023-12-08 07:02:39', NULL),
+(18, 5, '2023-12-08', 1, '2023-12-08 07:02:39', '2023-12-08 07:02:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -1279,7 +1277,7 @@ ALTER TABLE `fees`
 -- AUTO_INCREMENT for table `final_results`
 --
 ALTER TABLE `final_results`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -1345,7 +1343,7 @@ ALTER TABLE `sessions`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `student_attendances`
@@ -1357,13 +1355,13 @@ ALTER TABLE `student_attendances`
 -- AUTO_INCREMENT for table `student_fees`
 --
 ALTER TABLE `student_fees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student_fee_details`
 --
 ALTER TABLE `student_fee_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `student_fee_payments`
@@ -1387,7 +1385,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `teacher_attendances`
 --
 ALTER TABLE `teacher_attendances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`

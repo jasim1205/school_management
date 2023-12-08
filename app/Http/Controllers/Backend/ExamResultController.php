@@ -55,6 +55,7 @@ class ExamResultController extends Controller
             $examresult->prac_marks = $request->prac_marks;
             $examresult->gp = $request->gp;
             $examresult->gl = $request->gl;
+            $examresult->total = $request->total;
             $examresult->status = $request->status;
             if($examresult->save()){
                 $this->notice::success('Data Successfully Saved');
@@ -110,6 +111,7 @@ class ExamResultController extends Controller
             $examresult->prac_marks = $request->prac_marks;
             $examresult->gp = $request->gp;
             $examresult->gl = $request->gl;
+            $examresult->total = $request->total;
             $examresult->status = $request->status;
             if($examresult->save()){
                 $this->notice::success('Data Successfully Saved');

@@ -44,6 +44,7 @@
                             <th scope="col">{{__('Subjective Marks')}}</th> 
                             <th scope="col">{{__('Objective Marks')}}</th> 
                             <th scope="col">{{__('Practical')}}</th>
+                            <th scope="col">{{__('Total')}}</th>
                             <th scope="col">{{__('GPA')}}</th>
                             <th scope="col">{{__('Grade Letter')}}</th>
                             <th scope="col">{{__('Status')}}</th>
@@ -63,7 +64,7 @@
                             <td>{{$value->sub_marks}}</td>
                             <td>{{$value->ob_marks}}</td>
                             <td>{{$value->prac_marks}}</td>
-                            
+                            <td>{{$value->total}}</td>
                             <td>{{$value->gp}}</td>
                             <td>{{$value->gl}}</td>
                             <td>@if($value->status==1){{'Pass'}} @else {{'__Fail'}} @endif</td>
