@@ -64,9 +64,7 @@
                                         <a href="{{ route('studentfee.edit', encryptor('encrypt', $value->id)) }}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('studentfee.feepayment', encryptor('encrypt', $value->id)) }}">
-                                            payment
-                                        </a>
+                                        
                                         <form id="" action="{{ route('studentfee.destroy', encryptor('encrypt', $value->id)) }}" method="post">
                                             @csrf
                                             @method('delete')
@@ -74,10 +72,14 @@
                                                 <i class="fa fa-trash text-danger"></i>
                                             </button>
                                         </form>
+                                        <a href="{{ route('studentfee.feepayment', encryptor('encrypt', $value->id)) }}">
+                                            <i class="fa fa-list text-secondary"></i>
+                                            Payment
+                                        </a>
                                     @endif
                                     @if($value->status == 1)
                                         <a href="{{ route('paymentslip', encryptor('encrypt', $value->id)) }}">
-                                            Payment slip
+                                            Pay Slip
                                         </a>
                                     @endif
 
