@@ -13,4 +13,7 @@ class StudentFee extends Model
     public function student(){
         return $this->belongsTo(Student::class);
     }
+    public function class(){
+        return $this->belongsTo(Classes::class);
+    }
 }

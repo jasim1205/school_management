@@ -59,6 +59,7 @@ class StudentFeeController extends Controller
                     }
                     $stufee= new Studentfee;
                     $stufee->student_id=$student_id;
+                    $stufee->class_id=$request->class_id;
                     $stufee->total_fees=$total_fee;
                     $stufee->fee_month = $request->fee_month;
                     $stufee->fee_year = $request->fee_year;
@@ -126,7 +127,27 @@ class StudentFeeController extends Controller
             return redirect()->back()->withInput()->with('error', 'Please try again');
         }
     }
+    
+    public function feepayment($id)
+    {
+        $stufe=StudentFee::findOrFail('encryptor'('decrypt',$id));
+        return view('backend.student_fee.feepayment',compact('stufe'));
+    }
 
+    public function feeupdate(Request $request, $id){
+        $stufe=StudentFee::findOrFail('encryptor'('decrypt',$id));
+        $stufe->status = $request->status;
+        if($stufe->save()){
+                $this->notice::success('Status successfully Updated');
+                return redirect()->route('studentfee.index');
+        }
+    }
+
+    public function paymentslip($id){
+        $stufe=StudentFee::findOrFail('encryptor'('decrypt',$id));
+        $studentfee = StudentFeeDetails::where('student_id',$stufe->student_id);
+        return view('backend.student_fee.paymentslip',compact('stufe','studentfee'));
+    }
     /**
      * Remove the specified resource from storage.
      */

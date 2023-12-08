@@ -74,9 +74,15 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('weekday', weekday::class);
     Route::resource('routine', routine::class);
     Route::resource('exam', exam::class);
+
+//fee menagement
     Route::resource('fee', fee::class);
     Route::resource('feepayment', feepayment::class);
     Route::resource('studentfee', studentfee::class);
+    Route::get('studentfee/feepayment/{id}', [studentfee::class, 'feepayment'])->name('studentfee.feepayment');
+    Route::post('studentfee/feepayment/{id}', [studentfee::class, 'feeupdate'])->name('feeupdate');
+    Route::get('studentfee/paymentslip/{id}', [studentfee::class, 'paymentslip'])->name('paymentslip');
+
 
 
 //student Result

@@ -2,7 +2,6 @@
 @section('title','Student fee List')
 
 @section('content')
-
 <!--breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
     <div class="breadcrumb-title pe-3">Tables</div>
@@ -40,9 +39,11 @@
                         <tr>
                             <th scope="col">{{__('#SL')}}</th>
                             <th scope="col">{{__('Student')}}</th>
+                            <th scope="col">{{__('Class')}}</th>
                             <th scope="col">{{__('Total Fee')}}</th>
                             <th scope="col">{{__('Month')}}</th> 
                             <th scope="col">{{__('Year')}}</th>
+                            <th scope="col">{{__('status')}}</th>
                             <th class="white-space-nowrap">{{__('Action') }}</th>
                         </tr>
                     </thead>
@@ -51,21 +52,36 @@
                         <tr role="row" class="odd">
                             <td>{{++$loop->index}}</td>
                             <td>{{$value->student->first_name_en}} {{$value->student->last_name_en}}</td>
+                            <td>{{$value->class?->class_name_en}}</td>
                             <td>{{$value->total_fees}}</td>
-                            <td>{{$value->fee_month}}</td>
+                            <td>{{date('F', strtotime('2020-'.$studentfee->first()->fee_month.'-01'))}}</td>
                             <td>{{$value->fee_year}}</td>
+                            <td style="color: @if($value->status==1) green @else red @endif;">@if($value->status==1){{__('PAID')}} @else{{__('UNPAID')}} @endif</td>
+
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{route('studentfee.edit',encryptor('encrypt', $value->id))}}">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <form id="" action="{{ route('studentfee.destroy',encryptor('encrypt', $value->id))}}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button style="background: none; border: none;" type="submit">
-                                            <i class="fa fa-trash text-danger"></i>
-                                        </button>
-                                    </form>
+                                    @if($value->status != '1')
+                                        <a href="{{ route('studentfee.edit', encryptor('encrypt', $value->id)) }}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="{{ route('studentfee.feepayment', encryptor('encrypt', $value->id)) }}">
+                                            payment
+                                        </a>
+                                        <form id="" action="{{ route('studentfee.destroy', encryptor('encrypt', $value->id)) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button style="background: none; border: none;" type="submit">
+                                                <i class="fa fa-trash text-danger"></i>
+                                            </button>
+                                        </form>
+                                    @endif
+                                    @if($value->status == 1)
+                                        <a href="{{ route('paymentslip', encryptor('encrypt', $value->id)) }}">
+                                            Payment slip
+                                        </a>
+                                    @endif
+
+
                                 </div>
                             </td>                                        
                         </tr>
