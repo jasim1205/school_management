@@ -95,7 +95,7 @@ class StudentFeeController extends Controller
         $studentfee = StudentFeeDetails::where('student_id',$stu_fe->student_id)
         ->where('fee_month',$stu_fe->fee_month)
         ->where('fee_year',$stu_fe->fee_year)->get();
-        return view('backend.student_fee.edit',compact('student','studentfee','stu_fe','fee'));
+        return view('backend.student_fee.edit',compact('student','studentfee','stu_fe'));
     }
 
     /**

@@ -35,4 +35,8 @@ class Student extends Model
     public function feedetail(){
         return $this->hasMany(StudentFeeDetails::class);
     }
+    static public function countStudents()
+    {
+        return self::query()->count();
+    }
 }

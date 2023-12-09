@@ -35,4 +35,8 @@ class Teacher extends Model
     {
         return $this->hasMany(TeacherAttendance::class);
     }
+    static public function countTeachers()
+    {
+        return self::query()->count();
+    }
 }

@@ -7,10 +7,10 @@
 					<div class="d-flex align-items-center">
 						<div>
 							<p class="mb-0 text-secondary">Total Teacher</p>
-							<h4 class="my-1">$4805</h4>
-							<p class="mb-0 font-13 text-success"><i class='bx bxs-up-arrow align-middle'></i>$34 Since last week</p>
+							<h4 class="my-1"> <p>{{ $totalTeachers }}</p></h4>
+							<p class="mb-0 font-13 text-success"><i class="fas fa-chalkboard-teacher"></i>Total Teachers</p>
 						</div>
-						<div class="widgets-icons bg-light-success text-success ms-auto"><i class='bx bxs-wallet'></i>
+						<div class="widgets-icons bg-light-success text-success ms-auto"><i class="fas fa-chalkboard-teacher"></i>
 						</div>
 					</div>
 					<div id="chart1"></div>
@@ -23,10 +23,11 @@
 					<div class="d-flex align-items-center">
 						<div>
 							<p class="mb-0 text-secondary">Total Student</p>
-							<h4 class="my-1">8.4K</h4>
-							<p class="mb-0 font-13 text-success"><i class='bx bxs-up-arrow align-middle'></i>14% Since last week</p>
+							<h4 class="my-1">{{$totalStudents}}</h4>
+							<p class="mb-0 font-13 text-success"><i class='bx bxs-group'></i></p>
 						</div>
-						<div class="widgets-icons bg-light-warning text-warning ms-auto"><i class='bx bxs-group'></i>
+						<div class="widgets-icons bg-light-warning text-warning ms-auto">
+                            <img src="{{asset('public/assets/images/dash-icon-01.svg')}}" alt="Dashboard Icon">
 						</div>
 					</div>
 					<div id="chart2"></div>
