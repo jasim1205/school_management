@@ -87,7 +87,8 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 
 //student Result
     Route::resource('examresult', examresult::class);
-    Route::get('examresult_finalresult',[examresult::class, 'finalresult'])->name('finalresult');
+    Route::get('final',[examresult::class, 'final'])->name('final');
+    Route::get('individual',[examresult::class,'individual'])->name('individual');
 
 
     Route::resource('finalresult', finalresult::class);

@@ -21,7 +21,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teacher = Teacher::paginate(10);
+        $teacher = Teacher::get();
         return view('backend.teacher.index',compact('teacher'));
     }
 

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>PreSchool</title>
+        <title>PreSchool | @yield('title',env('APP_NAME'))</title>
 
         <!-- Fonts -->
 		
@@ -179,8 +179,8 @@
 					<ul>
 						<li> <a href="{{route('examresult.index')}}"><i class='bx bx-radio-circle'></i> Result</a>
 						</li>
-						<li> <a href="{{route('finalresult.index')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
-						</li>
+						<li> <a href="{{route('final')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
+						</li> 
 					</ul>
 				</li>
 			</ul>

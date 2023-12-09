@@ -77,10 +77,24 @@ class ExamResultController extends Controller
         //
     }
 
-    public function finalresult()
+    public function final(Request $request)
     {
-        $final = ExamResult::get();
-        return view('backend.examresult.finalresult',compact('final'));
+        
+        $classes = Classes::get();
+        $student = Student::get();
+        $final = array();
+        if($request->class_id){
+            $student = Student::where('class_id',$request->class_id)->get();
+            $final = ExamResult::where('class_id',$request->class_id)->where('student_id',$request->student_id)->where('exam_id',$request->exam_id)->get();
+        } 
+        $exam = Exam::get();
+        return view('backend.examresult.finalresult',compact('final','classes','student','exam'));
+    }
+    
+    public function individual(Request $request)
+    {
+        $individual = ExamResult::where('class_id',$request->class_id)->where('student_id',$request->student_id)->where('exam_id',$request->exam_id)->get();
+        return view('backend.examresult.individual',compact('individual'));
     }
     /**
      * Show the form for editing the specified resource.

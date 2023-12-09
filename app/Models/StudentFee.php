@@ -16,4 +16,8 @@ class StudentFee extends Model
     public function class(){
         return $this->belongsTo(Classes::class);
     }
+    static public function countFees()
+    {
+        return self::query()->count();
+    }
 }

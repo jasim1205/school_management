@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 06:19 PM
+-- Generation Time: Dec 09, 2023 at 06:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -193,7 +193,7 @@ CREATE TABLE `exam_results` (
   `student_id` bigint(20) UNSIGNED NOT NULL,
   `class_id` bigint(20) UNSIGNED NOT NULL,
   `section_id` bigint(20) UNSIGNED NOT NULL,
-  `subject_id` bigint(20) UNSIGNED NOT NULL,
+  `subject_id` bigint(20) UNSIGNED DEFAULT NULL,
   `session_id` bigint(20) UNSIGNED NOT NULL,
   `sub_marks` decimal(3,1) DEFAULT NULL,
   `ob_marks` decimal(3,1) DEFAULT NULL,
