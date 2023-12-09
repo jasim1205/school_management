@@ -24,10 +24,10 @@
 						<div>
 							<p class="mb-0 text-secondary">Total Student</p>
 							<h4 class="my-1">{{$totalStudents}}</h4>
-							<p class="mb-0 font-13 text-success"><i class='bx bxs-group'></i></p>
+							<p class="mb-0 font-13 text-success"><i class='bx bxs-group'></i>Total Students</p>
 						</div>
 						<div class="widgets-icons bg-light-warning text-warning ms-auto">
-                            <img src="{{asset('public/assets/images/dash-icon-01.svg')}}" alt="Dashboard Icon">
+							<img src="{{asset('public/assets/images/dash-icon-01.svg')}}" alt="">
 						</div>
 					</div>
 					<div id="chart2"></div>

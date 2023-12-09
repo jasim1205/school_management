@@ -77,6 +77,11 @@ class ExamResultController extends Controller
         //
     }
 
+    public function finalresult()
+    {
+        $final = ExamResult::get();
+        return view('backend.examresult.finalresult',compact('final'));
+    }
     /**
      * Show the form for editing the specified resource.
      */

@@ -5,7 +5,7 @@
 @push('styles')
     <style>
         @media print {
-            .sidebar-wrapper,.header,.chatbox,.nav-header,.searchform,.bs-stepper,.heading {
+            .sidebar-wrapper,.header,.chatbox,.nav-header,.searchform,.bs-stepper,.heading,.no-print {
                 display: none;
             }
             .page-wrapper{
@@ -73,7 +73,7 @@
                 </tbody>
             </table>
             <div class="col-12">
-                <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end"><i class="fas fa-print"></i> Print</a>
+                <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end no-print"><i class="fas fa-print"></i> Print</a>
             </div>
         </div>
     </div>

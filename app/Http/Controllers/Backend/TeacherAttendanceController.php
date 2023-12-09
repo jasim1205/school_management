@@ -15,7 +15,7 @@ class TeacherAttendanceController extends Controller
      */
     public function index()
     {
-        $teacherAttend = DB::select("SELECT teacher_attendances.att_date,sum(if(`status`=1,1,0)) as present,sum(if(`status`=0,1,0)) as absent FROM `teacher_attendances` order by teacher_attendances.att_date DESC");
+        $teacherAttend = DB::select("SELECT teacher_attendances.att_date,sum(if(`status`=1,1,0)) as present,sum(if(`status`=0,1,0)) as absent FROM `teacher_attendances` group by teacher_attendances.att_date order by teacher_attendances.att_date DESC");
         return view('backend.teacherAttendance.index',compact('teacherAttend'));
     }
 

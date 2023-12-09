@@ -15,7 +15,7 @@ class StudentAttendanceController extends Controller
      */
     public function index()
     {
-        $studentAttend = DB::select("SELECT classes.id,classes.class_name_en,student_attendances.att_date,sum(if(`status`=1,1,0)) as present,sum(if(`status`=0,1,0)) as absent FROM `student_attendances` join classes on classes.id=student_attendances.class_id order by student_attendances.att_date DESC");
+        $studentAttend = DB::select("SELECT classes.id,classes.class_name_en,student_attendances.att_date,sum(if(`status`=1,1,0)) as present,sum(if(`status`=0,1,0)) as absent FROM `student_attendances` join classes on classes.id=student_attendances.class_id group by student_attendances.class_id,student_attendances.att_date order by student_attendances.att_date DESC");
         return view('backend.studentAttendance.index',compact('studentAttend'));
     }
 
