@@ -11,26 +11,13 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Student Result Form</li>
             </ol>
         </nav>
-    </div>
-    <div class="ms-auto">
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary">Settings</button>
-            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                <a class="dropdown-item" href="javascript:;">Another action</a>
-                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-            </div>
-        </div>
     </div>
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
@@ -40,39 +27,7 @@
                     @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">
-                            <div class="col-12 col-lg-6">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
-                                <span class="text-danger">*</span>
-                                </label>
-                                <select class="default-select wide form-control" id="validationCustom05" name="exam_id" id="roleId">
-                                    <option value="">Select Exam</option>
-                                @forelse($exam as $e)
-                                    <option value="{{$e->id}}" {{ old('exam_id')==$e->id?"selected":""}}> {{ $e->exam_name}}</option>
-                                @empty
-                                    <option value="">No Role found</option>
-                                @endforelse
-                                </select>
-                                @if($errors->has('exam_id'))
-                                    <span class="text-danger"> {{ $errors->first('exam_id') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
-                                <span class="text-danger">*</span>
-                                </label>
-                                <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
-                                    <option value="">Select Student</option>
-                                @forelse($student as $s)
-                                    <option value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
-                                @empty
-                                    <option value="">No Role found</option>
-                                @endforelse
-                                </select>
-                                @if($errors->has('student_id'))
-                                    <span class="text-danger"> {{ $errors->first('student_id') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
+                            <div class="col-12 col-lg-4">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Class Name</strong>
                                 <span class="text-danger">*</span>
                                 </label>
@@ -85,11 +40,33 @@
                                 @endforelse
                                 </select>
                                 
-                                @if($errors->has('class_id'))
-                                    <span class="text-danger"> {{ $errors->first('class_id') }}</span>
-                                @endif
                             </div>
-
+                            <div class="col-12 col-lg-4">
+                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
+                                <span class="text-danger">*</span>
+                                </label>
+                                <select class="default-select wide form-control" id="validationCustom05" name="exam_id">
+                                    <option value="">Select Exam</option>
+                                @forelse($exam as $e)
+                                    <option value="{{$e->id}}" {{ old('exam_id')==$e->id?"selected":""}}> {{ $e->exam_name}}</option>
+                                @empty
+                                    <option value="">No Role found</option>
+                                @endforelse
+                                </select>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
+                                <span class="text-danger">*</span>
+                                </label>
+                                <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
+                                    <option value="">Select Student</option>
+                                @forelse($student as $s)
+                                    <option value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
+                                @empty
+                                    <option value="">No Role found</option>
+                                @endforelse
+                                </select>
+                            </div>
                             <div class="col-12 col-lg-6">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Section</strong>
                                 <span class="text-danger">*</span>
@@ -102,10 +79,6 @@
                                     <option value="">No Role found</option>
                                 @endforelse
                                 </select>
-
-                                @if($errors->has('section_id'))
-                                    <span class="text-danger"> {{ $errors->first('section_id') }}</span>
-                                @endif
                             </div>
                             <div class="col-12 col-lg-6">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Session</strong>
@@ -119,76 +92,55 @@
                                     <option value="">No Role found</option>
                                 @endforelse
                                 </select>
-
-                                @if($errors->has('session_id'))
-                                    <span class="text-danger"> {{ $errors->first('session_id') }}</span>
-                                @endif
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Subject</strong>
-                                <span class="text-danger">*</span>
-                                </label>
-                                <select class="default-select wide form-control" id="validationCustom05" name="subject_id" id="">
-                                    <option value="">Select Subject</option>
-                                @forelse($subject as $s)
-                                    <option value="{{$s->id}}" {{ old('subject_id')==$s->id?"selected":""}}> {{ $s->subject_name_en}}</option>
-                                @empty
-                                    <option value="">No Role found</option>
-                                @endforelse
-                                </select>
-
-                                @if($errors->has('subject_id'))
-                                    <span class="text-danger"> {{ $errors->first('subject_id') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for=""><strong>Subjective Marks</strong><i class="text-danger">*</i> </label>
-                                <input type="text" id="sub_marks" class="form-control" value="{{ old('sub_marks')}}" name="sub_marks">
-                                @if($errors->has('sub_marks'))
-                                    <span class="text-danger"> {{ $errors->first('sub_marks') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for=""><strong>Objective Marks</strong><i class="text-danger">*</i> </label>
-                                <input type="text" id="ob_marks" class="form-control" value="{{ old('ob_marks')}}" name="ob_marks">
-                                @if($errors->has('ob_marks'))
-                                    <span class="text-danger"> {{ $errors->first('ob_marks') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for=""><strong>Practical Marks</strong><i class="text-danger">*</i> </label>
-                                <input type="text" id="prac_marks" class="form-control" value="{{ old('prac_marks')}}" name="prac_marks">
-                                @if($errors->has('prac_marks'))
-                                    <span class="text-danger"> {{ $errors->first('prac_marks') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for=""><strong>Total</strong><i class="text-danger">*</i> </label>
-                                <input type="text" id="total" class="form-control" value="{{ old('total')}}" name="total">
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for=""><strong>GPA Marks</strong><i class="text-danger">*</i> </label>
-                                <input type="text" id="gp" class="form-control" value="{{ old('gp')}}" name="gp">
-                                @if($errors->has('gp'))
-                                    <span class="text-danger"> {{ $errors->first('gp') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for=""><strong>Grade Letter</strong><i class="text-danger">*</i> </label>
-                                <input type="text" id="gl" class="form-control" value="{{ old('gl')}}" name="gl">
-                                @if($errors->has('gl'))
-                                    <span class="text-danger"> {{ $errors->first('gl') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for="status"><strong>Status</strong><i class="text-danger">*</i> </label>
-                                <select id="status" class="form-control shadow-lg" name="status">
-                                    <option value="1" @if(old('status')==1) selected @endif>Pass</option>
-                                    <option value="0" @if(old('status')==0) selected @endif>Fail</option>
-                                </select>
-                                @if($errors->has('status'))
-                                    <span class="text-danger"> {{ $errors->first('status') }}</span>
-                                @endif
+                            <div class="table-responsive">
+                                <table id="example2" class="table table-striped table-bordered">
+                                    <thead class="bg-dark text-white">
+                                        <tr>
+                                            <th scope="col">{{__('Subject')}}</th>
+                                            <th scope="col">{{__('Subjective Marks')}}</th> 
+                                            <th scope="col">{{__('Objective Marks')}}</th> 
+                                            <th scope="col">{{__('Practical')}}</th>
+                                            <th scope="col">{{__('Total')}}</th>
+                                            <th scope="col">{{__('GPA')}}</th>
+                                            <th scope="col">{{__('Grade Letter')}}</th>
+                                            <th scope="col">{{__('Status')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($subject as $value)
+                                        <tr role="row" class="odd">
+                                            <td>{{$value->subject_name_en}}
+                                            <input type="hidden" name="result[{{ $value->id }}][subject_id]" value="{{ $value->id }}">
+                                            </td>
+                                            <td>
+                                                <input type="text" id="sub_marks{{ $value->id }}" class="form-control" value="{{ old('sub_marks')}}" name="result[{{ $value->id }}][sub_marks]">
+                                            </td>
+                                            <td>
+                                                <input type="text" id="ob_marks{{ $value->id }}" class="form-control" value="{{ old('ob_marks')}}" name="result[{{ $value->id }}][ob_marks]">
+                                            </td>
+                                            <td>
+                                                <input type="text" id="prac_marks{{ $value->id }}" class="form-control" value="{{ old('prac_marks')}}" name="result[{{ $value->id }}][prac_marks]">
+                                            </td>
+                                            <td>
+                                                <input type="text" id="total{{ $value->id }}" class="form-control" value="{{ old('total')}}" name="result[{{ $value->id }}][total]">
+                                            </td>
+                                            <td>
+                                                <input type="text" id="gp{{ $value->id }}" class="form-control" value="{{ old('gp')}}" name="result[{{ $value->id }}][gp]">
+                                            </td>
+                                            <td> 
+                                                <input type="text" id="gl{{ $value->id }}" class="form-control" value="{{ old('gl')}}" name="result[{{ $value->id }}][gl]">
+                                            </td>
+                                            <td>
+                                                <select id="status{{ $value->id }}" class="form-control shadow-lg" name="result[{{ $value->id }}][status]">
+                                                    <option value="1" @if(old('status', 1) == 1) selected @endif>Pass</option>
+                                                    <option value="0" @if(old('status', 1) == 0) selected @endif>Fail</option>
+                                                </select>
+                                            </td>                                  
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <button class="btn btn-success px-4 mt-4" type="submit">Submit</button>

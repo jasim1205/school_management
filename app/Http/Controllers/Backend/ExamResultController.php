@@ -32,6 +32,7 @@ class ExamResultController extends Controller
         $classes = Classes::get();
         $section = Section::get();
         $session = Session::get();
+        $subject = array();
         $subject = Subject::get();
         return view('backend.examresult.create',compact('exam','student','classes','section','session','subject'));
     }
@@ -43,24 +44,25 @@ class ExamResultController extends Controller
     {
         try
         {
-            $examresult = new ExamResult;
-            $examresult->exam_id = $request->exam_id;
-            $examresult->student_id = $request->student_id;
-            $examresult->class_id = $request->class_id;
-            $examresult->section_id = $request->section_id;
-            $examresult->session_id = $request->session_id;
-            $examresult->subject_id = $request->subject_id;
-            $examresult->sub_marks = $request->sub_marks;
-            $examresult->ob_marks = $request->ob_marks;
-            $examresult->prac_marks = $request->prac_marks;
-            $examresult->gp = $request->gp;
-            $examresult->gl = $request->gl;
-            $examresult->total = $request->total;
-            $examresult->status = $request->status;
-            if($examresult->save()){
-                $this->notice::success('Data Successfully Saved');
-                return redirect()->route('examresult.index');
+            foreach ($request->result as $resultData){
+                $examresult = new ExamResult;
+                $examresult->student_id = $resultData['student_id'];
+                $examresult->exam_id = $resultData['exam_id'];
+                $examresult->class_id = $resultData['class_id'];
+                $examresult->section_id = $resultData['section_id'];
+                $examresult->session_id = $resultData['session_id'];
+                $examresult->subject_id = $resultData['subject_id'];
+                $examresult->sub_marks = $resultData['sub_marks'];
+                $examresult->ob_marks = $resultData['ob_marks'];
+                $examresult->prac_marks = $resultData['prac_marks'];
+                $examresult->gp = $resultData['gp'];
+                $examresult->gl = $resultData['gl'];
+                $examresult->total = $resultData['total'];
+                $examresult->status = $resultData['status'];
+                $examresult->save();  
             }
+             $this->notice::success('Data Successfully Saved');
+            return redirect()->route('examresult.index');
         }
         catch(Exception $e){
             dd($e);
@@ -68,6 +70,7 @@ class ExamResultController extends Controller
             return redirect()->back();
         }
     }
+
 
     /**
      * Display the specified resource.

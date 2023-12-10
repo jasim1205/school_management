@@ -1,15 +1,29 @@
 @extends('backend.layouts.app')
 @section('title','Individual Result List')
 @section('content')
+@push('styles')
+    <style>
+        @media print {
+            .sidebar-wrapper,.header,.chatbox,.nav-header,.searchform,.heading,.no-print {
+                display: none;
+            }
+            .page-wrapper{
+                padding: 0;
+                margin:0;
+            }
+            
+        }
+    </style>
+@endpush
 <!--breadcrumb-->
-<div class="page-breadcrumb">
+<div class="page-breadcrumb no-print">
     <div class="breadcrumb-title"><h2 class="text-center"><i>Student Individual Exam Report</i></h2></div>
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<hr>
+<hr class="no-print">
 <div id="stepper2" class="bs-stepper">
-    <div class="card">
+    <div class="card no-print">
         <div class="card-body">
             <div class="bs-stepper-content">
                 <form class="form needs-validation" method="get"  action="">
@@ -80,6 +94,7 @@
                     <img src="" class="w-100 mt-5" alt="student image">
                 </div>
             </div>
+               
             <hr>
             <div  class="border mb-2">
                 <h3 class="bg-secondary text-white">Exam Name</h3>
@@ -142,12 +157,15 @@
                             <tr>
                                 <th colspan="4">Total</th>
                                 <th>{{$totalMarks}}</th>
-                                <th>{{$averageGPA}}</th>
-                                <th>{{}}</th>
+                                <th>{{ number_format($averageGPA, 2) }}</th>
+                                <th>
+
+                                </th>
                             </tr>
                         @endif
                     </tbody>
                 </table>
+                 <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end no-print"><i class="fas fa-print"></i> Print</a>
             </div>
         </div>
     </div>

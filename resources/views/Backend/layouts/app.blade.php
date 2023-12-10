@@ -815,9 +815,9 @@
 		 <div class="overlay toggle-icon"></div>
 		<!--end overlay-->
 		<!--Start Back To Top Button-->
-		  <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		  <a href="javaScript:;" class="back-to-top no-print"><i class='bx bxs-up-arrow-alt'></i></a>
 		<!--End Back To Top Button-->
-		<footer class="page-footer">
+		<footer class="page-footer no-print">
 			<p class="mb-0">Copyright © 2023. All right reserved.</p>
 		</footer>
 	</div>
@@ -825,7 +825,7 @@
 
 
 	<!-- search modal -->
-    <div class="modal" id="SearchModal" tabindex="-1">
+    <div class="modal no-print" id="SearchModal" tabindex="-1">
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down">
 		  <div class="modal-content">
 			<div class="modal-header gap-2">
@@ -869,14 +869,14 @@
 			</div>
 		  </div>
 		</div>
-	  </div>
+	</div>
     <!-- end search modal -->
 
 
 
 
 	<!--start switcher-->
-	<div class="switcher-wrapper">
+	<div class="switcher-wrapper no-print">
 		<div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
 		</div>
 		<div class="switcher-body">
