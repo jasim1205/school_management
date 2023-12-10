@@ -18,8 +18,8 @@
     
 </div>
 <!--end breadcrumb-->
-    <h6 class="mb-0 text-uppercase">DataTable Import</h6>
-    <a href="{{route('examresult.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+   
+    <a href="{{route('examresult.create')}}" class=""><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
         <div class="card-header">

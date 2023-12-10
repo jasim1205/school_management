@@ -34,7 +34,6 @@
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        
         <div class="card-body">
             <div class="bs-stepper-content">
                 <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('examresult.store')}}">

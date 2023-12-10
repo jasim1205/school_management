@@ -39,8 +39,7 @@
                         <td></td>
                     </tr>
                 </table>
-            </div>
-            
+            </div>  
         </div>
         <div class="card-body">
             <div class="table-responsive">

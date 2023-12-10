@@ -77,9 +77,8 @@ class ExamResultController extends Controller
         //
     }
 
-    public function final(Request $request)
+    public function finalresult(Request $request)
     {
-        
         $classes = Classes::get();
         $student = Student::get();
         $final = array();
