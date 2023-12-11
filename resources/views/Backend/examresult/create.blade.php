@@ -109,6 +109,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($subject as $value)
+                                      
                                         <tr role="row" class="odd">
                                             <td>{{$value->subject_name_en}}
                                             <input type="hidden" name="result[{{ $value->id }}][subject_id]" value="{{ $value->id }}">
@@ -138,6 +139,7 @@
                                                 </select>
                                             </td>                                  
                                         </tr>
+                                       
                                         @endforeach
                                     </tbody>
                                 </table>
