@@ -5,7 +5,7 @@
 @push('styles')
     <style>
         @media print {
-            .sidebar-wrapper,.header,.chatbox,.nav-header,.searchform,.bs-stepper,.heading {
+            .sidebar-wrapper,.header,.chatbox,.nav-header,.searchform,.bs-stepper,.heading,.no-print {
                 display: none;
             }
             .page-wrapper{

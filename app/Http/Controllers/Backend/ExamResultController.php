@@ -44,13 +44,17 @@ class ExamResultController extends Controller
     {
         try
         {
+            ExamResult::where('class_id',$request->class_id)
+            ->where('exam_id',$request->exam_id)
+            ->where('section_id',$request->section_id)->where('session_id',$request->session_id)->where('student_id',$request->student_id);
+            $students=Student::where('class_id',$request->class_id)->pluck('id');
             foreach ($request->result as $resultData){
                 $examresult = new ExamResult;
-                $examresult->student_id = $resultData['student_id'];
-                $examresult->exam_id = $resultData['exam_id'];
-                $examresult->class_id = $resultData['class_id'];
-                $examresult->section_id = $resultData['section_id'];
-                $examresult->session_id = $resultData['session_id'];
+                $examresult->student_id = $request->student_id;
+                $examresult->exam_id = $request->exam_id;
+                $examresult->class_id = $request->class_id;
+                $examresult->section_id = $request->section_id;
+                $examresult->session_id = $request->session_id;
                 $examresult->subject_id = $resultData['subject_id'];
                 $examresult->sub_marks = $resultData['sub_marks'];
                 $examresult->ob_marks = $resultData['ob_marks'];
@@ -84,18 +88,20 @@ class ExamResultController extends Controller
     {
         $classes = Classes::get();
         $student = Student::get();
-        $final = array();
+        $finalresult = array();
+        $studentInfo = null;
         if($request->class_id){
             $student = Student::where('class_id',$request->class_id)->get();
-            $final = ExamResult::where('class_id',$request->class_id)->where('student_id',$request->student_id)->where('exam_id',$request->exam_id)->get();
+            $studentInfo = Student::find($request->student_id);
+            $finalresult = ExamResult::where('class_id',$request->class_id)->where('student_id',$request->student_id)->where('exam_id',$request->exam_id)->get();
         } 
         $exam = Exam::get();
-        return view('backend.examresult.finalresult',compact('final','classes','student','exam'));
+        return view('backend.examresult.finalresult',compact('finalresult','classes','student','exam','studentInfo'));
     }
-    
-    public function individual(Request $request)
+      
+    public function individual($id)
     {
-        $individual = ExamResult::where('class_id',$request->class_id)->where('student_id',$request->student_id)->where('exam_id',$request->exam_id)->get();
+        $individual = ExamResult::where('class_id',$request->class_id)->where('student_id',$request->student_id)->where('exam_id',$request->exam_id)->find($id);
         return view('backend.examresult.individual',compact('individual'));
     }
     /**

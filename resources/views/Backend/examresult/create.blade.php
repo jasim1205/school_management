@@ -108,29 +108,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($subject as $value)
-                                      
+                                        @foreach($subject->take(10) as $value)
                                         <tr role="row" class="odd">
                                             <td>{{$value->subject_name_en}}
                                             <input type="hidden" name="result[{{ $value->id }}][subject_id]" value="{{ $value->id }}">
                                             </td>
                                             <td>
-                                                <input type="text" id="sub_marks{{ $value->id }}" class="form-control" value="{{ old('sub_marks')}}" name="result[{{ $value->id }}][sub_marks]">
+                                                <input type="text" id="sub_marks_{{ $value->id }}" class="form-control" value="{{ old('sub_marks')}}" name="result[{{ $value->id }}][sub_marks]">
                                             </td>
                                             <td>
-                                                <input type="text" id="ob_marks{{ $value->id }}" class="form-control" value="{{ old('ob_marks')}}" name="result[{{ $value->id }}][ob_marks]">
+                                                <input type="text" id="ob_marks_{{ $value->id }}" class="form-control" value="{{ old('ob_marks')}}" name="result[{{ $value->id }}][ob_marks]">
                                             </td>
                                             <td>
-                                                <input type="text" id="prac_marks{{ $value->id }}" class="form-control" value="{{ old('prac_marks')}}" name="result[{{ $value->id }}][prac_marks]">
+                                                <input type="text" id="prac_marks_{{ $value->id }}" class="form-control" value="{{ old('prac_marks')}}" name="result[{{ $value->id }}][prac_marks]">
                                             </td>
                                             <td>
-                                                <input type="text" id="total{{ $value->id }}" class="form-control" value="{{ old('total')}}" name="result[{{ $value->id }}][total]">
+                                                <input type="text" id="total_{{ $value->id }}" class="form-control" value="{{ old('total')}}" name="result[{{ $value->id }}][total]">
                                             </td>
                                             <td>
-                                                <input type="text" id="gp{{ $value->id }}" class="form-control" value="{{ old('gp')}}" name="result[{{ $value->id }}][gp]">
+                                                <input type="text" id="gp_{{ $value->id }}" class="form-control" value="{{ old('gp')}}" name="result[{{ $value->id }}][gp]">
                                             </td>
                                             <td> 
-                                                <input type="text" id="gl{{ $value->id }}" class="form-control" value="{{ old('gl')}}" name="result[{{ $value->id }}][gl]">
+                                                <input type="text" id="gl_{{ $value->id }}" class="form-control" value="{{ old('gl')}}" name="result[{{ $value->id }}][gl]">
                                             </td>
                                             <td>
                                                 <select id="status{{ $value->id }}" class="form-control shadow-lg" name="result[{{ $value->id }}][status]">
@@ -159,63 +158,75 @@
 @endsection
 @push('scripts')
     <script>
-        function calculateTotal() {
-            var subMarks = parseFloat(document.getElementById('sub_marks').value) || 0;
-            var obMarks = parseFloat(document.getElementById('ob_marks').value) || 0;
-            var pracMarks = parseFloat(document.getElementById('prac_marks').value) || 0;
-
-            var total = subMarks + obMarks + pracMarks;
-            document.getElementById('total').value = total;
-            calculateGPA();
-            calculateGI();
-        }
-
-        document.getElementById('sub_marks').addEventListener('input', calculateTotal);
-        document.getElementById('ob_marks').addEventListener('input', calculateTotal);
-        document.getElementById('prac_marks').addEventListener('input', calculateTotal);
-
-        function calculateGPA() {
-            var totalMarks = parseFloat(document.getElementById('total').value) || 0;
-
-            var gpa = 0;
-
-            if (totalMarks >= 80) {
-                gpa = 5.00;
-            } else if (totalMarks >= 70) {
-                gpa = 4.00;
-            } else if (totalMarks >= 60) {
-                gpa = 3.5;
-            } else if (totalMarks >= 50) {
-                gpa = 3.00;
-            } else if (totalMarks >= 40) {
-                gpa = 2.0;
-            } else {
-                gpa = F;
+        $(document).ready(function () {
+            function calculateTotal(subjectId) {
+                var subMarks = parseFloat($('#sub_marks_' + subjectId).val()) || 0;
+                var obMarks = parseFloat($('#ob_marks_' + subjectId).val()) || 0;
+                var pracMarks = parseFloat($('#prac_marks_' + subjectId).val()) || 0;
+                var total = subMarks + obMarks + pracMarks;
+                $('#total_' + subjectId).val(total);
+                calculateGPA(subjectId);
+                calculateGI(subjectId);
             }
 
-            document.getElementById('gp').value = gpa;
-        }
-
-        document.getElementById('total').addEventListener('input', calculateGPA);
-
-        function calculateGI(){
-             let totalMarks = parseFloat(document.getElementById('total').value) || 0;
-             let gI = 0;
-             if (totalMarks >= 80) {
-                gI = 'A+';
-            } else if (totalMarks >= 70) {
-                gI = 'A';
-            } else if (totalMarks >= 60) {
-                gI = 'A-';
-            } else if (totalMarks >= 50) {
-                gI ='B';
-            } else if (totalMarks >= 40) {
-                gI = 'C';
-            } else {
-                gI = 'F';
+            function calculateGPA(subjectId) {
+                var totalMarks = parseFloat($('#total_' + subjectId).val()) || 0;
+                var gpa = 0;
+                if (totalMarks >= 80) {
+                    gpa = 5.00;
+                } else if (totalMarks >= 70) {
+                    gpa = 4.00;
+                } else if (totalMarks >= 60) {
+                    gpa = 3.5;
+                } else if (totalMarks >= 50) {
+                    gpa = 3.00;
+                } else if (totalMarks >= 40) {
+                    gpa = 2.0;
+                } else {
+                    gpa = 'F';
+                }
+                $('#gp_' + subjectId).val(gpa);
             }
-            document.getElementById('gl').value = gI;
-        }
-        document.getElementById('total').addEventListener('input', calculateGI);
+
+            function calculateGI(subjectId) {
+                var totalMarks = parseFloat($('#total_' + subjectId).val()) || 0;
+                var gI = '';
+                if (totalMarks >= 80) {
+                    gI = 'A+';
+                } else if (totalMarks >= 70) {
+                    gI = 'A';
+                } else if (totalMarks >= 60) {
+                    gI = 'A-';
+                } else if (totalMarks >= 50) {
+                    gI = 'B';
+                } else if (totalMarks >= 40) {
+                    gI = 'C';
+                } else {
+                    gI = 'F';
+                }
+                $('#gl_' + subjectId).val(gI);
+            }
+
+            $('[id^=sub_marks_]').on('input', function () {
+                var subjectId = this.id.split('_')[2];
+                calculateTotal(subjectId);
+            });
+
+            $('[id^=ob_marks_]').on('input', function () {
+                var subjectId = this.id.split('_')[2];
+                calculateTotal(subjectId);
+            });
+
+            $('[id^=prac_marks_]').on('input', function () {
+                var subjectId = this.id.split('_')[2];
+                calculateTotal(subjectId);
+            });
+
+            $('[id^=total_]').on('input', function () {
+                var subjectId = this.id.split('_')[2];
+                calculateGPA(subjectId);
+                calculateGI(subjectId);
+            });
+        });
     </script>
 @endpush

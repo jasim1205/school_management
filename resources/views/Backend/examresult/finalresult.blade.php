@@ -30,11 +30,11 @@
                     @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">
-                             <div class="col-12 col-lg-4">
+                            <div class="col-12 col-lg-4">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Class Name</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control" id="class_id" name="class_id" id="">
+                               <select class="default-select wide form-control" id="class_id" name="class_id" id="" onchange="showStudents(this)">
                                     <option value="">Select Class</option>
                                 @forelse($classes as $c)
                                     <option value="{{$c->id}}" {{ old('class_id')==$c->id?"selected":""}}> {{ $c->class_name_en}}</option>
@@ -83,7 +83,7 @@
         <div class="card-header text-center">
             <div class="row">
                 <div class="col-lg-3">
-                    <img src="{{asset('public/assets/images/logo.png')}}" class="w-100 mt-5" alt="logo icon">
+                    <img src="{{asset('public/assets/images/logo.png')}}" class="w-100 mt-5"  width="50px" alt="logo icon">
                 </div>
                 <div class="col-lg-6">
                     <h1>ABC English School & College</h1>
@@ -91,27 +91,40 @@
                     <p class="text-center"><strong>Contact:</strong> 88015-555555, 88018-188888</p>
                 </div>
                 <div class="col-lg-3">
-                    <img src="" class="w-100 mt-5" alt="student image">
+                    <h5>
+                        <img src="" class="w-100 mt-5"  alt="Student Image">
+                    </h5>
                 </div>
             </div>
                
             <hr>
             <div  class="border mb-2">
-                <h3 class="bg-secondary text-white">Exam Name</h3>
+                <h3 class="bg-secondary text-white">
+                    @foreach($finalresult as $result)
+                        {{ $result->exam->exam_name }}
+                        @break
+                    @endforeach
+                </h3>
             </div>
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
                     <tr>
                         <th>Name</th>
-                        <td>Kaiser Ahmed</td>
+                        <td>
+                            {{ $studentInfo ? $studentInfo->first_name_en . ' ' . $studentInfo->last_name_en : '' }}
+                        </td>
                         <th>Class</th>
-                        <td>Class-1</td>
+                        <td>{{ $studentInfo ? $studentInfo->class->class_name_en : '' }}</td>
                     </tr>
                     <tr>
                         <th>Student Id</th>
-                        <td></td>
+                        <td>{{ $studentInfo ? $studentInfo->student_id : '' }}</td>
                         <th>Session</th>
-                        <td></td>
+                        <td>
+                        @foreach($finalresult as $result)
+                                {{ $result->session->session_year_en }}
+                                @break
+                        @endforeach
                     </tr>
                 </table>
             </div>
@@ -135,9 +148,10 @@
                         @php
                             $totalMarks = 0;
                             $totalGPA = 0;
-                            $subjectCount = count($final)
+                            $subjectCount = count($finalresult)
+                            
                         @endphp
-                        @foreach($final as $f)
+                        @foreach($finalresult as $f)
                             <tr>
                                 <td>{{$f->subject?->subject_name_en}}</td>
                                 <td>{{$f->sub_marks}}</td>
@@ -159,8 +173,20 @@
                                 <th>{{$totalMarks}}</th>
                                 <th>{{ number_format($averageGPA, 2) }}</th>
                                 <th>
+                                   @php
+    $totalGL = ($averageGPA >= 5.00) ? 'A+' :
+                (($averageGPA >= 4.00) ? 'A' :
+                (($averageGPA >= 3.50) ? 'A-' :
+                (($averageGPA >= 3.00) ? 'B' :
+                (($averageGPA >= 2.00) ? 'C' :
+                (($averageGPA >= 1.00) ? 'D' :
+                (($averageGPA <= 0.00) ? 'F' : ''))))));
+@endphp
+
+{{$totalGL}}
 
                                 </th>
+
                             </tr>
                         @endif
                     </tbody>
@@ -172,3 +198,32 @@
 </div>
 <!--end stepper two-->
 @endsection
+@push('scripts')
+<script>
+    function showStudents(selectedClass) {
+        const classId = selectedClass.value;
+
+        if (!classId) {
+            return;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `/students?class_id=${classId}`);
+        xhr.onload = function () {
+            const students = JSON.parse(this.responseText);
+            const studentSelect = document.getElementById("student_id");
+            studentSelect.innerHTML = "";
+
+            students.forEach(student => {
+                const option = document.createElement("option");
+                option.value = student.id;
+                option.innerText = `${student.first_name_en} ${student.last_name_en}`;
+                studentSelect.appendChild(option);
+            });
+
+            document.getElementById("student-container").style.display = "block";
+        };
+        xhr.send();
+    }
+</script>
+@endpush

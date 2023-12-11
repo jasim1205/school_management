@@ -59,7 +59,7 @@
                             <td>{{$value->student->first_name_en}} {{$value->student->last_name_en}}</td>
                             <td>{{$value->class->class_name_en}}</td>
                             <td>{{$value->section->section_name_en}}</td>
-                            <td>{{$value->subject->subject_name_en}}</td>
+                            <td>{{$value->subject?->subject_name_en}}</td>
                             <td>{{$value->session->session_year_en}}</td>
                             <td>{{$value->sub_marks}}</td>
                             <td>{{$value->ob_marks}}</td>
