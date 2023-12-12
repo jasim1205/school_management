@@ -83,7 +83,7 @@
         <div class="card-header text-center">
             <div class="row">
                 <div class="col-lg-3">
-                    <img src="{{asset('public/assets/images/logo.png')}}" class="w-100 mt-5"  width="50px" alt="logo icon">
+                    <img src="{{asset('public/assets/images/result_logo_2.png')}}" class="" alt="logo icon">
                 </div>
                 <div class="col-lg-6">
                     <h1>ABC English School & College</h1>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-lg-3">
                     <h5>
-                        <img src="" class="w-100 mt-5"  alt="Student Image">
+                        <img src="{{asset('public/assets/images/result_logo.png')}}" class=""  alt="Student Image">
                     </h5>
                 </div>
             </div>
