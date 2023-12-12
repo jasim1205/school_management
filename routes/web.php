@@ -31,6 +31,9 @@ use App\Http\Controllers\Backend\FinalResultController as finalresult;
 use App\Http\Controllers\Backend\StudentFeeController as studentfee;
 use App\Http\Controllers\Backend\StudentFeePaymentController as feepayment;
 
+//student
+use App\Http\Controllers\student\AuthController as stuauth;
+use App\Http\Controllers\student\DashboardController as studashboard; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,9 +50,13 @@ Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
+
+
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
 });
+
+
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('user', user::class);
@@ -74,6 +81,17 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('weekday', weekday::class);
     Route::resource('routine', routine::class);
     Route::resource('exam', exam::class);
+
+
+
+//students controller
+Route::get('/student/login', [stuauth::class, 'signInForm'])->name('studentLogin');
+Route::post('/student/login/{back_route}', [stuauth::class, 'signInCheck'])->name('studentLogin.check');
+Route::get('/student/logout', [stuauth::class, 'signOut'])->name('studentlogOut');
+
+Route::middleware(['checkstudent'])->prefix('student')->group(function(){
+    Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard'); 
+});
 
 //fee menagement
     Route::resource('fee', fee::class);

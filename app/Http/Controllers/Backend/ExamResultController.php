@@ -30,11 +30,10 @@ class ExamResultController extends Controller
         $exam = Exam::get();
         $student = Student::get();
         $classes = Classes::get();
-        $section = Section::get();
         $session = Session::get();
         $subject = array();
         $subject = Subject::get();
-        return view('backend.examresult.create',compact('exam','student','classes','section','session','subject'));
+        return view('backend.examresult.create',compact('exam','student','classes','session','subject'));
     }
 
     /**
@@ -46,14 +45,13 @@ class ExamResultController extends Controller
         {
             ExamResult::where('class_id',$request->class_id)
             ->where('exam_id',$request->exam_id)
-            ->where('section_id',$request->section_id)->where('session_id',$request->session_id)->where('student_id',$request->student_id);
+            ->where('session_id',$request->session_id)->where('student_id',$request->student_id);
             $students=Student::where('class_id',$request->class_id)->pluck('id');
             foreach ($request->result as $resultData){
                 $examresult = new ExamResult;
                 $examresult->student_id = $request->student_id;
                 $examresult->exam_id = $request->exam_id;
                 $examresult->class_id = $request->class_id;
-                $examresult->section_id = $request->section_id;
                 $examresult->session_id = $request->session_id;
                 $examresult->subject_id = $resultData['subject_id'];
                 $examresult->sub_marks = $resultData['sub_marks'];
@@ -112,11 +110,10 @@ class ExamResultController extends Controller
         $exam = Exam::get();
         $student = Student::get();
         $classes = Classes::get();
-        $section = Section::get();
         $session = Session::get();
         $subject = Subject::get();
         $examresult = ExamResult::findOrFail(encryptor('decrypt',$id));
-        return view('backend.examresult.edit',compact('exam','student','classes','section','session','subject','examresult'));
+        return view('backend.examresult.edit',compact('exam','student','classes','session','subject','examresult'));
     }
 
     /**
@@ -130,7 +127,6 @@ class ExamResultController extends Controller
             $examresult->exam_id = $request->exam_id;
             $examresult->student_id = $request->student_id;
             $examresult->class_id = $request->class_id;
-            $examresult->section_id = $request->section_id;
             $examresult->session_id = $request->session_id;
             $examresult->subject_id = $request->subject_id;
             $examresult->sub_marks = $request->sub_marks;

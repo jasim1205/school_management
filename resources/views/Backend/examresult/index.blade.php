@@ -38,7 +38,6 @@
                             <th scope="col">{{__('Exam')}}</th>
                             <th scope="col">{{__('Student')}}</th>
                             <th scope="col">{{__('Class Name')}}</th>
-                            <th scope="col">{{__('Section')}}</th>
                             <th scope="col">{{__('Subject')}}</th>
                             <th scope="col">{{__('Session')}}</th> 
                             <th scope="col">{{__('Subjective Marks')}}</th> 
@@ -58,7 +57,6 @@
                             <td>{{$value->exam->exam_name}}</td>
                             <td>{{$value->student->first_name_en}} {{$value->student->last_name_en}}</td>
                             <td>{{$value->class->class_name_en}}</td>
-                            <td>{{$value->section->section_name_en}}</td>
                             <td>{{$value->subject?->subject_name_en}}</td>
                             <td>{{$value->session->session_year_en}}</td>
                             <td>{{$value->sub_marks}}</td>
