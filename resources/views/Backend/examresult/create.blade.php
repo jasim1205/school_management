@@ -31,7 +31,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Class Name</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control" id="validationCustom05" name="class_id" id="">
+                                <select class="default-select wide form-control" id="validationCustom05" name="class_id" id="" onchange="$('.sclass').hide();$('.sclass'+this.value).show()" onchange="showStudents(this)">
                                     <option value="">Select Class</option>
                                 @forelse($classes as $c)
                                     <option value="{{$c->id}}" {{ old('class_id')==$c->id?"selected":""}}> {{ $c->class_name_en}}</option>
@@ -61,7 +61,7 @@
                                 <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
                                     <option value="">Select Student</option>
                                 @forelse($student as $s)
-                                    <option value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
+                                    <option class="sclass sclass{{$s->class_id}}" value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
                                 @empty
                                     <option value="">No Role found</option>
                                 @endforelse
