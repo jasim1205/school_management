@@ -1,82 +1,68 @@
 <?php
 
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Student;
-use App\Http\Requests\Students\Auth\SignUpRequest;
-use App\Http\Requests\Students\Auth\SignInRequest;
+use App\Http\Requests\Students\SignupRequest;
+use App\Http\Requests\Students\SigninRequest;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 
 class AuthController extends Controller
 {
-    public function signUpForm()
-    {
-        return view('student.auth.register');
-    }
-
-    public function signUpStore(SignUpRequest $request,$back_route)
-    {
-        try {
-            $student = new Student;
-            $student->name_en = $request->name;
-            $student->email = $request->email;
-            $student->password = Hash::make($request->password);
-            if ($student->save()){
-                $this->setSession($student);
-                return redirect()->route($back_route)->with('success', 'Successfully Logged In');
-            }
-        } catch (Exception $e) {
-            //dd($e);
-            return redirect()->back()->with('danger', 'Please Try Again');
-        }
-    }
-
-    public function signInForm()
-    {
+    
+    public function signInForm(){
         return view('student.auth.login');
     }
 
-    public function signInCheck(SignInRequest $request,$back_route)
-    {
-        try {
-            $student = Student::Where('email', $request->email)->first();
-            if ($student) {
-                if ($student->status == 1) {
-                    if (Hash::check($request->password, $student->password)) {
-                        $this->setSession($student);
-                        return redirect()->route($back_route)->with('success', 'Successfully Logged In');
-                    } else
-                        return redirect()->back()->with('error', 'Username or Password is wrong!');
-                } else
-                    return redirect()->back()->with('error', 'You are not an active user! Please contact to Authority');
-            } else
-                return redirect()->back()->with('error', 'Username or Password is wrong!');
-        } catch (Exception $e) {
+    public function signInCheck(SigninRequest $request){
+        try{
+            $user=Student::where('username',$request->username)
+                        ->orWhere('email',$request->username)->first();
+            if($user){
+                if($user->status==1){
+                    if(Hash::check($request->password , $user->password)){
+                        $this->setSession($user);
+                        return redirect()->route('dashboard')->with('success','Successfully login');
+                    }else
+                        return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+                }else
+                    return redirect()->route('login')->with('error','You are not active user. Please contact to authority!');
+        }else
+                return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+        }catch(Exception $e){
             //dd($e);
-            return redirect()->back()->with('error', 'Username or Password is wrong!');
+            return redirect()->route('login')->with('error','Your phone number or password is wrong!');
         }
     }
 
-    public function setSession($student)
-    {
-        return request()->session()->put(
-            [
-                'userId' => encryptor('encrypt', $student->id),
-                'userName' => encryptor('encrypt', $student->first_name_en),
-                'emailAddress' => encryptor('encrypt', $student->email),
-                'studentLogin' => 1,
-                'image' => $student->image ?? 'No Image Found' 
+    public function setSession($user){
+        return request()->session()->put([
+                'userId'=>encryptor('encrypt',$user->id),
+                'userName'=>encryptor('encrypt',$user->name_en),
+                'email'=>encryptor('encrypt',$user->email),
+                'role_id'=>encryptor('encrypt',$user->role_id),
+                'accessType'=>encryptor('encrypt',$user->full_access),
+                'role'=>encryptor('encrypt',$user->role->name),
+                'roleIdentity'=>encryptor('encrypt',$user->role->identity),
+                'language'=>encryptor('encrypt',$user->language),
+                'Contact'=>encryptor('encrypt',$user->contact_no_en),
+                'image'=>$user->image ?? 'no-image.png',
+                'image'=>$user->teacher?->image,
             ]
         );
     }
 
-    public function signOut()
-    {
+    public function signOut(){
         request()->session()->flush();
-        return redirect()->route('studentLogin')->with('danger', 'Succesfully Logged Out');
+        return redirect('login')->with('danger','Succfully Logged Out');
     }
+    // public function show(User $data)
+    // {
+    //     return view('backend.user.profile', compact('data')); 
+    // }
 }

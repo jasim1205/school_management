@@ -11,6 +11,9 @@ class Student extends Model
     use softDeletes;
     use HasFactory;
 
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
     public function section(){
         return $this->belongsTo(Section::class);
     }

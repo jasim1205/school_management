@@ -32,7 +32,7 @@ use App\Http\Controllers\Backend\StudentFeeController as studentfee;
 use App\Http\Controllers\Backend\StudentFeePaymentController as feepayment;
 
 //student
-use App\Http\Controllers\student\AuthController as stuauth;
+use App\Http\Controllers\Student\AuthController as stuauth;
 use App\Http\Controllers\student\DashboardController as studashboard; 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +54,7 @@ Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('userProfile', [auth::class, 'show'])->name('userProfile');
 });
 
 
@@ -82,12 +83,13 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('routine', routine::class);
     Route::resource('exam', exam::class);
 
-
+    Route::get('routine/show/{class}', [RoutineController::class, 'showClassRoutine'])->name('routine.show');
 
 //students controller
-Route::get('/student/login', [stuauth::class, 'signInForm'])->name('studentLogin');
-Route::post('/student/login/{back_route}', [stuauth::class, 'signInCheck'])->name('studentLogin.check');
-Route::get('/student/logout', [stuauth::class, 'signOut'])->name('studentlogOut');
+Route::get('/student/login',[AuthController::class, 'signInForm'])->name('studentLogin');
+Route::post('/student/login/{back_route}', [AuthController::class, 'signInCheck'])->name('studentLogin.check');
+Route::get('/student/logout',[AuthController::class, 'signOut'])->name('studentlogOut');
+
 
 Route::middleware(['checkstudent'])->prefix('student')->group(function(){
     Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard'); 
@@ -95,7 +97,6 @@ Route::middleware(['checkstudent'])->prefix('student')->group(function(){
 
 //fee menagement
     Route::resource('fee', fee::class);
-    Route::resource('feepayment', feepayment::class);
     Route::resource('studentfee', studentfee::class);
     Route::get('studentfee/feepayment/{id}', [studentfee::class, 'feepayment'])->name('studentfee.feepayment');
     Route::post('studentfee/feepayment/{id}', [studentfee::class, 'feeupdate'])->name('feeupdate');
@@ -127,13 +128,11 @@ Route::middleware(['checkstudent'])->prefix('student')->group(function(){
     Route::get('teacherattend/create', [teacherattend::class,'create'])->name('teacherattend.create');
     Route::post('teacherattend', [teacherattend::class,'store'])->name('teacherattend.store');
     Route::get('teacherattend/show/{att_date}', [teacherattend::class,'show'])->name('teacherattend.show');
-
-
     Route::get('teacherattend/singleedit/{id}', [teacherattend::class, 'singleedit'])->name('teacherattend.singleedit');
     Route::post('teacherattend/singleedit/{id}', [teacherattend::class, 'update'])->name('update');
 
-    Route::get('routine/show/{class}', [RoutineController::class, 'showClassRoutine'])->name('routine.show');
-    Route::get('userProfile', [auth::class, 'show'])->name('userProfile');
+    
+   
 });
 
 

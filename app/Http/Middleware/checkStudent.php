@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\Student; //custom
+use App\Models\Student; 
 use Illuminate\Http\Request;
-use Session; //custom
-use App\Models\Permission; //custom
+use Session; 
+use App\Models\Permission;
 
 class checkStudent
 {
@@ -20,8 +20,8 @@ class checkStudent
         if (!Session::has('userId') || Session::has('userId') == null) {
             return redirect()->route('studentlogOut');
         } else {
-            $user = Student::where('status', 1)->where('id', currentUserId())->exists();
-            if (!$user)
+            $student = Student::where('status', 1)->where('id', currentUserId())->exists();
+            if (!$student)
                 return redirect()->route('studentlogOut');
             else
                 return $next($request);

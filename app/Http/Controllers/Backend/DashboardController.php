@@ -17,12 +17,13 @@ class DashboardController extends Controller
         $studentFees = StudentFee::with('student')->get();
         $totalCollection =  $studentFees->sum('total_fees');
 
-        return view('backend.adminDashboard',compact('totalTeachers','totalStudents','totalCollection'));
+        
         
         if(fullAccess()){
-            return view('backend.adminDashboard');
+            return view('backend.adminDashboard',compact('totalTeachers','totalStudents','totalCollection'));
+           
         }else{
-            return view('backend.dashboard');
+            return view('backend.dashboard',compact('totalTeachers','totalStudents'));
         }
         
     }

@@ -67,28 +67,7 @@
 						</li>
 					</ul> -->
 				</li>
-				@if(fullAccess())
-				<li>
-					<a href="{{route('role.index')}}">
-						<div class="parent-icon"><i class="fa-brands fa-r-project"></i>
-						</div>
-						<div class="menu-title">Role</div>
-					</a>
-				</li>
-				<li>
-					<a href="{{route('user.index')}}">
-						<div class="parent-icon"><i class="fa-solid fa-users"></i>
-						</div>
-						<div class="menu-title">User List</div>
-					</a>
-				</li>
-				<li>
-					<a href="{{route('school.index')}}">
-						<div class="parent-icon"><i class="fa-solid fa-school"></i>
-						</div>
-						<div class="menu-title">School</div>
-					</a>
-				</li>
+				
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="fas fa-chalkboard-teacher"></i>
@@ -102,6 +81,7 @@
 						</li>
 					</ul>
 				</li>
+				
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="fas fa-graduation-cap"></i>
@@ -122,53 +102,7 @@
 						<div class="menu-title">Routine Manegement</div>
 					</a>
 				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="bx bx-category"></i>
-						</div>
-						<div class="menu-title">Academic Details</div>
-					</a>
-					<ul>
-						<li> <a href="{{route('classes.index')}}"><i class='bx bx-radio-circle'></i>Class List</a>
-						</li>
-						<li> <a href="{{route('section.index')}}"><i class='bx bx-radio-circle'></i>Section List</a>
-						</li>
-						<li> <a href="{{route('subject.index')}}"><i class='bx bx-radio-circle'></i>Subject List</a>
-						</li>
-						<li> <a href="{{route('session.index')}}"><i class='bx bx-radio-circle'></i>Session List</a>
-						</li>
-						<li> <a href="{{route('exam.index')}}"><i class='bx bx-radio-circle'></i>Exam List</a>
-						</li>
-						<li> <a href="{{route('group.index')}}"><i class='bx bx-radio-circle'></i>Group List</a>
-						</li>
-						<li> <a href="{{route('period.index')}}"><i class='bx bx-radio-circle'></i>Period List</a>
-						</li>
-						<li> <a href="{{route('weekday.index')}}"><i class='bx bx-radio-circle'></i>Weekday List</a>
-						</li>
-						<li> <a href="{{route('department.index')}}"><i class='bx bx-radio-circle'></i>Department List</a>
-						</li>
-						<li> <a href="{{route('designation.index')}}"><i class='bx bx-radio-circle'></i>Designation List</a>
-						</li>
-						<li> <a href="{{route('assignsubject.index')}}"><i class='bx bx-radio-circle'></i>Assign Subject List</a>
-						</li>
-						<li> <a href="{{route('assignsection.index')}}"><i class='bx bx-radio-circle'></i>Assign Section List</a>
-						</li>
-						<li> <a href="{{route('assigngroup.index')}}"><i class='bx bx-radio-circle'></i>Assign Group List</a>
-						</li>
-						
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fa-solid fa-money-check-dollar"></i>
-						</div>
-						<div class="menu-title">Fee Management</div>
-					</a>
-					<ul>
-						<li> <a href="{{route('fee.index')}}"><i class='bx bx-radio-circle'></i>Fee list</a></li>
-						<li> <a href="{{route('studentfee.index')}}"><i class='bx bx-radio-circle'></i>Student Fee</a></li>
-					</ul>
-				</li>
+				
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="fa-regular fa-folder-open"></i>
@@ -182,68 +116,6 @@
 						</li> 
 					</ul>
 				</li>
-				@endif
-				@if(!fullAccess())
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fas fa-graduation-cap"></i>
-						</div>
-						<div class="menu-title">Student Manegement</div>
-					</a>
-					<ul>
-						<li> <a href="{{route('student.index')}}"><i class='bx bx-radio-circle'></i>Student List</a>
-						</li>
-						<li> <a href="{{route('studentattend.index')}}"><i class='bx bx-radio-circle'></i>Student Attendance</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fas fa-chalkboard-teacher"></i>
-						</div>
-						<div class="menu-title">Teacher Manegement</div>
-					</a>
-					<ul>
-						<li> <a href="{{route('teacher.index')}}"><i class='bx bx-radio-circle'></i>Teacher List</a>
-						</li>
-						<li> <a href="{{route('teacherattend.index')}}"><i class='bx bx-radio-circle'></i>Teacher Attendance</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="{{route('routine.index')}}">
-						<div class="parent-icon"><i class="fa-solid fa-calendar-days"></i>
-						</div>
-						<div class="menu-title">Routine Manegement</div>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fa-solid fa-money-check-dollar"></i>
-						</div>
-						<div class="menu-title">Fee Management</div>
-					</a>
-					<ul>
-						<li> <a href="{{route('fee.index')}}"><i class='bx bx-radio-circle'></i>Fee list</a></li>
-						<li> <a href="{{route('studentfee.index')}}"><i class='bx bx-radio-circle'></i>Student Fee</a></li>
-					</ul>
-				</li>
-				<li>
-				<a href="javascript:;" class="has-arrow">
-					<div class="parent-icon"><i class="fa-regular fa-folder-open"></i>
-					</div>
-					<div class="menu-title">Result Management</div>
-				</a>
-				<ul>
-					<li> <a href="{{route('examresult.index')}}"><i class='bx bx-radio-circle'></i> Result</a>
-					</li>
-					<li> <a href="{{route('finalresult')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
-					</li> 
-				</ul>
-				</li>
-				
-				
-				@endif
 			</ul>
 			<!--end navigation-->
 		</div>
