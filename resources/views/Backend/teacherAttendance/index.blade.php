@@ -16,20 +16,11 @@
         </nav>
     </div>
     <div class="ms-auto">
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary">Settings</button>
-            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                <a class="dropdown-item" href="javascript:;">Another action</a>
-                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-            </div>
-        </div>
+        <a href="{{route('teacherattend.create')}}" class="btn btn-info"><i class="fa fa-plus">ADD NEW</i></a>
     </div>
 </div>
 <!--end breadcrumb-->
-    <a href="{{route('teacherattend.create')}}" class=""><i class="fa fa-plus">ADD NEW</i></a>
+   
     <hr/>
     <div class="card">
         <div class="card-body">

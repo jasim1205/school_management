@@ -15,18 +15,20 @@
             </ol>
         </nav>
     </div>
-    
+     <div class="ms-auto">
+        <a href="{{route('examresult.create')}}" class="btn btn-info"><i class="fa fa-plus">ADD NEW</i></a>
+    </div>
 </div>
 <!--end breadcrumb-->
    
-    <a href="{{route('examresult.create')}}" class=""><i class="fa fa-plus">ADD NEW</i></a>
+    
     <hr/>
     <div class="card">
         <div class="card-header">
             <div class="text-center">
-                <h2>ABC English School $ College</h2>
-                <h4>Exam Name</h4>
-                <p>Session</p>
+                <h1>ABC English School & College</h1>
+                <h5 class="text-center">Muradpur, Chittagong, 4205 Bangladesh</h5>
+                <p class="text-center"><strong>Contact:</strong> 88015-555555, 88018-188888</p>
             </div>
         </div>
         <div class="card-body">

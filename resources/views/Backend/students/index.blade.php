@@ -15,10 +15,12 @@
             </ol>
         </nav>
     </div>
+    <div class="ms-auto">
+            <a href="{{route('student.create')}}" class="btn btn-info"><i class="fa fa-plus">ADD NEW</i></a>
+    </div>
 </div>
 <!--end breadcrumb-->
    
-    <a href="{{route('student.create')}}" class=""><i class="fa fa-plus">ADD NEW</i></a>
     <hr/>
     <div class="card">
         <div class="card-body">

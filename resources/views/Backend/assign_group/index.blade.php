@@ -11,32 +11,16 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Class-Group</li>
             </ol>
         </nav>
-    </div>
-    <div class="ms-auto">
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary">Settings</button>
-            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                <a class="dropdown-item" href="javascript:;">Another action</a>
-                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-            </div>
-        </div>
     </div>
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        <div class="card-header">
-            
-        </div>
         <div class="card-body">
             <div class="bs-stepper-content">
                 <form class="form" method="post"action="{{route('assigngroup.store')}}">

@@ -10,14 +10,13 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Student Fee Calculate Form</li>
             </ol>
         </nav>
     </div>
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">

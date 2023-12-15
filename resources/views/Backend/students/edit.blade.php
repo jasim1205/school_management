@@ -11,7 +11,7 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Student Update</li>
             </ol>
         </nav>
     </div>
@@ -43,26 +43,23 @@
                             @csrf
                             @method('Patch')
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
-
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
-                                <label for="stu_id">Student Id  <i class="text-danger">*</i></label>
+                                <label for="stu_id"><strong>Student Id </strong> <i class="text-danger">*</i></label>
                                 <input type="text" name="stu_id" id="stu_id" value="{{ old('stu_id',$student->student_id)}}"  class="form-control" >
                                 @if($errors->has('stu_id'))
                                     <span class="text-danger"> {{ $errors->first('stu_id') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="roll">Roll<i class="text-danger">*</i></label>
+                                <label for="roll"><strong>Roll</strong><i class="text-danger">*</i></label>
                                 <input type="text" name="roll" id="roll" value="{{ old('roll',$student->roll)}}"  class="form-control" >
                                 @if($errors->has('roll'))
                                     <span class="text-danger"> {{ $errors->first('roll') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="status">Status</label>
+                                <label for="status"><strong>Status</strong></label>
                                 <select id="status" class="form-control" name="status">
                                     <option value="1" @if(old('status',$student->status)==1) selected @endif>Active</option>
                                     <option value="0" @if(old('status',$student->status)==0) selected @endif>Inactive</option>
@@ -72,7 +69,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="fname_en">First Name (English)<i class="text-danger">*</i> </label>
+                                <label for="fname_en"><strong>First Name (English)</strong><i class="text-danger">*</i> </label>
                                         
                                 <input type="text" id="fname" class="form-control" value="{{ old('fname_en',$student->first_name_en)}}" name="fname_en">
                                 @if($errors->has('fname_en'))
@@ -80,7 +77,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="fname_bn">First Name (Bangla)<i class="text-danger">*</i> </label>
+                                <label for="fname_bn"><strong>First Name (Bangla)</strong><i class="text-danger">*</i> </label>
                                         
                                 <input type="text" id="fname_bn" class="form-control" value="{{ old('fname_bn',$student->first_name_bn)}}" name="fname_bn">
                                 @if($errors->has('fname_bn'))
@@ -88,7 +85,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="lname_en">Last Name (English)<i class="text-danger">*</i> </label>
+                                <label for="lname_en"><strong>Last Name (English)</strong><i class="text-danger">*</i> </label>
                                         
                                 <input type="text" id="lname_en" class="form-control" value="{{ old('lname_en',$student->last_name_en)}}" name="lname_en">
                                 @if($errors->has('lname_en'))
@@ -96,7 +93,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                 <label for="lname_bn">Last Name (Bangla)<i class="text-danger">*</i> </label>
+                                 <label for="lname_bn"><strong>Last Name (Bangla)</strong><i class="text-danger">*</i> </label>
                                         
                                 <input type="text" id="lname_bn" class="form-control" value="{{ old('lname_bn',$student->last_name_bn)}}" name="lname_bn">
                                 @if($errors->has('lname_bn'))
@@ -104,14 +101,14 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                 <label for="father_name">Father Name</label>
+                                 <label for="father_name"><strong>Father Name</strong></label>
                                 <input type="text" id="father_name" class="form-control" value="{{ old('father_name',$student->father_name)}}" name="father_name">
                                 @if($errors->has('father_name'))
                                     <span class="text-danger"> {{ $errors->first('father_name') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="father_contact">Father Contact</label>
+                                <label for="father_contact"><strong>Father Contact</strong></label>
                                 <input type="text" id="father_contact" class="form-control" value="{{ old('father_contact',$student->father_contact)}}" name="father_contact">
                                 @if($errors->has('father_contact'))
                                     <span class="text-danger"> {{ $errors->first('father_contact') }}</span>
@@ -119,21 +116,21 @@
                             </div>
                             <div class="col-12 col-lg-6">
                                 
-                                <label for="mother_name">Mother Name</label>
+                                <label for="mother_name"><strong>Mother Name</strong></label>
                                 <input type="text" id="mother_name" class="form-control" value="{{ old('mother_name',$student->mother_name)}}" name="mother_name">
                                 @if($errors->has('mother_name'))
                                     <span class="text-danger"> {{ $errors->first('mother_name') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="mother_contact">Mother Contact</label>
+                                <label for="mother_contact"><strong>Mother Contact</strong></label>
                                 <input type="text" id="mother_contact" class="form-control" value="{{ old('mother_contact',$student->mother_contact)}}" name="mother_contact">
                                 @if($errors->has('mother_contact'))
                                     <span class="text-danger"> {{ $errors->first('mother_contact') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="gender">Gender</label>
+                                <label for="gender"><strong>Gender</strong></label>
                                 <select id="status" class="form-control" name="gender">
                                     <option value="">Select Gender</option>
                                     <option value="male" @if(old('gender',$student->gender)=='male') selected @endif>Male</option>
@@ -145,21 +142,21 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="date_of_birth">Date of Birth <i class="text-danger">*</i></label>
+                                <label for="date_of_birth"><strong>Date of Birth </strong><i class="text-danger">*</i></label>
                                 <input type="date" id="date_of_birth" class="form-control" value="{{ old('date_of_birth',$student->date_of_birth)}}" name="date_of_birth">
                                 @if($errors->has('date_of_birth'))
                                     <span class="text-danger"> {{ $errors->first('date_of_birth') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                               <label for="place_of_birth">Place of Birth <i class="text-danger">*</i></label>
+                               <label for="place_of_birth"><strong>Place of Birth </strong><i class="text-danger">*</i></label>
                                 <input type="text" id="place_of_birth" class="form-control" value="{{ old('place_of_birth',$student->date_of_birth)}}" name="place_of_birth">
                                 @if($errors->has('place_of_birth'))
                                     <span class="text-danger"> {{ $errors->first('place_of_birth') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                               <label>Class Name</label>
+                               <label><strong>Class Name</strong></label>
                                 <select  id="class_id" name="class_id" required class="form-control">
                                     <option value="">Select Class</option>
                                     @forelse($classes as $class)
@@ -170,7 +167,7 @@
                                 </select>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label>Section Name</label>
+                                <label><strong>Section Name</strong></label>
                                 <select  id="section_id" name="section_id" required class="form-control">
                                     <option value="">Select Section</option>
                                     @forelse($section as $s)
@@ -181,56 +178,56 @@
                                 </select>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="EmailAddress">Email <i class="text-danger">*</i></label>
+                                <label for="EmailAddress"><strong>Email</strong> <i class="text-danger">*</i></label>
                                 <input type="text" id="EmailAddress" class="form-control" value="{{ old('EmailAddress',$student->email)}}" name="EmailAddress" placeholder="example@gmail.com">
                                 @if($errors->has('EmailAddress'))
                                     <span class="text-danger"> {{ $errors->first('EmailAddress') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                               <label for="contactNumber_en">Contact Number (English) <i class="text-danger">*</i></label>
+                               <label for="contactNumber_en"><strong>Contact Number (English)</strong> <i class="text-danger">*</i></label>
                                 <input type="text" id="contactNumber_en" class="form-control" value="{{ old('contactNumber_en',$student->contact_no_en)}}" name="contactNumber_en">
                                 @if($errors->has('contactNumber_en'))
                                     <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="contactNumber_bn">Contact Number (Bangla)</label>
+                                <label for="contactNumber_bn"><strong>Contact Number (Bangla)</strong></label>
                                 <input type="text" id="contactNumber_bn" class="form-control" value="{{ old('contactNumber_bn',$student->contact_no_bn)}}" name="contactNumber_bn">
                                 @if($errors->has('contactNumber_bn'))
                                     <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                               <label for="username">User Name</label>
+                               <label for="username"><strong>User Name</strong></label>
                                 <input type="text" id="username" class="form-control" value="{{ old('username',$student->username)}}" name="username">
                                 @if($errors->has('username'))
                                     <span class="text-danger"> {{ $errors->first('username') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                               <label for="present_address">Present Address</label>
+                               <label for="present_address"><strong>Present Address</strong></label>
                                 <textarea name="present_address_en" id="present_address_en" cols="30" rows="10" value="{{ old('username')}}" class="form-control">{{$student->present_address_en}}</textarea>
                                 @if($errors->has('present_address_en'))
                                     <span class="text-danger"> {{ $errors->first('present_address_en') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                               <label for="parmanent_address">Parmanent Address</label>
+                               <label for="parmanent_address"><strong>Parmanent Address</strong></label>
                                 <textarea name="parmanent_address_en" id="parmanent_address_en" cols="30" rows="10"  value="{{ old('username')}}" class="form-control">{{$student->parmanent_address_en}}</textarea>
                                 @if($errors->has('parmanent_address_en'))
                                     <span class="text-danger"> {{ $errors->first('parmanent_address_en') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                               <label for="password">Password <i class="text-danger">*</i></label>
+                               <label for="password"><strong>Password</strong> <i class="text-danger">*</i></label>
                                 <input type="password" id="password" class="form-control" name="password"placeholder="Choose a safe one.." >
                                     @if($errors->has('password'))
                                         <span class="text-danger"> {{ $errors->first('password') }}</span>
                                     @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label for="image">Image</label>
+                                <label for="image"><strong>Image</strong></label>
                                 <input type="file" id="image" class="form-control" placeholder="Image" name="image">
                             </div>
                             <div class="col-12 col-lg-6">

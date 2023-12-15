@@ -11,43 +11,24 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">User Add</li>
             </ol>
         </nav>
-    </div>
-    <div class="ms-auto">
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary">Settings</button>
-            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                <a class="dropdown-item" href="javascript:;">Another action</a>
-                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-            </div>
-        </div>
     </div>
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        <div class="card-header">
-            
-        </div>
         <div class="card-body">
             <div class="bs-stepper-content">
                 <form class="form needs-validation" method="post" enctype="multipart/form-data" action="{{route('user.store')}}">
                     @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
-
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Role</strong>
+                                <label for="validationCustom01"><strong>Role</strong>
                                 <span class="text-danger">*</span>
                                 </label>
                                 <select class="default-select wide form-control shadow-lg" id="validationCustom05" name="roleId" id="roleId">
@@ -86,8 +67,8 @@
                             <div class="col-12 col-lg-6">
                                 <label for="status"><strong>Status</strong></label>
                                 <select id="status" class="form-control shadow-lg" name="status">
-                                    <option value="1" @if(old('status')==1) selected @endif>Active</option>
-                                    <option value="0" @if(old('status')==0) selected @endif>Inactive</option>
+                                    <option value="1" @if(old('status',1)==1) selected @endif>Active</option>
+                                    <option value="0" @if(old('status',1)==0) selected @endif>Inactive</option>
                                 </select>
                                     @if($errors->has('status'))
                                         <span class="text-danger"> {{ $errors->first('status') }}</span>

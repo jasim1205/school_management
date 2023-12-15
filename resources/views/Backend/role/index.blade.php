@@ -16,9 +16,12 @@
                 </ol>
             </nav>
         </div>
+        <div class="ms-auto">
+            <a href="{{route('role.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
+        </div>
     </div>
     <!--end breadcrumb-->
-    <a class="" href="{{route('role.create')}}"><i class="fa fa-plus">Add New</i></a>
+   
     <hr/>
     <div class="card">
         <div class="card-body">
