@@ -176,17 +176,18 @@
                                 <th>{{$totalMarks}}</th>
                                 <th>{{ number_format($averageGPA, 2) }}</th>
                                 <th>
-                                   @php
-    $totalGL = ($averageGPA >= 5.00) ? 'A+' :
-                (($averageGPA >= 4.00) ? 'A' :
-                (($averageGPA >= 3.50) ? 'A-' :
-                (($averageGPA >= 3.00) ? 'B' :
-                (($averageGPA >= 2.00) ? 'C' :
-                (($averageGPA >= 1.00) ? 'D' :
-                (($averageGPA <= 0.00) ? 'F' : ''))))));
-@endphp
+                                    @php
+                                        $totalGL = 
+                                            ($averageGPA >= 5.00) ? 'A+' :
+                                            (($averageGPA >= 4.00) ? 'A' :
+                                            (($averageGPA >= 3.50) ? 'A-' :
+                                            (($averageGPA >= 3.00) ? 'B' :
+                                            (($averageGPA >= 2.00) ? 'C' :
+                                            (($averageGPA >= 1.00) ? 'D' :
+                                            (($averageGPA <= 0.00) ? 'F' : ''))))));
+                                    @endphp
 
-{{$totalGL}}
+                                    {{$totalGL}}
 
                                 </th>
 

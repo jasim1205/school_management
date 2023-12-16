@@ -137,8 +137,6 @@
 						</li>
 						<li> <a href="{{route('session.index')}}"><i class='bx bx-radio-circle'></i>Session List</a>
 						</li>
-						<li> <a href="{{route('exam.index')}}"><i class='bx bx-radio-circle'></i>Exam List</a>
-						</li>
 						<li> <a href="{{route('group.index')}}"><i class='bx bx-radio-circle'></i>Group List</a>
 						</li>
 						<li> <a href="{{route('period.index')}}"><i class='bx bx-radio-circle'></i>Period List</a>
@@ -180,6 +178,19 @@
 						</li>
 						<li> <a href="{{route('finalresult')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
 						</li> 
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="fa fa-newspaper"></i>
+						</div>
+						<div class="menu-title">Exam Manegement</div>
+					</a>
+					<ul>
+						<li> <a href="{{route('exam.index')}}"><i class='bx bx-radio-circle'></i>Exam List</a>
+						</li>
+						<li> <a href="{{route('admit.index')}}"><i class='bx bx-radio-circle'></i>Admit Card</a>
+						</li>
 					</ul>
 				</li>
 				@endif

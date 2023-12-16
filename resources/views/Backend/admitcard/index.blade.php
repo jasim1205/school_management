@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Individual Result List')
+@section('title','Admit Card')
 @section('content')
 @push('styles')
     <style>
@@ -34,7 +34,7 @@
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
                                 <span class="text-danger">*</span>
                                 </label>
-                                <select class="default-select wide form-control" id="validationCustom05" name="exam_id" id="roleId">
+                                <select class="default-select wide form-control" id="exam_id" name="exam_id" id="roleId">
                                     <option value="">Select Exam</option>
                                 @forelse($exam as $e)
                                     <option value="{{$e->id}}" {{ old('exam_id')==$e->id?"selected":""}}> {{ $e->exam_name}}</option>
@@ -43,8 +43,21 @@
                                 @endforelse
                                 </select>
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <button class="btn btn-success px-4 mt-4" type="submit">Search</button>
+                            <div class="col-12 col-lg-4">
+                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Session</strong>
+                                <span class="text-danger">*</span>
+                                </label>
+                                <select class="default-select wide form-control" id="session_id" name="session_id" id="">
+                                    <option value="">Select Session</option>
+                                @forelse($session as $s)
+                                    <option value="{{$s->id}}" {{ old('session_id')==$s->id?"selected":""}}> {{ $s->session_year_en}}</option>
+                                @empty
+                                    <option value="">No Role found</option>
+                                @endforelse
+                                </select>
+                            </div>
+                            <div class="col-12 col-lg-4 mt-5">
+                                <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end no-print"><i class="fas fa-print"></i> Print</a>
                             </div>
                         </div><!---end row-->
                     </div>
@@ -52,8 +65,8 @@
             </div>
         </div>
     </div>
-    @foreach($student as $s)
-    <div class="card">
+    @foreach($student as $value)
+    <div class="card d-none">
         <div class="card-header text-center">
             <div class="row">
                 <div class="col-lg-3">
@@ -69,19 +82,15 @@
                     <h5>
                         <img src="{{asset('public/assets/images/result_logo.png')}}" class=""  alt="Student Image">
                     </h5>
-                    <p class="m-0"><strong>Session:</strong>  
-                       
-                    </p>
+                    
+                    <strong><p class="m-0" id="selectedSessionYear"></p></strong>
                 </div>
             </div>
                
             <hr>
             <div class="bg-secondary  mb-2">
-                <h3 class="text-white">
-                    @foreach($exam as $e)
-                        {{ $e->exam_name }}
-                        @break
-                    @endforeach
+                <h3 class="text-white" id="selectedExamName">
+                   
                 </h3>
             </div>
             <div class="table-responsive">
@@ -90,19 +99,19 @@
                     <tr>
                         <th>Name</th>
                         <td>
-                            {{$s->first_name_en}} {{$s->last_name_en}}
+                            {{$value->first_name_en}} {{$s->last_name_en}}
                         </td>
                         <th>Class</th>
                         <td>
-                            {{$s->class->class_name_en}}
+                            {{$value->class->class_name_en}}
                         </td>
                     </tr>
                     <tr>
                         <th>Student Id</th>
-                        <td>{{$s->student_id}}</td>
+                        <td>{{$value->student_id}}</td>
                         <th>Roll No</th>
                         <td>
-                            {{$s->roll}}
+                            {{$value->roll}}
                         </td>
                     </tr>
                     
@@ -114,4 +123,30 @@
 </div>
 <!--end stepper two-->
 @endsection
+@push('scripts')
+  <script>
+    $('#exam_id, #session_id').change(function () {
+        var selectedExam = $('#exam_id option:selected').text();
+        var selectedSession = $('#session_id option:selected').text();
+
+        if (selectedExam !== '' && selectedSession !== '') {
+            $('.card').each(function () {
+                var $card = $(this);
+                $card.find('#selectedExamName').text(selectedExam);
+                $card.find('#selectedSessionYear').text('Session:' + selectedSession);
+            });
+            $('.card').removeClass('d-none');
+        } else {
+            $('.card').addClass('d-none');
+        }
+    });
+</script>
+
+
+
+
+
+@endpush
+
+
 
