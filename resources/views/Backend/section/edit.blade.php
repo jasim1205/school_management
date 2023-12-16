@@ -11,7 +11,7 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Section Update</li>
             </ol>
         </nav>
     </div>
@@ -30,22 +30,15 @@
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        <div class="card-header">
-            
-        </div>
         <div class="card-body">
             <div class="bs-stepper-content">
                <form class="form" method="post"action="{{route('section.update',encryptor('encrypt',$section->id))}}">
                         @csrf
                         @method('Patch')
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
-
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
                                 <label class="col-sm-3 col-form-label"><strong>Section Name (English) </strong> <i class="text-danger">*</i></label>

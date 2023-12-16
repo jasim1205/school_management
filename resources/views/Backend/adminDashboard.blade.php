@@ -40,7 +40,7 @@
 					<div class="d-flex align-items-center">
 						<div>
 							<p class="mb-0 text-secondary">Total Collection</p>
-							<h4 class="my-1">{{$totalCollection}} K</h4>
+							<h4 class="my-1">{{$totalCollection}} $</h4>
 							<p class="mb-0 font-13 text-danger"><i class="fa-solid fa-money-check-dollar"></i>Total Collection</p>
 						</div>
 						<div class="widgets-icons bg-light-danger text-danger ms-auto"><i class="fa-solid fa-money-check-dollar"></i>
@@ -81,21 +81,21 @@
 						<div class="col">
 							<div>
 								<p class="mb-0 text-secondary">Total Teacher</p>
-								<h4 class="my-1">$4805</h4>
+								<h4 class="my-1">{{ $totalTeachers }}</h4>
 								<p class="mb-0 font-13 text-success"></p>
 							</div>
 						</div>
 						<div class="col">
 							<div>
 								<p class="mb-0 text-secondary">Total Student</p>
-								<h4 class="my-1">8.4K</h4>
+								<h4 class="my-1">{{$totalStudents}}</h4>
 								<p class="mb-0 font-13 text-success"></p>
 							</div>
 						</div>
 						<div class="col">
 							<div>
 								<p class="mb-0 text-secondary">Total Collection</p>
-								<h4 class="my-1">59K</h4>
+								<h4 class="my-1">{{$totalCollection}} $</h4>
 								<p class="mb-0 font-13 text-danger"></p>
 							</div>
 						</div>

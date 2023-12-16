@@ -11,7 +11,7 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Add New Period</li>
             </ol>
         </nav>
     </div>
@@ -30,7 +30,6 @@
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
@@ -42,23 +41,21 @@
                 <form class="form" method="post"action="{{route('period.store')}}">
                                 @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
 
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
-                                 <label class="col-sm-3 col-form-label">Period Name <i class="text-danger">*</i></label>
+                                 <label class="col-sm-3 col-form-label"><strong>Period Name </strong><i class="text-danger">*</i></label>
                                 
-                                <input type="text" id="class_name_en" class="form-control shadow-lg" value="{{ old('period_name')}}" name="period_name" placeholder="">
+                                <input type="text" id="class_name_en" class="form-control shadow-lg" value="{{ old('period_name')}}" name="period_name" placeholder="1st Period">
 
                                 @if($errors->has('period_name'))
                                 <span class="text-danger"> {{ $errors->first('class_name_en') }}</span>
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">Duration</label>
+                                <label class="col-sm-3 col-form-label"><strong>Duration</strong></label>
                                 
-                                <input type="text" id="duration" class="form-control shadow-lg" value="{{ old('duration')}}" name="duration" placeholder="Class Name Bangla">
+                                <input type="text" id="duration" class="form-control shadow-lg" value="{{ old('duration')}}" name="duration" placeholder="Duration of Period">
                                 @if($errors->has('duration'))
                                     <span class="text-danger"> {{ $errors->first('duration') }}</span>
                                 @endif

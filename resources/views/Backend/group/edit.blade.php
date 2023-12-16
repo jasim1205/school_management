@@ -11,7 +11,7 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Group Update</li>
             </ol>
         </nav>
     </div>
@@ -30,7 +30,6 @@
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
@@ -43,12 +42,9 @@
                                 @csrf
                                 @method('PATCH')
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
-
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">Group Name (English)  <i class="text-danger">*</i></label>
+                                <label class="col-sm-3 col-form-label"><strong>Group Name (English)  </strong><i class="text-danger">*</i></label>
                                 
                                 <input type="text" id="group_name_en" class="form-control shadow-lg" value="{{ old('group_name_en',$group->group_name_en)}}" name="group_name_en" placeholder="Group Name English">
 
@@ -57,7 +53,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">Group Name (Bangla)</label>
+                                <label class="col-sm-3 col-form-label"><strong>Group Name (Bangla)</strong></label>
                                 <input type="text" id="group_name_bn" class="form-control shadow-lg" value="{{ old('group_name_bn',$group->group_name_bn)}}" name="group_name_bn" placeholder="Group Name Bangla">
                                 @if($errors->has('group_name_bn'))
                                     <span class="text-danger"> {{ $errors->first('group_name_bn') }}</span>

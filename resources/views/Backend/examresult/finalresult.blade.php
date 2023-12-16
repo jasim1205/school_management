@@ -93,12 +93,18 @@
                     <h5>
                         <img src="{{asset('public/assets/images/result_logo.png')}}" class=""  alt="Student Image">
                     </h5>
+                    <p class="m-0"><strong>Session:</strong>  
+                        @foreach($finalresult as $result)
+                                {{ $result->session->session_year_en }}
+                                @break
+                        @endforeach
+                    </p>
                 </div>
             </div>
                
             <hr>
-            <div  class="border mb-2">
-                <h3 class="bg-secondary text-white">
+            <div class="bg-secondary  mb-2">
+                <h3 class="text-white">
                     @foreach($finalresult as $result)
                         {{ $result->exam->exam_name }}
                         @break
@@ -118,12 +124,10 @@
                     <tr>
                         <th>Student Id</th>
                         <td>{{ $studentInfo ? $studentInfo->student_id : '' }}</td>
-                        <th>Session</th>
+                        <th>Roll No</th>
                         <td>
-                        @foreach($finalresult as $result)
-                                {{ $result->session->session_year_en }}
-                                @break
-                        @endforeach
+                            {{ $studentInfo ? $studentInfo->roll : '' }}
+                        </td>
                     </tr>
                 </table>
             </div>

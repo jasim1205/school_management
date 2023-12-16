@@ -41,6 +41,19 @@
                                 </select>
                                 
                             </div>
+                             <div class="col-12 col-lg-4">
+                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
+                                <span class="text-danger">*</span>
+                                </label>
+                                <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
+                                    <option value="">Select Student</option>
+                                @forelse($student as $s)
+                                    <option class="sclass sclass{{$s->class_id}}" value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
+                                @empty
+                                    <option value="">No Role found</option>
+                                @endforelse
+                                </select>
+                            </div>
                             <div class="col-12 col-lg-4">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
                                 <span class="text-danger">*</span>
@@ -54,19 +67,7 @@
                                 @endforelse
                                 </select>
                             </div>
-                            <div class="col-12 col-lg-4">
-                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
-                                <span class="text-danger">*</span>
-                                </label>
-                                <select class="default-select wide form-control" id="validationCustom05" name="student_id" id="">
-                                    <option value="">Select Student</option>
-                                @forelse($student as $s)
-                                    <option class="sclass sclass{{$s->class_id}}" value="{{$s->id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->first_name_en}}  {{ $s->last_name_en}}</option>
-                                @empty
-                                    <option value="">No Role found</option>
-                                @endforelse
-                                </select>
-                            </div>
+                           
                             <div class="col-12 col-lg-6">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Session</strong>
                                 <span class="text-danger">*</span>

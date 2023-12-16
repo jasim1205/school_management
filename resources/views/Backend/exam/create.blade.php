@@ -11,7 +11,7 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">Add New Exam</li>
             </ol>
         </nav>
     </div>
@@ -30,24 +30,17 @@
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        <div class="card-header">
-            
-        </div>
         <div class="card-body">
             <div class="bs-stepper-content">
                <form class="form" method="post"action="{{route('exam.store')}}">
                                 @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
-
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">Exam Name  <i class="text-danger">*</i></label>
+                                <label class="col-sm-3 col-form-label"><strong>Exam Name</strong><i class="text-danger">*</i></label>
                                 
                                 <input type="text" id="" class="form-control" value="{{ old('exam_name')}}" name="exam_name" placeholder="Input Exam name">
 
@@ -56,7 +49,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">Start Date</label>
+                                <label class="col-sm-3 col-form-label"><strong>Start Date</strong></label>
                                 
                                 <input type="date" id="" class="form-control" value="{{ old('start_date')}}" name="start_date">
                                 @if($errors->has('start_date'))
@@ -64,7 +57,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">End Date</label>
+                                <label class="col-sm-3 col-form-label"><strong>End Date</strong></label>
                                 
                                 <input type="date" id="" class="form-control" value="{{ old('end_date')}}" name="end_date">
                                 @if($errors->has('end_date'))
@@ -72,7 +65,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <button class="btn btn-success px-4" type="submit">Submit</button>
+                                <button class="btn btn-success px-4" style="margin-top: 35px;" type="submit">Submit</button>
                             </div>
                         </div><!---end row-->
                     </div>

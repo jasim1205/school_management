@@ -11,7 +11,7 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item active" aria-current="page">New Class Add</li>
             </ol>
         </nav>
     </div>
@@ -30,24 +30,17 @@
 </div>
 <!--end breadcrumb-->
 <!--start stepper two--> 
-<h6 class="text-uppercase">Linear Stepper</h6>
 <hr>
 <div id="stepper2" class="bs-stepper">
     <div class="card">
-        <div class="card-header">
-            
-        </div>
         <div class="card-body">
             <div class="bs-stepper-content">
                 <form class="form" method="post"action="{{route('classes.store')}}">
                         @csrf
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-                    <h5 class="mb-1">Your Personal Information</h5>
-                    <p class="mb-4">Enter your personal information to get closer to copanies</p>
-
                         <div class="row g-3">
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">Class Name (English)  <i class="text-danger">*</i></label>
+                                <label class="col-sm-3 col-form-label"><strong>Class Name (English)</strong><i class="text-danger">*</i></label>
                                 <input type="text" id="class_name_en" class="form-control" value="{{ old('class_name_en')}}" name="class_name_en" placeholder="Class Name English">
 
                                 @if($errors->has('class_name_en'))
@@ -55,7 +48,7 @@
                                 @endif
                             </div>
                             <div class="col-12 col-lg-6">
-                                <label class="col-sm-3 col-form-label">Class Name (Bangla)</label>
+                                <label class="col-sm-3 col-form-label"><strong>Class Name (Bangla)</strong></label>
                                 <input type="text" id="class_name_bn" class="form-control" value="{{ old('class_name_bn')}}" name="class_name_bn" placeholder="Class Name Bangla">
                                 @if($errors->has('class_name_bn'))
                                     <span class="text-danger"> {{ $errors->first('class_name_bn') }}</span>
