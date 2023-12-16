@@ -30,6 +30,7 @@ use App\Http\Controllers\Backend\ExamResultController as examresult;
 use App\Http\Controllers\Backend\FinalResultController as finalresult;
 use App\Http\Controllers\Backend\StudentFeeController as studentfee;
 use App\Http\Controllers\Backend\StudentFeePaymentController as feepayment;
+use App\Http\Controllers\Backend\AdmitCardController as admit;
 
 //student
 use App\Http\Controllers\Student\AuthController as stuauth;
@@ -82,6 +83,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('weekday', weekday::class);
     Route::resource('routine', routine::class);
     Route::resource('exam', exam::class);
+    Route::resource('admit', admit::class);
 
     Route::get('routine/show/{class}', [RoutineController::class, 'showClassRoutine'])->name('routine.show');
 
