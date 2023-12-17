@@ -41,7 +41,6 @@
                                     <option value="">No Class found</option>
                                 @endforelse
                                 </select>
-                                
                             </div>
                             <div class="col-12 col-lg-4">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
@@ -131,7 +130,6 @@
                     </tr>
                 </table>
             </div>
-            
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -195,7 +193,7 @@
                         @endif
                     </tbody>
                 </table>
-                 <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end no-print"><i class="fas fa-print"></i> Print</a>
+                    <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end no-print"><i class="fas fa-print"></i> Print</a>
             </div>
         </div>
     </div>
