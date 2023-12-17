@@ -76,7 +76,7 @@
             <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
             <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
             <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li>
-            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{{route('login')}}" data-toggle="modal" data-target="#loginModal">login</a></li>
+            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{{route('frontstu.login')}}" data-toggle="modal" data-target="#loginModal">login</a></li>
             
           </ul>
         </div>
@@ -192,10 +192,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('login.check')}}" class="row" method="post">
+                <form action="{{route('frontstu.login.check')}}" class="row" method="post">
                     @csrf
                     <div class="col-12">
-                        <input type="text" class="form-control mb-3" id="loginPhone" name="username" value="{{old('username')}}" placeholder="Phone">
+                        <input type="text" class="form-control mb-3" id="loginPhone" name="username" value="{{old('username')}}" placeholder="Username/email">
                     </div>
                     <div class="col-12">
                         <input type="password" class="form-control mb-3" id="loginPassword" name="password" placeholder="Password">
