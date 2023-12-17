@@ -102,13 +102,13 @@ Route::middleware(['checkstudent'])->prefix('student')->group(function(){
     Route::resource('studentfee', studentfee::class);
     Route::get('studentfee/feepayment/{id}', [studentfee::class, 'feepayment'])->name('studentfee.feepayment');
     Route::post('studentfee/feepayment/{id}', [studentfee::class, 'feeupdate'])->name('feeupdate');
-    Route::get('studentfee/paymentslip/{id}', [studentfee::class, 'paymentslip'])->name('paymentslip');
+    Route::get('studentfee/paymentslip/{id}', [studentfee::class, 'paymentslip'])->name('paymentslip.paymentslip');
 
 
 
 //student Result
     Route::resource('examresult', examresult::class);
-    Route::get('finalresult',[examresult::class, 'finalresult'])->name('finalresult');
+    Route::get('finalresult',[examresult::class, 'finalresult'])->name('finalresult.finalresult');
     Route::get('individual',[examresult::class,'individual'])->name('individual');
 
 
