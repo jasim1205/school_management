@@ -20,8 +20,8 @@ class checkStudent
         if (!Session::has('userId') || Session::has('userId') == null) {
             return redirect()->route('studentlogOut');
         } else {
-            $student = Student::where('status', 1)->where('id', currentUserId())->exists();
-            if (!$student)
+            $user = Student::where('status', 1)->where('id', currentUserId())->exists();
+            if (!$user)
                 return redirect()->route('studentlogOut');
             else
                 return $next($request);

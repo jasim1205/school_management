@@ -92,7 +92,7 @@
 <!-- /success story -->
 
 <!-- teachers -->
-<section class="section">
+  <section class="section">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12">

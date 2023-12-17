@@ -8,6 +8,7 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\student\AddNewRequest;
 use App\Http\Requests\Backend\student\UpdateRequest;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -59,7 +60,7 @@ class StudentController extends Controller
             $student->username = $request->username;
             $student->present_address_en = $request->present_address_en;
             $student->parmanent_address_en = $request->parmanent_address_en;
-            $student->password = $request->password;
+            $student->password = Hash::make($request->password);
             if($request->hasFile('image')){
                 $imageName = rand(111,999).time().'.'.
                 $request->image->extension();
@@ -132,7 +133,7 @@ class StudentController extends Controller
             if($request->parmanent_address_en)
                 $student->parmanent_address_en = $request->parmanent_address_en;
             if($request->password)
-                $student->password = $request->password;
+                $student->password = Hash::make($request->password);
             if($request->hasFile('image')){
                 $imageName = rand(111,999).time().'.'.
                 $request->image->extension();

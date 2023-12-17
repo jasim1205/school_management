@@ -33,8 +33,9 @@ use App\Http\Controllers\Backend\StudentFeePaymentController as feepayment;
 use App\Http\Controllers\Backend\AdmitCardController as admit;
 
 //student
-use App\Http\Controllers\Student\AuthController as stuauth;
-use App\Http\Controllers\student\DashboardController as studashboard; 
+use App\Http\Controllers\Student\AuthController;
+use App\Http\Controllers\student\DashboardController as studashboard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,15 +88,6 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 
     Route::get('routine/show/{class}', [RoutineController::class, 'showClassRoutine'])->name('routine.show');
 
-//students controller
-Route::get('/student/login',[AuthController::class, 'signInForm'])->name('studentLogin');
-Route::post('/student/login/{back_route}', [AuthController::class, 'signInCheck'])->name('studentLogin.check');
-Route::get('/student/logout',[AuthController::class, 'signOut'])->name('studentlogOut');
-
-
-Route::middleware(['checkstudent'])->prefix('student')->group(function(){
-    Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard'); 
-});
 
 //fee menagement
     Route::resource('fee', fee::class);
@@ -137,6 +129,17 @@ Route::middleware(['checkstudent'])->prefix('student')->group(function(){
    
 });
 
+//students controller
+    Route::get('frontstu/register', [AuthController::class, 'signUpForm'])->name('frontstu.register');
+    Route::post('frontstu/register', [AuthController::class, 'signUpStore'])->name('frontstu.store');
+    Route::get('frontstu/login', [AuthController::class,'signInForm'])->name('frontstu.login');
+    Route::post('frontstu/login', [AuthController::class,'signInCheck'])->name('frontstu.login.check');
+    Route::get('frontstu/logout', [AuthController::class,'signOut'])->name('frontstu.logout');
+
+
+    Route::middleware(['checkstudent'])->prefix('student')->group(function(){
+        Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard'); 
+    });
 
 // Route::get('/login', function () {
 //     return view('backend.authentication.login');

@@ -1,11 +1,11 @@
 
-<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+		<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
 					<div class="col">
 						<div class="card radius-10">
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-secondary">Total Teacher{{$teacher->total()}}</p>
+										<p class="mb-0 text-secondary"></p>
 										<h4 class="my-1">$4805</h4>
 										<p class="mb-0 font-13 text-success"><i class='bx bxs-up-arrow align-middle'></i>$34 Since last week</p>
 									</div>
