@@ -30,7 +30,7 @@
                     <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                         <div class="row g-3">
                             
-                            <div class="col-12 col-lg-4">
+                            <div class="col-12 col-lg-5">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Exam</strong>
                                 <span class="text-danger">*</span>
                                 </label>
@@ -43,7 +43,7 @@
                                 @endforelse
                                 </select>
                             </div>
-                            <div class="col-12 col-lg-4">
+                            <div class="col-12 col-lg-5">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Session</strong>
                                 <span class="text-danger">*</span>
                                 </label>
@@ -56,7 +56,7 @@
                                 @endforelse
                                 </select>
                             </div>
-                            <div class="col-12 col-lg-4 mt-5">
+                            <div class="col-12 col-lg-2 mt-5">
                                 <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end no-print"><i class="fas fa-print"></i> Print</a>
                             </div>
                         </div><!---end row-->
@@ -114,8 +114,11 @@
                             {{$value->roll}}
                         </td>
                     </tr>
-                    
                 </table>
+                <div class="col-3">
+                    <p class="border"></p>
+                    <h4>Teacher's Signature</h4>
+                </div>
             </div> 
         </div>
     </div>

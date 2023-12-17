@@ -1,0 +1,29 @@
+@push('scripts')
+<script>
+    function showStudents(selectedClass) {
+        const classId = selectedClass.value;
+
+        if (!classId) {
+            return;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `/students?class_id=${classId}`);
+        xhr.onload = function () {
+            const students = JSON.parse(this.responseText);
+            const studentSelect = document.getElementById("student_id");
+            studentSelect.innerHTML = "";
+
+            students.forEach(student => {
+                const option = document.createElement("option");
+                option.value = student.id;
+                option.innerText = `${student.first_name_en} ${student.last_name_en}`;
+                studentSelect.appendChild(option);
+            });
+
+            document.getElementById("student-container").style.display = "block";
+        };
+        xhr.send();
+    }
+</script>
+@endpush

@@ -17,7 +17,7 @@
         </nav>
     </div>
     <div class="ms-auto">
-        <a href="{{route('exam.create')}}" class="btn btn-info"><i class="fa fa-plus">ADD NEW</i></a>
+        <a href="{{route('exam.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
     </div>
 </div>
 <!--end breadcrumb-->

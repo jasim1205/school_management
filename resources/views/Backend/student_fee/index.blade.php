@@ -67,7 +67,7 @@
                                         </a>
                                     @endif
                                     @if($value->status == 1)
-                                        <a href="{{ route('paymentslip', encryptor('encrypt', $value->id)) }}">
+                                        <a href="{{ route('paymentslip.paymentslip', encryptor('encrypt', $value->id)) }}">
                                             Pay Slip
                                         </a>
                                     @endif

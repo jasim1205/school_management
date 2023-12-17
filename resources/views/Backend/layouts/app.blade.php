@@ -176,7 +176,7 @@
 					<ul>
 						<li> <a href="{{route('examresult.index')}}"><i class='bx bx-radio-circle'></i> Result</a>
 						</li>
-						<li> <a href="{{route('finalresult')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
+						<li> <a href="{{route('finalresult.finalresult')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
 						</li> 
 					</ul>
 				</li>
@@ -248,7 +248,7 @@
 				<ul>
 					<li> <a href="{{route('examresult.index')}}"><i class='bx bx-radio-circle'></i> Result</a>
 					</li>
-					<li> <a href="{{route('finalresult')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
+					<li> <a href="{{route('finalresult.finalresult')}}"><i class='bx bx-radio-circle'></i>Final Result</a>
 					</li> 
 				</ul>
 				</li>
