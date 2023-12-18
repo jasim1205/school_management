@@ -35,6 +35,7 @@ use App\Http\Controllers\Backend\AdmitCardController as admit;
 //student
 use App\Http\Controllers\Student\AuthController;
 use App\Http\Controllers\student\DashboardController as studashboard;
+use App\Http\Controllers\student\ProfileController as stu_profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,7 +139,8 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 
 
     Route::middleware(['checkstudent'])->prefix('student')->group(function(){
-        Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard'); 
+        Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard');
+         Route::get('/profile', [stu_profile::class, 'index'])->name('student_profile');
     });
 
 // Route::get('/login', function () {
