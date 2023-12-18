@@ -34,8 +34,8 @@ use App\Http\Controllers\Backend\AdmitCardController as admit;
 
 //student
 use App\Http\Controllers\Student\AuthController;
-use App\Http\Controllers\student\DashboardController as studashboard;
-use App\Http\Controllers\student\ProfileController as stu_profile;
+use App\Http\Controllers\Student\DashboardController as studashboard;
+use App\Http\Controllers\Student\ProfileController as stu_profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,16 +131,19 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 });
 
 //students controller
-    Route::get('frontstu/register', [AuthController::class, 'signUpForm'])->name('frontstu.register');
-    Route::post('frontstu/register', [AuthController::class, 'signUpStore'])->name('frontstu.store');
-    Route::get('frontstu/login', [AuthController::class,'signInForm'])->name('frontstu.login');
-    Route::post('frontstu/login', [AuthController::class,'signInCheck'])->name('frontstu.login.check');
-    Route::get('frontstu/logout', [AuthController::class,'signOut'])->name('frontstu.logout');
+    Route::get('student/register', [AuthController::class, 'signUpForm'])->name('frontstu.register');
+    Route::post('student/register', [AuthController::class, 'signUpStore'])->name('frontstu.store');
+    Route::get('student/login', [AuthController::class,'signInForm'])->name('frontstu.login');
+    Route::post('student/login', [AuthController::class,'signInCheck'])->name('frontstu.login.check');
+    Route::get('student/logout', [AuthController::class,'signOut'])->name('studentlogOut');
 
 
     Route::middleware(['checkstudent'])->prefix('student')->group(function(){
         Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard');
          Route::get('/profile', [stu_profile::class, 'index'])->name('student_profile');
+        Route::post('/profile/save', [stu_profile::class, 'save_profile'])->name('student_save_profile');
+        Route::post('/profile/savePass', [stu_profile::class, 'change_password'])->name('change_password');
+        Route::get('result', [stu_profile::class, 'student_result'])->name('studentresult');
     });
 
 // Route::get('/login', function () {

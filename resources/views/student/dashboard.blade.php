@@ -50,9 +50,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#per_details_tab">About</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#password_tab">Password</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link"  href="{{route('student_profile')}}">Profile</a>
                         </li>
@@ -61,7 +61,7 @@
                 <div class="container-fluid mt-2">
                     <h1 class="text-center">Notice Board</h1>
                     <div class="card border p-2">
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus, animi aliquam beatae neque nesciunt facere. Accusamus quas dignissimos, enim eos facere, esse praesentium officiis ad expedita, dolor repudiandae voluptatem optio.</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus, animi aliquam beatae neque nesciunt facere. Accusamus quas dignissimos, enim eos facere, esse praesentium officiis ad expedita, dolor repudiandae voluptatem optio.</p>
                     </div>
                 </div>
                 <div class="tab-content profile-tab-cont">
@@ -81,11 +81,11 @@
                                         </div>
                                         <div class="row d-flex">
                                             <p class="col-sm-3">Class</p>
-                                            <p class="col-sm-9">{{$student_info->class_id}}</p>
+                                            <p class="col-sm-9">{{$student_info->class?->class_name_en}}</p>
                                         </div>
                                         <div class="row d-flex">
                                             <p class="col-sm-3">Section</p>
-                                            <p class="col-sm-9">{{$student_info->section_id}}</p>
+                                            <p class="col-sm-9">{{$student_info->section?->section_name_en}}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3">Date of
@@ -151,7 +151,7 @@
                     </div>
 
 
-                    <div id="password_tab" class="tab-pane fade">
+                    <!-- <div id="password_tab" class="tab-pane fade">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Change Password</h5>
@@ -177,7 +177,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

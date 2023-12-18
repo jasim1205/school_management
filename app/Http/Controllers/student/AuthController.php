@@ -21,11 +21,11 @@ class AuthController extends Controller
 
     public function signInCheck(SigninRequest $request){
         try{
-            $user=Student::where('username',$request->username)
+            $student=Student::where('username',$request->username)
                         ->orWhere('email',$request->username)->first();
-            if($user){
-                if(Hash::check($request->password , $user->password)){
-                    $this->setSession($user);
+            if($student){
+                if(Hash::check($request->password , $student->password)){
+                    $this->setSession($student);
                     return redirect()->route('studentdashboard')->with('success','Successfully login');
                 }else
                     return redirect()->route('frontstu.login')->with('error','Your phone number or password is wrong!');
@@ -36,12 +36,12 @@ class AuthController extends Controller
             return redirect()->route('frontstu.login')->with('error','Your phone number or password is wrong!');
         }
     }
-
-    public function setSession($user){
+     
+    public function setSession($student){
         return request()->session()->put([
-                'userId'=>encryptor('encrypt',$user->id),
-                'userName'=>encryptor('encrypt',$user->name),
-                'userEmail'=>encryptor('encrypt',$user->email)
+                'userId'=>encryptor('encrypt',$student->id),
+                'userName'=>encryptor('encrypt',$student->name),
+                'userEmail'=>encryptor('encrypt',$student->email)
             ]
         );
     }
