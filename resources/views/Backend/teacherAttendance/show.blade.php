@@ -8,7 +8,7 @@
             <div class="card-header">
                 <div class="col-lg-12">
                     <div class="form-group col-12 col-lg-6">
-                            <h4>Attendance Date: {{$att_date}}</h4>
+                            <h4>Attendance Date: {{date('d-M-Y',strtotime($att_date))}}</h4>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                                 <tr>
                                     <td>{{ $t->teacher?->first_name_en }} {{ $t->teacher?->last_name_en }}
                                     </td>
-                                    <td>
+                                    <td style="color: @if($t->status==1) green @else red @endif;">
                                         {{($t->status==1?'Present':'Absent')}}
                                     </td>
                                     <td>

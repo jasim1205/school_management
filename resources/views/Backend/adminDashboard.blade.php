@@ -130,6 +130,9 @@
 					</div>
 				</div>
 				<div class="product-list p-3 mb-3">
+					 @foreach ($classCounts as $className => $count)
+           
+      
 					<div class="row border mx-0 mb-3 py-2 radius-10 cursor-pointer">
 						<div class="col-sm-6">
 							<div class="d-flex align-items-center">
@@ -137,18 +140,19 @@
 									
 								</div>
 								<div class="ms-2">
-									<h6 class="mb-1">Class - 10</h6>
+									<h6 class="mb-1">{{ $className }}</h6>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm">
-							<h6 class="mt-3">5</h6>
+							<h6 class="mt-3">{{ $count }} students</h6>
 						</div>
 						<div class="col-sm">
 							<div id="chart5"></div>
 						</div>
 					</div>
-					<div class="row border mx-0 mb-3 py-2 radius-10 cursor-pointer">
+					  @endforeach
+					<!-- <div class="row border mx-0 mb-3 py-2 radius-10 cursor-pointer">
 						<div class="col-sm-6">
 							<div class="d-flex align-items-center">
 								<div class="product-img">
@@ -255,7 +259,7 @@
 						<div class="col-sm">
 							<div id="chart11"></div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

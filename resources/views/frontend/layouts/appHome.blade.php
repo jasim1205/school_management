@@ -59,7 +59,7 @@
 <!-- header -->
 <header class="fixed-top header">
   <!-- top header -->
-  <div class="top-header py-2 bg-white">
+  <!-- <div class="top-header py-2 bg-white">
     <div class="container">
       <div class="row no-gutters">
         <div class="col-lg-4 text-center text-lg-left">
@@ -82,7 +82,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- navbar -->
   <div class="navigation w-100">
     <div class="container">
@@ -102,12 +102,12 @@
               <a class="nav-link" href="{{route('about')}}">About</a>
             </li>
             <li class="nav-item @@courses">
-              <a class="nav-link" href="courses.html">COURSES</a>
+              <a class="nav-link" href="courses.html">Notice</a>
             </li>
             <li class="nav-item @@events">
-              <a class="nav-link" href="events.html">EVENTS</a>
+              <a class="nav-link" href="{{route('frontstu.login')}}" data-toggle="modal" data-target="#loginModal">Login</a>
             </li>
-            <li class="nav-item @@blog">
+            <!-- <li class="nav-item @@blog">
               <a class="nav-link" href="blog.html">BLOG</a>
             </li>
             <li class="nav-item dropdown view">
@@ -136,7 +136,7 @@
                   </ul>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <li class="nav-item @@contact">
               <a class="nav-link" href="contact.html">CONTACT</a>
             </li>

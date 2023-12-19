@@ -16,7 +16,7 @@
         </nav>
     </div>
     <div class="ms-auto">
-        <a href="{{route('teacherattend.create')}}" class="btn btn-info"><i class="fa fa-plus">ADD NEW</i></a>
+        <a href="{{route('teacherattend.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
     </div>
 </div>
 <!--end breadcrumb-->
@@ -39,7 +39,7 @@
                       @forelse($teacherAttend as $t) 
                                 <tr role="row" class="odd">
                                     <td>{{++$loop->index}}</td>
-                                    <td>{{$t->att_date}}</td>
+                                    <td>{{date('d-M-Y',strtotime($t->att_date))}}</td>
                                     <td>{{$t->present}}</td>
                                     <td>{{$t->absent}}</td>
                                     

@@ -41,7 +41,7 @@
                 <p><strong>{{$stu_fe->class?->class_name_en}}</strong></p>
             </div>
             <div class="col-lg-2">
-                <label><strong>Date: </strong><?= date("Y-m-d") ?></label>
+                <label><strong>Date: </strong><?= date("d-M-Y") ?></label>
             </div>
         </div>
 

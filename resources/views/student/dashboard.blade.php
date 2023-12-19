@@ -18,7 +18,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="profile-header">
+                <div class="profile-header card" style="background-color: gray">
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
                             <a href="#">
@@ -90,7 +90,7 @@
                                         <div class="row">
                                             <p class="col-sm-3">Date of
                                                 Birth</p>
-                                            <p class="col-sm-9">{{$student_info->date_of_birth}}</p>
+                                            <p class="col-sm-9">{{date('d-M-Y',strtotime($student_info->date_of_birth))}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +147,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
 

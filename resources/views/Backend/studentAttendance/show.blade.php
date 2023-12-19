@@ -27,7 +27,7 @@
                 <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
                     <div class="row g-3">
                         <div class="form-group col-12 col-lg-6">
-                            <h4>Attendance Date: {{$att_date}}</h4>
+                            <h4>Attendance Date: {{date('d-M-Y',strtotime($att_date))}}</h4>
                         </div>
                         <div class="card">
                             <div class="card-body">
@@ -50,7 +50,7 @@
                                                 <td>{{ $s->student?->roll }}</td>
                                                 <td>{{ $s->student?->first_name_en }} {{ $s->student?->last_name_en }}
                                                 </td>
-                                                <td>
+                                                <td style="color: @if($s->status==1) green @else red @endif;">
                                                         {{($s->status==1?'Present':'Absent')}}
                                                 </td>
                                                 <td>

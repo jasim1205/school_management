@@ -94,7 +94,7 @@
                                         <div class="row">
                                             <p class="col-sm-3">Date of
                                                 Birth</p>
-                                            <p class="col-sm-9">{{$student_info->date_of_birth}}</p>
+                                            <p class="col-sm-9">{{date('d-M-Y',strtotime($student_info->date_of_birth))}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -183,81 +183,81 @@
                     </div>
                     <div id="setting_tab" class="tab-pane fade">
                         <h5 class="card-title">Setting Your Personal Information</h5>
-                            <form class="form" method="post" enctype="multipart/form-data" action="{{route('student_save_profile')}}">
-                                @csrf
-                                <div class="row g-3">
-                                    <div class="col-12 col-lg-6">
-                                        <label for="fname_en"><strong>First Name (English)</strong><i class="text-danger">*</i> </label>
-                                        
-                                        <input type="text" id="fname" class="form-control" value="{{$student_info->first_name_en}}" name="fname_en">
-                                        
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label for="lname_en"><strong>Last Name (English)</strong><i class="text-danger">*</i> </label>
-                                        
-                                        <input type="text" id="lname_en" class="form-control" value="{{$student_info->last_name_en}}" name="lname_en">
-                                        
-                                    </div>
-                                
-                                    <div class="col-12 col-lg-6">
-                                        <label for="father_name"><strong>Father Name</strong></label>
-                                        <input type="text" id="father_name" class="form-control" value="{{$student_info->father_name}}" name="father_name">
-                                        
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label for="father_contact"><strong>Father Contact</strong></label>
-                                        <input type="text" id="father_contact" class="form-control" value="{{$student_info->father_contact}}" name="father_contact">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label for="mother_name"><strong>Mother Name</strong></label>
-                                        <input type="text" id="mother_name" class="form-control" value="{{$student_info->mother_name}}" name="mother_name">
-                                       
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label for="mother_contact"><strong>Mother Contact</strong></label>
-                                        <input type="text" id="mother_contact" class="form-control" value="{{$student_info->mother_contact}}" name="mother_contact">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                    <label for="username"><strong>User Name</strong></label>
-                                        <input type="text" id="username" class="form-control" value="{{$student_info->username}}" name="username">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label for="date_of_birth"><strong>Date of Birth </strong><i class="text-danger">*</i></label>
-                                        <input type="date" id="date_of_birth" class="form-control" value="{{$student_info->date_of_birth}}" name="date_of_birth">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label for="EmailAddress"><strong>Email</strong> <i class="text-danger">*</i></label>
-                                        <input type="text" id="EmailAddress" class="form-control" value="{{$student_info->email}}" name="EmailAddress" placeholder="example@gmail.com">
-                                        
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                    <label for="contactNumber_en"><strong>Contact Number (English)</strong> <i class="text-danger">*</i></label>
-                                        <input type="text" id="contactNumber_en" class="form-control" value="{{$student_info->contact_no_en}}" name="contactNumber_en">
-                                    </div>
-                    
-                                    <div class="col-12 col-lg-6">
-                                    <label for="present_address"><strong>Present Address</strong></label>
-                                        <textarea name="present_address_en" id="present_address_en" cols="30" rows="5" class="form-control">
-                                            {{$student_info->present_address_en}}
-                                        </textarea>
-                                         
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                    <label for="parmanent_address"><strong>Parmanent Address</strong></label>
-                                        <textarea name="parmanent_address_en" id="parmanent_address_en" cols="30" rows="5" class="form-control">
-                                             {{$student_info->parmanent_address_en}}
-                                        </textarea>
-                                    </div>
+                        <form class="form mb-3" method="post" enctype="multipart/form-data" action="{{route('student_save_profile')}}">
+                            @csrf
+                            <div class="row g-3">
+                                <div class="col-12 col-lg-6">
+                                    <label for="fname_en"><strong>First Name (English)</strong><i class="text-danger">*</i> </label>
                                     
-                                    <div class="col-12 col-lg-6">
-                                        <label for="image"><strong>Image</strong></label>
-                                        <input type="file" id="image" class="form-control" placeholder="Image" name="image">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <button class="btn btn-success px-4 mt-4" type="submit">Submit</button>
-                                    </div>
-                                </div><!---end row-->
-                            </form>
+                                    <input type="text" id="fname" class="form-control" value="{{$student_info->first_name_en}}" name="fname_en">
+                                    
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="lname_en"><strong>Last Name (English)</strong><i class="text-danger">*</i> </label>
+                                    
+                                    <input type="text" id="lname_en" class="form-control" value="{{$student_info->last_name_en}}" name="lname_en">
+                                    
+                                </div>
+                            
+                                <div class="col-12 col-lg-6">
+                                    <label for="father_name"><strong>Father Name</strong></label>
+                                    <input type="text" id="father_name" class="form-control" value="{{$student_info->father_name}}" name="father_name">
+                                    
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="father_contact"><strong>Father Contact</strong></label>
+                                    <input type="text" id="father_contact" class="form-control" value="{{$student_info->father_contact}}" name="father_contact">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="mother_name"><strong>Mother Name</strong></label>
+                                    <input type="text" id="mother_name" class="form-control" value="{{$student_info->mother_name}}" name="mother_name">
+                                    
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="mother_contact"><strong>Mother Contact</strong></label>
+                                    <input type="text" id="mother_contact" class="form-control" value="{{$student_info->mother_contact}}" name="mother_contact">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                <label for="username"><strong>User Name</strong></label>
+                                    <input type="text" id="username" class="form-control" value="{{$student_info->username}}" name="username">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="date_of_birth"><strong>Date of Birth </strong><i class="text-danger">*</i></label>
+                                    <input type="date" id="date_of_birth" class="form-control" value="{{$student_info->date_of_birth}}" name="date_of_birth">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="EmailAddress"><strong>Email</strong> <i class="text-danger">*</i></label>
+                                    <input type="text" id="EmailAddress" class="form-control" value="{{$student_info->email}}" name="EmailAddress" placeholder="example@gmail.com">
+                                    
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                <label for="contactNumber_en"><strong>Contact Number (English)</strong> <i class="text-danger">*</i></label>
+                                    <input type="text" id="contactNumber_en" class="form-control" value="{{$student_info->contact_no_en}}" name="contactNumber_en">
+                                </div>
+                
+                                <div class="col-12 col-lg-6">
+                                <label for="present_address"><strong>Present Address</strong></label>
+                                    <textarea name="present_address_en" id="present_address_en" cols="30" rows="5" class="form-control">
+                                        {{$student_info->present_address_en}}
+                                    </textarea>
+                                        
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                <label for="parmanent_address"><strong>Parmanent Address</strong></label>
+                                    <textarea name="parmanent_address_en" id="parmanent_address_en" cols="30" rows="5" class="form-control">
+                                            {{$student_info->parmanent_address_en}}
+                                    </textarea>
+                                </div>
+                                
+                                <div class="col-12 col-lg-6">
+                                    <label for="image"><strong>Image</strong></label>
+                                    <input type="file" id="image" class="form-control" placeholder="Image" name="image">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <button class="btn btn-success px-4 mt-4" type="submit">Submit</button>
+                                </div>
+                            </div><!---end row-->
+                        </form>
                     </div>
                     <div id="attendance_tab" class="tab-pane fade">
                         <div class="card col-sm-8 content-center">
@@ -271,7 +271,8 @@
                                         </tr>
                                         @foreach($attendance as $a)
                                         <tr>
-                                            <td>{{$a->att_date}}</td>
+                                            <td>{{date('d-M-Y', strtotime($a->att_date))}}
+                                            </td>
                                             <td  style="color: @if($a->status==1) green @else red @endif;">{{($a->status==1)?'Present':'Absent'}}</td>
                                         </tr>
                                         @endforeach

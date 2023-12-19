@@ -24,7 +24,7 @@
 <!--start stepper two-->
 <div class="heading">
     <h3 class="text-uppercase text-center">Class Routine</h3>
-    <a href="{{route('routine.create')}}" class="btn btn-info"><i class="fa fa-plus">ADD NEW</i></a>
+    <a href="{{route('routine.create')}}" class="btn btn-primary"><i class="fa fa-plus">ADD NEW</i></a>
 </div>
 
 <hr>

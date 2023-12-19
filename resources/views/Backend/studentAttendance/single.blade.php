@@ -38,7 +38,7 @@
              <h1 class="mt-4">Attendance</h1>
             <div class="d-flex">
                 <p><b>Attendance Edit-/</b></p>
-                <p><b>Date: {{$attend->att_date}}</b></p>
+                <p><b>Date: {{date('d-M-Y',strtotime($attend->att_date))}}</b></p>
             </div>
         </div>
         <div class="card-body">

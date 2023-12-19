@@ -73,7 +73,9 @@
                 </ul>
             </div>
             @yield('content')
-
+        <footer class="page-footer no-print">
+			<p class="mb-0">Copyright © 2023. All right reserved.</p>
+		</footer>
         </div>
 
 
