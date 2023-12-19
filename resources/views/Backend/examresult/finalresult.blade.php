@@ -87,6 +87,7 @@
                     <h1>ABC English School & College</h1>
                     <h5 class="text-center">Muradpur, Chittagong, 4205 Bangladesh</h5>
                     <p class="text-center"><strong>Contact:</strong> 88015-555555, 88018-188888</p>
+                    <h4>Exam Report Card</h4>
                 </div>
                 <div class="col-lg-3">
                     <h5>

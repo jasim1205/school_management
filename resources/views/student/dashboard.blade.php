@@ -4,7 +4,7 @@
 <div class="" style="padding-top:100px">
     <div class="content container-fluid">
 
-        <div class="page-header">
+        <!-- <div class="page-header">
             <div class="row">
                 <div class="col">
                     <h3 class="page-title">Profile</h3>
@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-12">
@@ -39,8 +39,8 @@
                             <div class="about-text">Lorem ipsum dolor sit amet.</div>
                         </div>
                         <div class="col-auto profile-btn">
-                            <a href="" class="btn btn-primary">
-                                Edit
+                            <a href="{{route('student_profile')}}" class="btn btn-primary">
+                                Profile
                             </a>
                         </div>
                     </div>

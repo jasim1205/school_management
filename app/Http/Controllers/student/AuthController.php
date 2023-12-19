@@ -26,14 +26,18 @@ class AuthController extends Controller
             if($student){
                 if(Hash::check($request->password , $student->password)){
                     $this->setSession($student);
-                    return redirect()->route('studentdashboard')->with('success','Successfully login');
+                    $this->notice::success('Successfully login');
+                    return redirect()->route('studentdashboard');
                 }else
-                    return redirect()->route('frontstu.login')->with('error','Your phone number or password is wrong!');
+                    $this->notice::error('Your phone number or password is wrong!');
+                    return redirect()->route('studentlogOut')->with('error','Your phone number or password is wrong!');
             }else
-                return redirect()->route('frontstu.login')->with('error','Your phone number or password is wrong!');
+                $this->notice::error('Your phone number or password is wrong!');
+                return redirect()->route('studentlogOut')->with('error','Your phone number or password is wrong!');
         }catch(Exception $e){
             dd($e);
-            return redirect()->route('frontstu.login')->with('error','Your phone number or password is wrong!');
+            $this->notice::error('Your phone number or password is wrong!');
+            return redirect()->route('studentlogOut')->with('error','Your phone number or password is wrong!');
         }
     }
      

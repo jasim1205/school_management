@@ -6,58 +6,40 @@ use App\Models\Profile;
 use App\Models\Student;
 use App\Models\Exam;
 use App\Models\ExamResult;
+use App\Models\Routine;
+use App\Models\Classes;
+use App\Models\Period;
+use App\Models\WeekDay;
+use App\Models\StudentAttendance;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $student_info=Student::find(currentUserId()); 
-        return view('student.profile',compact('student_info'));
+        $student_info=Student::find(currentUserId());
+        $attendance = StudentAttendance::where('student_id',currentUserId())->get();
+        return view('student.profile',compact('student_info','attendance'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
-    {
-        
+    {    
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
-        //
+    { 
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Profile $profile)
     {
-        //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Profile $profile)
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Profile $profile)
     {
-        //
     }
 
     public function save_profile(Request $request)
@@ -95,6 +77,11 @@ class ProfileController extends Controller
     {
         try {
             $data = Student::find(currentUserId());
+            //validate current password
+            if(!Hash::check($request->current_password, $data->password)){
+                $this->notice::error('Current Password is incorrect');
+                return redirect()->back();
+            }
             $data->password = Hash::make($request->password);
             if ($data->save()) {
                 $this->setSession($data);
@@ -103,7 +90,7 @@ class ProfileController extends Controller
             }
         } catch (Exception $e) {
             dd($e);
-             $this->notice::error('Please try again');
+            $this->notice::error('Please try again');
             return redirect()->back()->withInput();
         }
     }
@@ -111,11 +98,23 @@ class ProfileController extends Controller
     {
         $exam = Exam::get();
         $student = Student::find(currentUserId());
-        $studentInfo = Student::find($request->student_id);
         $finalresult = array();
-        $finalresult = ExamResult::where('exam_id',$request->exam_id)->get();
-        return view('student.result',compact('finalresult','student','exam','studentInfo'));
+        $finalresult = ExamResult::where('student_id',currentUserId())->where('exam_id',$request->exam_id)->get();
+        return view('student.result',compact('finalresult','student','exam'));
     }
+    public function student_routine(Request $request)
+    {
+       $class_id=false;
+        if($request->class_id){
+             $class_id=$request->class_id;
+        }
+        $classes = Classes::get();
+        $period = Period::get();
+        $weekday = WeekDay::where('isOff',0)->orderBy('id')->get();
+        $routine = Routine::get();
+        return view('student.routine',compact('routine','weekday','period','classes','class_id'));
+    }
+    
 
     public function setSession($student)
     {

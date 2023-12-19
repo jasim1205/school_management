@@ -1,7 +1,6 @@
 @extends('backend.layouts.appAuth')
 @section('title','Login')
 @section('content')
-
     <div class="card no-print">
         <div class="card-body">
             <div class="bs-stepper-content">
@@ -23,7 +22,7 @@
                                 </select>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <button class="btn btn-success px-4 mt-4" type="submit">Search</button>
+                                <button class="btn btn-success px-4" type="submit" style="margin-top:35px">Search</button>
                             </div>
                         </div><!---end row-->
                     </div>
@@ -41,6 +40,7 @@
                     <h1>ABC English School & College</h1>
                     <h5 class="text-center">Muradpur, Chittagong, 4205 Bangladesh</h5>
                     <p class="text-center"><strong>Contact:</strong> 88015-555555, 88018-188888</p>
+                    <h4>Exam Report Card</h4>
                 </div>
                 <div class="col-lg-3">
                     <h5>
@@ -69,17 +69,17 @@
                     <tr>
                         <th>Name</th>
                         <td>
-                            {{ $studentInfo ? $studentInfo->first_name_en . ' ' . $studentInfo->last_name_en : '' }}
+                            {{$student->first_name_en}} {{$student->first_name_en}} 
                         </td>
                         <th>Class</th>
-                        <td>{{ $studentInfo ? $studentInfo->class->class_name_en : '' }}</td>
+                        <td>{{$student->class->class_name_en}} </td>
                     </tr>
                     <tr>
                         <th>Student Id</th>
-                        <td>{{ $studentInfo ? $studentInfo->student_id : '' }}</td>
+                        <td>{{$student->student_id}} </td>
                         <th>Roll No</th>
                         <td>
-                            {{ $studentInfo ? $studentInfo->roll : '' }}
+                            {{$student->roll}}
                         </td>
                     </tr>
                 </table>

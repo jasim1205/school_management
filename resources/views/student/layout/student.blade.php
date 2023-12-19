@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{asset('public/student/assets/plugins/fontawesome/css/all.min.css')}}">
 
         <link rel="stylesheet" href="{{asset('public/student/assets/css/style.css')}}">
+         <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     </head>
 
     <body>
@@ -86,6 +87,8 @@
         <script src="{{asset('public/student/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
         <script src="{{asset('public/student/assets/js/script.js')}}"></script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
     </body>
 
 </html>

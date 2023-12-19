@@ -4,17 +4,17 @@
 <div class="" style="padding-top:100px">
     <div class="content container-fluid">
 
-        <div class="page-header">
+        <!-- <div class="page-header">
             <div class="row">
                 <div class="col">
                     <h3 class="page-title">Profile</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('studentdashboard')}}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                         <li class="breadcrumb-item active">Profile</li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-12">
@@ -39,8 +39,8 @@
                             <div class="about-text">Lorem ipsum dolor sit amet.</div>
                         </div>
                         <div class="col-auto profile-btn">
-                            <a href="" class="btn btn-primary">
-                                Edit
+                            <a href="{{route('studentdashboard')}}" class="btn btn-primary">
+                                Dashboard
                             </a>
                         </div>
                     </div>
@@ -60,7 +60,10 @@
                             <a class="nav-link" href="{{route('studentresult')}}">Result</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#password_tab">Routine</a>
+                            <a class="nav-link" href="{{route('studentroutine')}}">Routine</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#attendance_tab">Attendance</a>
                         </li>
                     </ul>
                 </div>
@@ -160,7 +163,7 @@
                                         @csrf
                                             <div class="form-group">
                                                 <label>Old Password</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" name="current_password" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>New Password</label>
@@ -256,7 +259,27 @@
                                 </div><!---end row-->
                             </form>
                     </div>
-                   
+                    <div id="attendance_tab" class="tab-pane fade">
+                        <div class="card col-sm-8 content-center">
+                            <div class="card">
+                                <div class="card border p-3">
+                                    <h5 class="card-title text-center">Daily Attendance</h5>
+                                    <table class="table table-bordered"         style="border:5px solid black">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>status</th>
+                                        </tr>
+                                        @foreach($attendance as $a)
+                                        <tr>
+                                            <td>{{$a->att_date}}</td>
+                                            <td  style="color: @if($a->status==1) green @else red @endif;">{{($a->status==1)?'Present':'Absent'}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </table>
+                                </div> 
+                           </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

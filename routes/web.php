@@ -136,6 +136,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::get('student/login', [AuthController::class,'signInForm'])->name('frontstu.login');
     Route::post('student/login', [AuthController::class,'signInCheck'])->name('frontstu.login.check');
     Route::get('student/logout', [AuthController::class,'signOut'])->name('studentlogOut');
+    
 
 
     Route::middleware(['checkstudent'])->prefix('student')->group(function(){
@@ -144,6 +145,8 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
         Route::post('/profile/save', [stu_profile::class, 'save_profile'])->name('student_save_profile');
         Route::post('/profile/savePass', [stu_profile::class, 'change_password'])->name('change_password');
         Route::get('result', [stu_profile::class, 'student_result'])->name('studentresult');
+        Route::get('routine', [stu_profile::class, 'student_routine'])->name('studentroutine');
+        Route::get('attendance', [stu_profile::class, 'student_attendance'])->name('studentattendance');
     });
 
 // Route::get('/login', function () {
