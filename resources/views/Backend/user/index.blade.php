@@ -52,7 +52,8 @@
                             <td>{{$d->email}}</td>
                             <td>{{$d->contact_no_en}}</td>
                             <td>{{$d->role?->name}}</td>
-                            <td style="color: @if($d->status==1) green @else red @endif;">@if($d->status==1){{__('Active')}} @else{{__('Inactive')}} @endif</td>
+                            <td style="color: @if($d->status==1) green @else red @endif; font-weight:bold;"><i class='bx bx-radio-circle-marked bx-burst bx-rotate-90 align-middle font-18 me-1'></i>
+                            @if($d->status==1){{__('Active')}} @else{{__('Inactive')}} @endif</td>
 
 
                             

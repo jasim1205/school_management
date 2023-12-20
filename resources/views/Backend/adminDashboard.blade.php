@@ -7,13 +7,13 @@
 					<div class="d-flex align-items-center">
 						<div>
 							<p class="mb-0 text-secondary">Total Teacher</p>
-							<h4 class="my-1"> <p>{{ $totalTeachers }}</p></h4>
-							<p class="mb-0 font-13 text-success"><i class="fas fa-chalkboard-teacher"></i>Total Teachers</p>
+							<h4 class="my-1">{{$totalTeachers}}</h4>
+							<p class="mb-0 font-13 text-success"><i class="fas fa-chalkboard-teacher"></i></i>Total Teachers</p>
 						</div>
-						<div class="widgets-icons bg-light-success text-success ms-auto"><i class="fas fa-chalkboard-teacher"></i>
+						<div class="widgets-icons bg-light-warning text-warning ms-auto">
+							<i class="fas fa-chalkboard-teacher"></i>
 						</div>
 					</div>
-					<div id="chart1"></div>
 				</div>
 			</div>
 		</div>
@@ -30,7 +30,6 @@
 							<img src="{{asset('public/assets/images/dash-icon-01.svg')}}" alt="">
 						</div>
 					</div>
-					<div id="chart2"></div>
 				</div>
 			</div>
 		</div>
@@ -46,7 +45,7 @@
 						<div class="widgets-icons bg-light-danger text-danger ms-auto"><i class="fa-solid fa-money-check-dollar"></i>
 						</div>
 					</div>
-					<div id="chart3"></div>
+					
 				</div>
 			</div>
 		</div>
@@ -270,7 +269,7 @@
 			<div class="card-body">
 				<div class="d-flex align-items-center">
 					<div>
-						<h5 class="mb-1">Transaction History</h5>
+						<h5 class="mb-1 text-center">Transaction History</h5>
 						<p class="mb-0 font-13 text-secondary"><i class='bx bxs-calendar'></i>in last 30 days revenue</p>
 					</div>
 					<div class="dropdown ms-auto">
@@ -293,32 +292,36 @@
 					<table class="table align-middle mb-0 table-hover" id="Transaction-History">
 						<thead class="table-light">
 							<tr>
-								<th>Payment Name</th>
-								<th>Date & Time</th>
+								<th>Student Name</th>
+								<th>Class Name</th>
+								<th>Fee Month</th>
+								<th>Fee Year</th>
 								<th>Amount</th>
 								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($studentFees as $sfee)
 							<tr>
 								<td>
 									<div class="d-flex align-items-center">
 										<div class="">
-											<img src="{{asset('public/assets/images/avatars/avatar-1.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+											<img src="{{asset('public/uploads/students/'.$sfee->student?->image)}}" class="rounded-circle" width="46" height="46" alt="" />
 										</div>
 										<div class="ms-2">
-											<h6 class="mb-1 font-14">Payment from Michle Jhon</h6>
-											<p class="mb-0 font-13 text-secondary">Refrence Id #8547846</p>
+											<h6 class="mb-1 font-14">{{$sfee->student?->first_name_en}} {{$sfee->student?->last_name_en}}</h6>
+											<p class="mb-0 font-13 text-secondary"></p>
 										</div>
 									</div>
 								</td>
-								<td>Jan 10, 2021</td>
-								<td>+256.00</td>
-								<td>
-									<div class="badge rounded-pill bg-success w-100">Completed</div>
-								</td>
+								<td>{{$sfee->class?->class_name_en}}</td>
+								<td>{{date('F', strtotime('2020-'.$sfee->first()->fee_month.'-01'))}}</td>
+								<td>{{$sfee->fee_year}}</td>
+								<td>{{$sfee->total_fees}}</td>
+								<td style="color: @if($sfee->status==1) green @else red @endif; font-weight:bold;">@if($sfee->status==1){{__('PAID')}} @else{{__('UNPAID')}} @endif</td>
 							</tr>
-							<tr>
+							@endforeach
+							<!-- <tr>
 								<td>
 									<div class="d-flex align-items-center">
 										<div class="">
@@ -515,7 +518,7 @@
 								<td>
 									<div class="badge rounded-pill bg-success w-100">Completed</div>
 								</td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>

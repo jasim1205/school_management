@@ -22,7 +22,7 @@ class ProfileController extends Controller
     public function index()
     {
         $student_info=Student::find(currentUserId());
-        $attendance = StudentAttendance::where('student_id',currentUserId())->get();
+        $attendance = StudentAttendance::where('student_id',currentUserId())->orderBy('created_at', 'desc')->get();
         return view('student.profile',compact('student_info','attendance'));
     }
     public function create()
