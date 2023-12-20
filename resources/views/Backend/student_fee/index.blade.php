@@ -45,7 +45,7 @@
                             <td>{{$value->total_fees}}</td>
                             <td>{{date('F', strtotime('2020-'.$studentfee->first()->fee_month.'-01'))}}</td>
                             <td>{{$value->fee_year}}</td>
-                            <td style="color: @if($value->status==1) green @else red @endif;">@if($value->status==1){{__('PAID')}} @else{{__('UNPAID')}} @endif</td>
+                            <td style="color: @if($value->status==1) green @else red @endif; font-weight:bold;">@if($value->status==1){{__('PAID')}} @else{{__('UNPAID')}} @endif</td>
 
                             <td>
                                 <div class="d-flex">

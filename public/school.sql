@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 09:17 AM
+-- Generation Time: Dec 20, 2023 at 09:05 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -993,7 +993,7 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`id`, `teacher_id`, `role_id`, `first_name_en`, `first_name_bn`, `last_name_en`, `last_name_bn`, `father_name`, `mother_name`, `gender`, `date_of_birth`, `place_of_birth`, `subject`, `salary`, `email`, `contact_no_en`, `contact_no_bn`, `department_id`, `designation_id`, `image`, `present_address`, `parmanent_address`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 101, 1, 'Jasim', 'জসিম', 'Uddin', 'উদ্দিন', 'MD.ABUL KALAM', 'HOSNAARA BEGUM', 'male', '2000-01-01', 'Chittagong', 'Mathematics', '10000.00', 'jasimuddinm180@gmail.com', '123', '১২৩', 1, 1, '1561701696842.png', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:11:55', '2023-12-04 07:34:02', NULL),
-(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '123456', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-04 07:33:51', NULL),
+(2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '01', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-19 20:59:10', NULL),
 (3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', '80000.00', 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
 (4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', '10000.00', 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
 (5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', '10000.00', 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
@@ -1038,7 +1038,12 @@ INSERT INTO `teacher_attendances` (`id`, `teacher_id`, `att_date`, `status`, `cr
 (17, 2, '2023-12-17', 1, '2023-12-17 00:32:53', '2023-12-17 00:32:53', NULL),
 (18, 3, '2023-12-17', 1, '2023-12-17 00:32:53', '2023-12-17 00:32:53', NULL),
 (19, 4, '2023-12-17', 1, '2023-12-17 00:32:53', '2023-12-17 00:32:53', NULL),
-(20, 5, '2023-12-17', 0, '2023-12-17 00:32:53', '2023-12-17 00:32:53', NULL);
+(20, 5, '2023-12-17', 0, '2023-12-17 00:32:53', '2023-12-17 00:32:53', NULL),
+(21, 1, '2023-12-20', 1, '2023-12-20 01:14:21', '2023-12-20 01:14:21', NULL),
+(22, 2, '2023-12-20', 1, '2023-12-20 01:14:21', '2023-12-20 01:14:21', NULL),
+(23, 3, '2023-12-20', 0, '2023-12-20 01:14:21', '2023-12-20 01:14:21', NULL),
+(24, 4, '2023-12-20', 1, '2023-12-20 01:14:21', '2023-12-20 01:14:21', NULL),
+(25, 5, '2023-12-20', 1, '2023-12-20 01:14:21', '2023-12-20 01:14:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -1072,7 +1077,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name_en`, `name_bn`, `email`, `contact_no_en`, `contact_no_bn`, `role_id`, `teacher_id`, `password`, `language`, `image`, `full_access`, `status`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Jasim', NULL, 'jasimuddinm180@gmail.com', '123', NULL, 1, 1, '$2y$12$OuQeQpBdoQtiDaB7U6zF/.KttphSzjgtylO874oMinC1eSh383KNa', 'en', '8961701176230.png', 1, 1, NULL, '2023-11-26 17:11:55', '2023-11-28 00:57:10', NULL),
-(2, 'Kaiser', NULL, 'kaiser@gmail.com', '01', NULL, 2, 2, '$2y$12$cKxfDM.3aDwF2KJ/osrHg.518GQJuxs7Eri/MyJJoSoklfdJjA9gC', 'en', '5531701231693.jpg', 0, 1, NULL, '2023-11-26 17:35:25', '2023-12-18 21:24:37', NULL),
+(2, 'Kaiser', NULL, 'kaiser@gmail.com', '01', NULL, 2, 2, '$2y$12$TBX5TW7w/jo564.gyviUmuDy9sKntL6KGBONQxZFkxxgJGp7CMZiu', 'en', '5531701231693.jpg', 0, 1, NULL, '2023-11-26 17:35:25', '2023-12-19 20:59:10', NULL),
 (3, 'Istiak', NULL, 'istiak@gmail.com', '1234', NULL, 2, 3, '$2y$12$1YGT3MmLqAGH2iPEhJNfruv6XFBGBF3z31cBcqWe5MdG3KFWjQgkm', 'en', NULL, 0, 1, NULL, '2023-11-26 18:28:11', '2023-11-26 19:28:58', NULL),
 (4, 'Ibrahim', NULL, 'ibrahim@gmail.com', '1', NULL, 2, 4, '$2y$12$wKl8Bu3G9xDpV0RgMv2KFOggsU6hBwqGISztu4VI2brEIrjT9dc.i', 'en', NULL, 0, 1, NULL, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
 (5, 'Burhan', NULL, 'fuad@gmail.com', '2', NULL, 2, 5, '$2y$12$tVF1oL.gSJ96Aw7ZBBLxX.XzQSy0q.VrWNb4Pb3kdI/teJwYGqgWC', 'en', NULL, 0, 1, NULL, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
@@ -1520,7 +1525,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `teacher_attendances`
 --
 ALTER TABLE `teacher_attendances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`

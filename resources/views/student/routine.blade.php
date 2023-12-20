@@ -1,7 +1,7 @@
 @extends('backend.layouts.appAuth')
 @section('title','Class Routine')
 @section('content')
-   @push('styles')
+    @push('styles')
     <style>
         @media print {
             .sidebar-wrapper,.header,.chatbox,.nav-header,.searchform,.bs-stepper,.heading,.no-print {
@@ -18,11 +18,10 @@
             } */
         }
     </style>
-@endpush
-
+    @endpush
 <!--start stepper two-->
 <hr>
-<div id="stepper2" class="bs-stepper">
+<div id="stepper2" class="bs-stepper no-print">
     <div class="card">
         <div class="card-body">
             <div class="bs-stepper-content">
@@ -45,7 +44,7 @@
                             <button type="submit" class="btn btn-info">Search</button>
                         </div>
                         <div class="col-3">
-                            <button class="float-end me-5" onclick="printPage()"><i class="fa fa-print p-3"></i></button>
+                             <a onclick="window.print()" href="#" rel="noopener" target="_blank" class="btn btn-default float-end no-print"><i class="fas fa-print"></i> Print</a>
                         </div>
                     </div>
                 </form>

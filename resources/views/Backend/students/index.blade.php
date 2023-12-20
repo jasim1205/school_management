@@ -51,7 +51,7 @@
                             <td>{{$t->date_of_birth}}</td>
                             <td>{{$t->class?->class_name_en}}</td>
                             <td>{{$t->contact_no_en}}</td>
-                            <td style="color: @if($t->status==1) green @else red @endif;">@if($t->status==1){{__('Active')}} @else{{__('Inactive')}} @endif</td>
+                            <td style="color: @if($t->status==1) green @else red @endif; font-weight:bold;">@if($t->status==1){{__('Active')}} @else{{__('Inactive')}} @endif</td>
                             <td>
                             <div class="d-flex">
                                 <a href="{{route('student.edit',encryptor('encrypt',$t->id))}}" class=""><i class="fas fa-edit"></i></a>

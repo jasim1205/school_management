@@ -131,8 +131,6 @@
 				</div>
 				<div class="product-list p-3 mb-3">
 					 @foreach ($classCounts as $className => $count)
-           
-      
 					<div class="row border mx-0 mb-3 py-2 radius-10 cursor-pointer">
 						<div class="col-sm-6">
 							<div class="d-flex align-items-center">
@@ -265,5 +263,267 @@
 		</div>
 	</div>
 	<!--end row-->
+	<!--end row-->
+<div class="row">
+	<div class="col-xl-12 d-flex">
+		<div class="card radius-10 w-100">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<h5 class="mb-1">Transaction History</h5>
+						<p class="mb-0 font-13 text-secondary"><i class='bx bxs-calendar'></i>in last 30 days revenue</p>
+					</div>
+					<div class="dropdown ms-auto">
+						<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">	<i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="javascript:;">Action</a>
+							</li>
+							<li><a class="dropdown-item" href="javascript:;">Another action</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="javascript:;">Something else here</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="table-responsive mt-4">
+					<table class="table align-middle mb-0 table-hover" id="Transaction-History">
+						<thead class="table-light">
+							<tr>
+								<th>Payment Name</th>
+								<th>Date & Time</th>
+								<th>Amount</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-1.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Michle Jhon</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #8547846</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 10, 2021</td>
+								<td>+256.00</td>
+								<td>
+									<div class="badge rounded-pill bg-success w-100">Completed</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-2.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Pauline Bird</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #9653248</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 12, 2021</td>
+								<td>+566.00</td>
+								<td>
+									<div class="badge rounded-pill bg-info text-dark w-100">In Progress</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-3.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Ralph Alva</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #7689524</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 14, 2021</td>
+								<td>+636.00</td>
+								<td>
+									<div class="badge rounded-pill bg-danger w-100">Declined</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-4.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from John Roman</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #8335884</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 15, 2021</td>
+								<td>+246.00</td>
+								<td>
+									<div class="badge rounded-pill bg-success w-100">Completed</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-7.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from David Buckley</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #7865986</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 16, 2021</td>
+								<td>+876.00</td>
+								<td>
+									<div class="badge rounded-pill bg-info text-dark w-100">In Progress</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-8.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Lewis Cruz</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #8576420</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 18, 2021</td>
+								<td>+536.00</td>
+								<td>
+									<div class="badge rounded-pill bg-success w-100">Completed</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-9.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from James Caviness</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #3775420</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 18, 2021</td>
+								<td>+536.00</td>
+								<td>
+									<div class="badge rounded-pill bg-success w-100">Completed</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-10.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Peter Costanzo</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #3768920</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 19, 2021</td>
+								<td>+536.00</td>
+								<td>
+									<div class="badge rounded-pill bg-success w-100">Completed</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-11.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Johnny Seitz</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #9673520</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 20, 2021</td>
+								<td>+86.00</td>
+								<td>
+									<div class="badge rounded-pill bg-danger w-100">Declined</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-12.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Lewis Cruz</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #8576420</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 18, 2021</td>
+								<td>+536.00</td>
+								<td>
+									<div class="badge rounded-pill bg-success w-100">Completed</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-13.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from David Buckley</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #8576420</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 22, 2021</td>
+								<td>+854.00</td>
+								<td>
+									<div class="badge rounded-pill bg-info text-dark w-100">In Progress</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="{{asset('public/assets/images/avatars/avatar-14.png')}}" class="rounded-circle" width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">Payment from Thomas Wheeler</h6>
+											<p class="mb-0 font-13 text-secondary">Refrence Id #4278620</p>
+										</div>
+									</div>
+								</td>
+								<td>Jan 18, 2021</td>
+								<td>+536.00</td>
+								<td>
+									<div class="badge rounded-pill bg-success w-100">Completed</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<!--end row-->
 	
 @endsection

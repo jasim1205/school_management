@@ -162,8 +162,8 @@
                                         <form action="{{route('change_password')}}" method="post">
                                         @csrf
                                             <div class="form-group">
-                                                <label>Old Password</label>
-                                                <input type="password" name="current_password" class="form-control">
+                                                <label for="current_password">Old Password</label>
+                                                <input type="password" name="current_password" class="form-control" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>New Password</label>
@@ -273,7 +273,7 @@
                                         <tr>
                                             <td>{{date('d-M-Y', strtotime($a->att_date))}}
                                             </td>
-                                            <td  style="color: @if($a->status==1) green @else red @endif;">{{($a->status==1)?'Present':'Absent'}}</td>
+                                            <td  style="color: @if($a->status==1) green @else red @endif; font-weight:bold;">{{($a->status==1)?'Present':'Absent'}}</td>
                                         </tr>
                                         @endforeach
                                     </table>

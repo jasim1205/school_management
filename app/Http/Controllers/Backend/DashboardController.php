@@ -28,7 +28,7 @@ class DashboardController extends Controller
             return view('backend.adminDashboard',compact('totalTeachers','totalStudents','totalCollection','classCounts'));
            
         }else{
-            return view('backend.dashboard',compact('totalTeachers','totalStudents'));
+            return view('backend.dashboard',compact('totalTeachers','totalStudents','classCounts'));
         }
         
     }

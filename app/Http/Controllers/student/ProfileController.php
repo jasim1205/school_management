@@ -87,7 +87,7 @@ class ProfileController extends Controller
                 $this->setSession($data);
                 $this->notice::success('Data Saved');
                 return redirect()->back()->with('success', 'Data Saved');
-            }
+            } 
         } catch (Exception $e) {
             dd($e);
             $this->notice::error('Please try again');
