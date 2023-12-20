@@ -17,9 +17,7 @@ class DashboardController extends Controller
         $totalStudents = Student::countStudents();
         $studentFees = StudentFee::with('student')->get();
         $totalCollection =  $studentFees->sum('total_fees');
-
         $classes = Classes::all();
-
         $classCounts = [];
 
         foreach ($classes as $class) {
