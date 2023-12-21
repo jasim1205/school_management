@@ -33,7 +33,7 @@ use App\Http\Controllers\Backend\StudentFeePaymentController as feepayment;
 use App\Http\Controllers\Backend\AdmitCardController as admit;
 
 //student
-use App\Http\Controllers\Student\AuthController as StuAuth;
+use App\Http\Controllers\Student\AuthController;
 use App\Http\Controllers\Student\DashboardController as studashboard;
 use App\Http\Controllers\Student\ProfileController as stu_profile;
 
@@ -131,11 +131,11 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 });
 
 //students controller
-    Route::get('student/register', [StuAuth::class, 'signUpForm'])->name('frontstu.register');
-    Route::post('student/register', [StuAuth::class, 'signUpStore'])->name('frontstu.store');
-    Route::get('student/login', [StuAuth::class,'signInForm'])->name('frontstu.login');
-    Route::post('student/login', [StuAuth::class,'signInCheck'])->name('frontstu.login.check');
-    Route::get('student/logout', [StuAuth::class,'signOut'])->name('studentlogOut');
+    Route::get('student/register', [AuthController::class, 'signUpForm'])->name('frontstu.register');
+    Route::post('student/register', [AuthController::class, 'signUpStore'])->name('frontstu.store');
+    Route::get('student/login', [AuthController::class,'signInForm'])->name('frontstu.login');
+    Route::post('student/login', [AuthController::class,'signInCheck'])->name('frontstu.login.check');
+    Route::get('student/logout', [AuthController::class,'signOut'])->name('studentlogOut');
     
 
 
