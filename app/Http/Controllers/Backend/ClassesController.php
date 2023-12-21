@@ -17,7 +17,7 @@ class ClassesController extends Controller
     public function index()
     {
         $class = Classes::get();
-        return view('Backend.classes.index',compact('class'));
+        return view('backend.classes.index',compact('class'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        return view('Backend.classes.create');
+        return view('backend.classes.create');
     }
 
     /**
