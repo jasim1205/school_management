@@ -24,9 +24,7 @@ class ClassSubjectController extends Controller
         return view('backend.assign_subject.index',compact('classSubject','classes','subject','class_id'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         
