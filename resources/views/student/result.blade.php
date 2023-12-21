@@ -1,6 +1,24 @@
 @extends('backend.layouts.appAuth')
 @section('title','Login')
 @section('content')
+@push('styles')
+    <style>
+        @media print {
+            .sidebar-wrapper,.header,.chatbox,.nav-header,.searchform,.bs-stepper,.heading,.no-print {
+                display: none;
+            }
+            .page-wrapper{
+                padding: 0;
+                margin:0;
+            }
+            /* #printable-area {
+                position: absolute;
+                left: -50;
+                top: 0;
+            } */
+        }
+    </style>
+    @endpush
     <div class="card no-print">
         <div class="card-body">
             <div class="bs-stepper-content">
