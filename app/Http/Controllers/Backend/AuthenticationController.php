@@ -36,7 +36,6 @@ class AuthenticationController extends Controller
         }
 
     }
-
     public function signInForm(){
         return view('backend.authentication.login');
     }
