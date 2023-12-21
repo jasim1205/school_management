@@ -105,7 +105,7 @@
               <a class="nav-link" href="courses.html">Notice</a>
             </li>
             <li class="nav-item @@events">
-              <a class="nav-link" href="{{route('frontstu.login')}}" data-toggle="modal" data-target="#loginModal">Login</a>
+              <a class="nav-link" href="{{route('frontstu.login')}}">Login</a>
             </li>
             <!-- <li class="nav-item @@blog">
               <a class="nav-link" href="blog.html">BLOG</a>
