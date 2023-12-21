@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\ExamResult;
 use App\Models\Exam;
-use App\Models\STudent;
+use App\Models\Student;
 use App\Models\Classes;
 use App\Models\Section;
 use App\Models\Session;
