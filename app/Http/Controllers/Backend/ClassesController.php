@@ -91,18 +91,9 @@ class ClassesController extends Controller
      */
     public function destroy($id)
     {
-        try 
-            {
-            $id = Crypt::decrypt($id);
-            $classes = Classes::findOrFail($id);
-            $classes->delete();
-            $this->notice::warning('Data Deleted Permanently!');
+        $classes = Classes::findOrFail(encryptor('decrypt',$id));
+        if($classes->delete())
+            $this->notice::success('Classes data Successfully Deleted');
             return back();
-            } 
-        catch (\Exception $e) {
-                // dd($e);
-                $this->notice::error('Please try again');
-                return back();
-            }
     }
 }

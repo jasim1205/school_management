@@ -91,7 +91,7 @@ class ExamController extends Controller
     public function destroy($id)
     {
         $exam = Exam::findOrFail(encryptor('decrypt',$id));
-        if($exam->save())
+        if($exam->delete())
             $this->notice::success('Exam data Successfully Deleted');
             return back();
 
