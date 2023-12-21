@@ -82,7 +82,7 @@
                                 </select>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <button class="btn btn-success px-4 mt-4" type="submit">Search</button>
+                                <button class="btn btn-success px-4" style="margin-top: 35px" type="submit">Search</button>
                             </div>
                         </div><!---end row-->
                     </div>
