@@ -13,7 +13,7 @@ class PeriodController extends Controller
     public function index()
     {
         $period = Period::get();
-        return view('Backend.period.index',compact('period'));
+        return view('backend.period.index',compact('period'));
     }
 
     /**
