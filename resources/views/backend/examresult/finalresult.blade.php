@@ -43,6 +43,19 @@
                                 </select>
                             </div>
                             <div class="col-12 col-lg-4">
+                                <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Roll</strong>
+                                <span class="text-danger">*</span>
+                                </label>
+                                <select class="default-select wide form-control" id="student_id" name="student_id" id="" >
+                                    <option value="">Select Roll</option>
+                                @forelse($student as $s)
+                                    <option value="{{$s->id}}" class="sclass sclass{{$s->class_id}}" {{ old('student_id')==$s->id?"selected":""}}> {{ $s->roll}}</option>
+                                @empty
+                                    <option value="">No Role found</option>
+                                @endforelse
+                                </select>
+                            </div>
+                            <div class="col-12 col-lg-4">
                                 <label class="col-lg-4 col-form-label" for="validationCustom01"><strong>Student</strong>
                                 <span class="text-danger">*</span>
                                 </label>
