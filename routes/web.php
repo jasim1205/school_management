@@ -7,7 +7,7 @@ use App\Http\Controllers\Backend\RoleController as role;
 use App\Http\Controllers\Backend\PermissionController as permission;
 use App\Http\Controllers\Backend\DashboardController as dashboard;
 use App\Http\Controllers\Backend\TeacherController as teacher;
-use App\Http\Controllers\Backend\classesController as classes;
+use App\Http\Controllers\Backend\ClassesController as classes;
 use App\Http\Controllers\Backend\SectionController as section;
 use App\Http\Controllers\Backend\SubjectController as subject;
 use App\Http\Controllers\Backend\DepartmentController as department;
