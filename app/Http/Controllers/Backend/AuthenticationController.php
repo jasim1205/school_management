@@ -40,7 +40,6 @@ class AuthenticationController extends Controller
     public function signInForm(){
         return view('backend.authentication.login');
     }
-
     public function signInCheck(SigninRequest $request){
         try{
             $user=User::where('contact_no_en',$request->username)
