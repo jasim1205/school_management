@@ -318,7 +318,8 @@
 								<td>{{date('F', strtotime('2020-'.$sfee->first()->fee_month.'-01'))}}</td>
 								<td>{{$sfee->fee_year}}</td>
 								<td>{{$sfee->total_fees}}</td>
-								<td style="color: @if($sfee->status==1) green @else red @endif; font-weight:bold;">@if($sfee->status==1){{__('PAID')}} @else{{__('UNPAID')}} @endif</td>
+								<td style="color: @if($sfee->status==1) green @else red @endif; font-weight:bold;"><i class='bx bx-radio-circle-marked bx-burst bx-rotate-90 align-middle font-18 me-1'></i>
+								@if($sfee->status==1){{__('PAID')}} @else{{__('UNPAID')}} @endif</td>
 							</tr>
 							@endforeach
 							<!-- <tr>
