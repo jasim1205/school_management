@@ -3,15 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>PreSchool | @yield('title',env('APP_NAME'))</title>
-
         <!-- Fonts -->
-		
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <!--favicon-->
-        <link rel="icon" href="{{asset('public/assets/images/logo.png')}}" type="image/png"/>
+		<link rel="icon" href="{{asset('public/frontend/images/favicon.png')}}" type="image/x-icon">
+        <!-- <link rel="icon" href="{{asset('public/frontend/images/logo.png')}}" type="image/png"/> -->
         <!--plugins-->
         <link href="{{asset('public/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
         <link href="{{asset('public/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
@@ -33,7 +31,6 @@
         <link rel="stylesheet" href="{{asset('public/assets/css/header-colors.css')}}"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
         <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-		<title>SMS </title>
 		@stack('styles')
     </head>
 
@@ -120,6 +117,13 @@
 						<div class="parent-icon"><i class="fa-solid fa-calendar-days"></i>
 						</div>
 						<div class="menu-title">Routine Manegement</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('notice.index')}}">
+						<div class="parent-icon"><i class="fa-solid fa-calendar-days"></i>
+						</div>
+						<div class="menu-title">Notice Board</div>
 					</a>
 				</li>
 				<li>

@@ -31,11 +31,15 @@ use App\Http\Controllers\Backend\FinalResultController as finalresult;
 use App\Http\Controllers\Backend\StudentFeeController as studentfee;
 use App\Http\Controllers\Backend\StudentFeePaymentController as feepayment;
 use App\Http\Controllers\Backend\AdmitCardController as admit;
+use App\Http\Controllers\Backend\NoticeBoardController as notice;
 
 //student
 use App\Http\Controllers\Student\AuthController;
 use App\Http\Controllers\Student\DashboardController as studashboard;
 use App\Http\Controllers\Student\ProfileController as stu_profile;
+
+use App\Http\Controllers\frontteacher;
+use App\Http\Controllers\frontNotice;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +90,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('routine', routine::class);
     Route::resource('exam', exam::class);
     Route::resource('admit', admit::class);
+    Route::resource('notice', notice::class);
 
     Route::get('routine/show/{class}', [RoutineController::class, 'showClassRoutine'])->name('routine.show');
 
@@ -158,6 +163,9 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('frontend/component/about');
 })->name('about');
+
+Route::get('/', [frontteacher::class, 'index']);
+
 // Route::get('/', function () {
 //     return view('backend.dashboard');
 // })->name('dashboard');

@@ -59,30 +59,31 @@
       </div>
       <div class="col-xl-8 col-lg-7">
         <div class="row feature-blocks bg-gray justify-content-between">
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+          <!-- <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
             <i class="ti-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
             <h3 class="mb-xl-4 mb-lg-3 mb-4">Scholorship News</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
               et dolore magna aliqua. Ut enim ad</p>
-          </div>
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+          </div> -->
+          @foreach($notice as $value)
+          <div class="col-sm-12 col-xl-12 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
             <i class="ti-blackboard mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
             <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Notice Board</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad</p>
+            <p>{{$value->notice}}</p>
           </div>
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+          @endforeach
+          <!-- <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
             <i class="ti-agenda mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
             <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Achievements</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
               et dolore magna aliqua. Ut enim ad</p>
-          </div>
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+          </div> -->
+          <!-- <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
             <i class="ti-write mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
             <h3 class="mb-xl-4 mb-lg-3 mb-4">Admission Now</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
               et dolore magna aliqua. Ut enim ad</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -108,141 +109,7 @@
 </section>
 <!-- /about us -->
 
-<!-- courses -->
-<section class="section-sm">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-center section-title justify-content-between">
-          <h2 class="mb-0 text-nowrap mr-3">Our Course</h2>
-          <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-          <div>
-            <a href="courses.html" class="btn btn-sm btn-outline-primary ml-sm-3 d-none d-sm-block">see all</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- course list -->
-    <div class="row justify-content-center">
-    <!-- course item -->
-    <div class="col-lg-4 col-sm-6 mb-5">
-        <div class="card p-0 border-primary rounded-0 hover-shadow">
-        <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/courses/course-1.jpg')}}" alt="course thumb">
-        <div class="card-body">
-            <ul class="list-inline mb-2">
-            <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-            <li class="list-inline-item"><a class="text-color" href="course-single.html">Humanities</a></li>
-            </ul>
-            <a href="course-single.html">
-            <h4 class="card-title">Photography</h4>
-            </a>
-            <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.</p>
-            <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-        </div>
-        </div>
-    </div>
-    <!-- course item -->
-    <div class="col-lg-4 col-sm-6 mb-5">
-        <div class="card p-0 border-primary rounded-0 hover-shadow">
-        <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/courses/course-2.jpg')}}" alt="course thumb">
-        <div class="card-body">
-            <ul class="list-inline mb-2">
-            <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-            <li class="list-inline-item"><a class="text-color" href="course-single.html">Humanities</a></li>
-            </ul>
-            <a href="course-single.html">
-            <h4 class="card-title">Programming</h4>
-            </a>
-            <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.</p>
-            <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-        </div>
-        </div>
-    </div>
-    <!-- course item -->
-    <div class="col-lg-4 col-sm-6 mb-5">
-        <div class="card p-0 border-primary rounded-0 hover-shadow">
-        <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/courses/course-3.jpg')}}" alt="course thumb">
-        <div class="card-body">
-            <ul class="list-inline mb-2">
-            <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-            <li class="list-inline-item"><a class="text-color" href="course-single.html">Humanities</a></li>
-            </ul>
-            <a href="course-single.html">
-            <h4 class="card-title">Lifestyle Archives</h4>
-            </a>
-            <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.</p>
-            <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-        </div>
-        </div>
-    </div>
-    <!-- course item -->
-    <div class="col-lg-4 col-sm-6 mb-5">
-        <div class="card p-0 border-primary rounded-0 hover-shadow">
-        <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/courses/course-4.jpg')}}" alt="course thumb">
-        <div class="card-body">
-            <ul class="list-inline mb-2">
-            <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-            <li class="list-inline-item"><a class="text-color" href="course-single.html">Humanities</a></li>
-            </ul>
-            <a href="course-single.html">
-            <h4 class="card-title">Complete Freelancing</h4>
-            </a>
-            <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.</p>
-            <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-        </div>
-        </div>
-    </div>
-    <!-- course item -->
-    <div class="col-lg-4 col-sm-6 mb-5">
-        <div class="card p-0 border-primary rounded-0 hover-shadow">
-        <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/courses/course-5.jpg')}}" alt="course thumb">
-        <div class="card-body">
-            <ul class="list-inline mb-2">
-            <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-            <li class="list-inline-item"><a class="text-color" href="course-single.html">Humanities</a></li>
-            </ul>
-            <a href="course-single.html">
-            <h4 class="card-title">Branding Design</h4>
-            </a>
-            <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.</p>
-            <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-        </div>
-        </div>
-    </div>
-    <!-- course item -->
-    <div class="col-lg-4 col-sm-6 mb-5">
-        <div class="card p-0 border-primary rounded-0 hover-shadow">
-        <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/courses/course-6.jpg')}}" alt="course thumb">
-        <div class="card-body">
-            <ul class="list-inline mb-2">
-            <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-            <li class="list-inline-item"><a class="text-color" href="course-single.html">Humanities</a></li>
-            </ul>
-            <a href="course-single.html">
-            <h4 class="card-title">Art Design</h4>
-            </a>
-            <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.</p>
-            <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-        </div>
-        </div>
-    </div>
-    </div>
-    <!-- /course list -->
-    <!-- mobile see all button -->
-    <div class="row">
-      <div class="col-12 text-center">
-        <a href="courses.html" class="btn btn-sm btn-outline-primary d-sm-none d-inline-block">sell all</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /courses -->
+
 
 <!-- cta -->
 <section class="section bg-primary">
@@ -279,73 +146,7 @@
 </section>
 <!-- /success story -->
 
-<!-- events -->
-<section class="section bg-gray">
-    <div class="container">
-        <div class="row">
-        <div class="col-12">
-            <div class="d-flex align-items-center section-title justify-content-between">
-            <h2 class="mb-0 text-nowrap mr-3">Upcoming Events</h2>
-            <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-            <div>
-                <a href="events.html" class="btn btn-sm btn-outline-primary ml-sm-3 d-none d-sm-block">see all</a>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="row justify-content-center">
-            <!-- event -->
-            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                <div class="card border-0 rounded-0 hover-shadow">
-                <div class="card-img position-relative">
-                    <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/events/event-1.jpg')}}" alt="event thumb">
-                    <div class="card-date"><span>18</span><br>December</div>
-                </div>
-                <div class="card-body">
-                    <!-- location -->
-                    <p><i class="ti-location-pin text-primary mr-2"></i>Dhanmondi Lake, Dhaka</p>
-                    <a href="event-single.html"><h4 class="card-title">Lorem ipsum dolor amet, consectetur adipisicing.</h4></a>
-                </div>
-                </div>
-            </div>
-            <!-- event -->
-            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                <div class="card border-0 rounded-0 hover-shadow">
-                <div class="card-img position-relative">
-                    <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/events/event-2.jpg')}}" alt="event thumb">
-                    <div class="card-date"><span>21</span><br>December</div>
-                </div>
-                <div class="card-body">
-                    <!-- location -->
-                    <p><i class="ti-location-pin text-primary mr-2"></i>Dhanmondi Lake, Dhaka</p>
-                    <a href="event-single.html"><h4 class="card-title">Lorem ipsum dolor amet, consectetur adipisicing.</h4></a>
-                </div>
-                </div>
-            </div>
-            <!-- event -->
-            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                <div class="card border-0 rounded-0 hover-shadow">
-                <div class="card-img position-relative">
-                    <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/events/event-3.jpg')}}" alt="event thumb">
-                    <div class="card-date"><span>23</span><br>December</div>
-                </div>
-                <div class="card-body">
-                    <!-- location -->
-                    <p><i class="ti-location-pin text-primary mr-2"></i>Dhanmondi Lake, Dhaka</p>
-                    <a href="event-single.html"><h4 class="card-title">Lorem ipsum dolor amet, consectetur adipisicing.</h4></a>
-                </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile see all button -->
-        <div class="row">
-        <div class="col-12 text-center">
-            <a href="course.html" class="btn btn-sm btn-outline-primary d-sm-none d-inline-block">sell all</a>
-        </div>
-        </div>
-    </div>
-</section>
-<!-- /events -->
+
 
 <!-- teachers -->
 <section class="section">
@@ -354,15 +155,17 @@
       <div class="col-12">
         <h2 class="section-title">Our Teachers</h2>
       </div>
+      @foreach($teacher as $t)
       <!-- teacher -->
       <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-        <div class="card border-0 rounded-0 hover-shadow">
-          <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/teachers/teacher-1.jpg')}}" alt="teacher">
+        <div class="card border-0 rounded-0 hover-shadow w-100">
+          <img class="card-img-top rounded-0" src="{{asset('public/uploads/teachers/'.$t->image)}}" width="100%" height="350px" alt="teacher">
           <div class="card-body">
             <a href="teacher-single.html">
-              <h4 class="card-title">Jacke Masito</h4>
+              <h4 class="card-title">{{$t->first_name_en}} {{$t->first_name_en}}</h4>
             </a>
             <p>Teacher</p>
+            <p>{{$t->subject}}</p>
             <ul class="list-inline">
               <li class="list-inline-item"><a class="text-color" href="https://facebook.com/themefisher"><i class="ti-facebook"></i></a></li>
               <li class="list-inline-item"><a class="text-color" href="https://twitter.com/themefisher"><i class="ti-twitter-alt"></i></a></li>
@@ -372,8 +175,9 @@
           </div>
         </div>
       </div>
+      @endforeach
       <!-- teacher -->
-      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+      <!-- <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
         <div class="card border-0 rounded-0 hover-shadow">
           <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/teachers/teacher-2.jpg')}}" alt="teacher">
           <div class="card-body">
@@ -389,9 +193,9 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- teacher -->
-      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+      <!-- <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
         <div class="card border-0 rounded-0 hover-shadow">
           <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/teachers/teacher-3.jpg')}}" alt="teacher">
           <div class="card-body">
@@ -407,83 +211,10 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
+      
     </div>
   </div>
 </section>
 <!-- /teachers -->
-
-<!-- blog -->
-<section class="section pt-0">
-    <div class="container">
-        <div class="row">
-        <div class="col-12">
-            <h2 class="section-title">Latest News</h2>
-        </div>
-        </div>
-        <div class="row justify-content-center">
-            <!-- blog post -->
-            <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/blog/post-1.jpg')}}" alt="Post thumb">
-                <div class="card-body">
-                    <!-- post meta -->
-                    <ul class="list-inline mb-3">
-                    <!-- post date -->
-                    <li class="list-inline-item mr-3 ml-0">August 28, 2018</li>
-                    <!-- author -->
-                    <li class="list-inline-item mr-3 ml-0">By Somrat Sorkar</li>
-                    </ul>
-                    <a href="blog-single.html">
-                    <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                    </a>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                    <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-                </div>
-                </div>
-            </article>
-            <!-- blog post -->
-            <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/blog/post-2.jpg')}}" alt="Post thumb">
-                <div class="card-body">
-                    <!-- post meta -->
-                    <ul class="list-inline mb-3">
-                    <!-- post date -->
-                    <li class="list-inline-item mr-3 ml-0">August 13, 2018</li>
-                    <!-- author -->
-                    <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
-                    </ul>
-                    <a href="blog-single.html">
-                    <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                    </a>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                    <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-                </div>
-                </div>
-            </article>
-            <!-- blog post -->
-            <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                <img class="card-img-top rounded-0" src="{{asset('public/frontend/images/blog/post-3.jpg')}}" alt="Post thumb">
-                <div class="card-body">
-                    <!-- post meta -->
-                    <ul class="list-inline mb-3">
-                    <!-- post date -->
-                    <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
-                    <!-- author -->
-                    <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
-                    </ul>
-                    <a href="blog-single.html">
-                    <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                    </a>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                    <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-                </div>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-<!-- /blog -->
 @endsection
