@@ -12,7 +12,7 @@ class frontteacher extends Controller
 {
     public function index()
     {
-        $notice = NoticeBoard::get();
+        $notice = NoticeBoard::latest()->take(1)->get();
         $teacher = Teacher::get();
         return view('frontend.home.index',compact('teacher','notice'));
     }
