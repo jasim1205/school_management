@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2023 at 08:05 AM
+-- Generation Time: Dec 30, 2023 at 05:55 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `school`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admit_cards`
+--
+
+CREATE TABLE `admit_cards` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -369,7 +381,32 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (29, '2023_12_02_180053_create_student_fees_table', 6),
 (34, '2023_12_03_123300_create_student_fee_payments_table', 8),
 (35, '2023_12_03_062207_create_student_fee_details_table', 9),
-(37, '2023_12_02_042318_create_exam_results_table', 10);
+(37, '2023_12_02_042318_create_exam_results_table', 10),
+(38, '2023_12_16_060419_create_admit_cards_table', 11),
+(39, '2023_12_18_065238_create_profiles_table', 11),
+(40, '2023_12_28_180028_create_notice_boards_table', 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notice_boards`
+--
+
+CREATE TABLE `notice_boards` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `notice` varchar(255) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notice_boards`
+--
+
+INSERT INTO `notice_boards` (`id`, `notice`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+(1, 'Dear [XYZ] Community,  We are excited to inform you that [School Name] will be closed on [Date] for a special day dedicated to staff development and growth. This closure is a strategic initiative to enhance the skills and capabilities of our educators, en', NULL, NULL, '2023-12-29 22:14:38', '2023-12-29 22:14:38');
 
 -- --------------------------------------------------------
 
@@ -451,6 +488,18 @@ CREATE TABLE `personal_access_tokens` (
   `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profiles`
+--
+
+CREATE TABLE `profiles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1021,7 +1070,8 @@ INSERT INTO `teachers` (`id`, `teacher_id`, `role_id`, `first_name_en`, `first_n
 (2, 102, 2, 'Kaiser', 'কায়সার', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2015-01-01', 'Chittagong', 'English', '80000.00', 'kaiser@gmail.com', '01', '১২৩৪৫৬', NULL, NULL, '9041701696831.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 17:35:24', '2023-12-19 20:59:10', NULL),
 (3, 103, 2, 'Istiak', 'ইসতিয়াক', 'Ahmed', 'আহমেদ', 'Morshed', 'Rahima', 'male', '2023-11-01', 'Chittagong', 'English', '80000.00', 'istiak@gmail.com', '1234', '১২৩৪', 1, 2, '2511701696851.jpg', 'Chattogram', 'Dhaka', 1, '2023-11-26 18:28:11', '2023-12-04 07:34:11', NULL),
 (4, 104, 2, 'Ibrahim', 'ইব্রাহিম', 'Khalil', 'খলিল', 'Abu Bakkar', 'Selina Khatun', 'male', '2000-01-01', 'Shariatpur', 'Science', '10000.00', 'ibrahim@gmail.com', '1', '1', 1, 2, '2941701699758.jpg', 'Dhaka', 'Shariatpur', 1, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
-(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', '10000.00', 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
+(5, 105, 2, 'Burhan', 'বোরহান', 'Uddin', 'উদ্দিন', 'Abu Bakkar', 'Selina Khatun', 'male', '2004-01-01', 'Feni', 'Physics', '10000.00', 'fuad@gmail.com', '2', '২', 1, 2, '1511701700152.jpg', 'Dhaka', 'Feni', 1, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL),
+(6, 106, 2, 'Robiul', NULL, 'Hossain', NULL, 'Morshed', 'Rahima', 'male', '2023-12-01', 'Chittagong', 'Mathematics', '15000.00', 'robiul@gmail.com', '6', NULL, 1, 2, '6761703910125.jpg', 'Hazi Para', 'Hazi Para', 1, '2023-12-29 22:22:05', '2023-12-29 22:22:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -1107,10 +1157,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name_en`, `name_bn`, `email`, `contact_no_en`, `contact_no_bn`, `role_id`, `teacher_id`, `password`, `language`, `image`, `full_access`, `status`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Jasim', NULL, 'jasimuddinm180@gmail.com', '123', NULL, 1, 1, '$2y$12$OuQeQpBdoQtiDaB7U6zF/.KttphSzjgtylO874oMinC1eSh383KNa', 'en', '8961701176230.png', 1, 1, NULL, '2023-11-26 17:11:55', '2023-11-28 00:57:10', NULL),
-(2, 'Kaiser', NULL, 'kaiser@gmail.com', '01', NULL, 2, 2, '$2y$12$TBX5TW7w/jo564.gyviUmuDy9sKntL6KGBONQxZFkxxgJGp7CMZiu', 'en', '5531701231693.jpg', 0, 1, NULL, '2023-11-26 17:35:25', '2023-12-19 20:59:10', NULL),
+(2, 'Kaiser', NULL, 'kaiser@gmail.com', '01', NULL, 2, 2, '$2y$12$TBX5TW7w/jo564.gyviUmuDy9sKntL6KGBONQxZFkxxgJGp7CMZiu', 'en', '5531701231693.jpg', 0, 1, NULL, '2023-11-26 17:35:25', '2023-12-25 23:00:45', NULL),
 (3, 'Istiak', NULL, 'istiak@gmail.com', '1234', NULL, 2, 3, '$2y$12$1YGT3MmLqAGH2iPEhJNfruv6XFBGBF3z31cBcqWe5MdG3KFWjQgkm', 'en', NULL, 0, 1, NULL, '2023-11-26 18:28:11', '2023-11-26 19:28:58', NULL),
 (4, 'Ibrahim', NULL, 'ibrahim@gmail.com', '1', NULL, 2, 4, '$2y$12$wKl8Bu3G9xDpV0RgMv2KFOggsU6hBwqGISztu4VI2brEIrjT9dc.i', 'en', NULL, 0, 1, NULL, '2023-12-04 08:22:38', '2023-12-04 08:22:38', NULL),
-(5, 'Burhan', NULL, 'fuad@gmail.com', '2', NULL, 2, 5, '$2y$12$tVF1oL.gSJ96Aw7ZBBLxX.XzQSy0q.VrWNb4Pb3kdI/teJwYGqgWC', 'en', NULL, 0, 1, NULL, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL);
+(5, 'Burhan', NULL, 'fuad@gmail.com', '2', NULL, 2, 5, '$2y$12$tVF1oL.gSJ96Aw7ZBBLxX.XzQSy0q.VrWNb4Pb3kdI/teJwYGqgWC', 'en', NULL, 0, 1, NULL, '2023-12-04 08:29:12', '2023-12-04 08:29:12', NULL),
+(6, 'Robiul', NULL, 'robiul@gmail.com', '6', NULL, 2, 6, '$2y$12$IwIe.Z7x3fCCcUwYPjGZw.4Boi6QzFNoWrABiGimkPp7cKN7ZTkuy', 'en', NULL, 0, 1, NULL, '2023-12-29 22:22:05', '2023-12-29 22:22:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -1143,6 +1194,12 @@ INSERT INTO `week_days` (`id`, `weekday_name`, `isOff`, `created_at`, `updated_a
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admit_cards`
+--
+ALTER TABLE `admit_cards`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `classes`
@@ -1233,6 +1290,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notice_boards`
+--
+ALTER TABLE `notice_boards`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `periods`
 --
 ALTER TABLE `periods`
@@ -1252,6 +1315,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `profiles`
+--
+ALTER TABLE `profiles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `roles`
@@ -1390,6 +1459,12 @@ ALTER TABLE `week_days`
 --
 
 --
+-- AUTO_INCREMENT for table `admit_cards`
+--
+ALTER TABLE `admit_cards`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
@@ -1459,7 +1534,13 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `notice_boards`
+--
+ALTER TABLE `notice_boards`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `periods`
@@ -1477,6 +1558,12 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `profiles`
+--
+ALTER TABLE `profiles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -1549,7 +1636,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `teacher_attendances`
@@ -1561,7 +1648,7 @@ ALTER TABLE `teacher_attendances`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `week_days`
