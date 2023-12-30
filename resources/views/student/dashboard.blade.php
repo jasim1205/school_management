@@ -60,9 +60,11 @@
                 </div>
                 <div class="container-fluid mt-2">
                     <h1 class="text-center">Notice Board</h1>
+                    @foreach($notice as $value)
                     <div class="card border p-2">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus, animi aliquam beatae neque nesciunt facere. Accusamus quas dignissimos, enim eos facere, esse praesentium officiis ad expedita, dolor repudiandae voluptatem optio.</p>
+                        <p>{{$value->notice}}</p>
                     </div>
+                    @endforeach
                 </div>
                 <div class="tab-content profile-tab-cont">
                     <div class="tab-pane fade show active" id="per_details_tab">

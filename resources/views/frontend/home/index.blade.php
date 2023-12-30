@@ -158,7 +158,7 @@
       @foreach($teacher as $t)
       <!-- teacher -->
       <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-        <div class="card border-0 rounded-0 hover-shadow w-100">
+        <div class="card border-0 rounded-0 hover-shadow w-100 mb-4">
           <img class="card-img-top rounded-0" src="{{asset('public/uploads/teachers/'.$t->image)}}" width="100%" height="350px" alt="teacher">
           <div class="card-body">
             <a href="teacher-single.html">
