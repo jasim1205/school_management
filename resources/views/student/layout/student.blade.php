@@ -49,8 +49,10 @@
                                 <img class="rounded-circle" src="{{asset('public/uploads/students/' . $student_info->image)}}" width="31"
                                     alt="Soeng Souy">
                                 <div class="user-text">
-                                    <h6>{{$student_info->first_name_en}}
-                                                {{$student_info->last_name_en}}</h6>
+                                    <h6>
+                                        {{$student_info->first_name_en}}
+                                        {{$student_info->last_name_en}}
+                                    </h6>
                                     <p class="text-muted mb-0">User</p>
                                 </div>
                             </span>
@@ -62,7 +64,9 @@
                                         class="avatar-img rounded-circle">
                                 </div>
                                 <div class="user-text">
-                                    <h6>Soeng Souy</h6>
+                                    <h6>{{$student_info->first_name_en}}
+                                        {{$student_info->last_name_en}}
+                                    </h6>
                                     <p class="text-muted mb-0">Student</p>
                                 </div>
                             </div>
