@@ -23,6 +23,7 @@ class StudentProfileController extends Controller
     {
         $student_info=Student::find(encryptor('decrypt',$id));
         $attendance = StudentAttendance::where('student_id',encryptor('decrypt',$id))->orderBy('created_at', 'desc')->get();
+        
         $exam = Exam::get();
         $data=array('student_info'=>$student_info,'attendance'=>$attendance);
         return response($data, 200);
