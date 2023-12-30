@@ -19,58 +19,21 @@ use Illuminate\Support\Facades\Hash;
 class StudentProfileController extends Controller
 {
 
-    public function index()
+    public function student_details($id)
     {
-        $student_info=Student::find(currentUserId());
-        $attendance = StudentAttendance::where('student_id',currentUserId())->orderBy('created_at', 'desc')->get();
-        return view('student.profile',compact('student_info','attendance'));
+        $student_info=Student::find(encryptor('decrypt',$id));
+        $attendance = StudentAttendance::where('student_id',encryptor('decrypt',$id))->orderBy('created_at', 'desc')->get();
+        $exam = Exam::get();
+        $data=array('student_info'=>$student_info,'attendance'=>$attendance);
+        return response($data, 200);
     }
-    public function create()
-    {    
-    }
-    public function store(Request $request)
-    { 
-    }
-    public function show(Profile $profile)
-    {
-    }
-    public function edit(Profile $profile)
-    {
-    }
+    
 
-    public function update(Request $request, Profile $profile)
-    {
-    }
 
-    public function save_profile(Request $request)
+    public function result($id,$exam_id)
     {
-        try {
-            $student=Student::find(currentUserId());
-            $student->first_name_en = $request->fname_en;
-            $student->last_name_en = $request->lname_en;
-            $student->father_name = $request->father_name;
-            $student->mother_name = $request->mother_name;
-            $student->father_contact = $request->father_contact;
-            $student->mother_contact = $request->mother_contact;
-            $student->contact_no_en = $request->contactNumber_en;
-            $student->email = $request->emailAddress;
-            $student->username = $request->username;
-            $student->contact_no_en = $request->contactNumber_en;
-            $student->present_address_en = $request->present_address_en;
-            $student->parmanent_address_en = $request->parmanent_address_en;
-            if ($request->hasFile('image')) {
-                $imageName = rand(111, 999) . time() . '.' . $request->image->extension();
-                $request->image->move(public_path('uploads/students'), $imageName);
-                $student->image = $imageName;
-            }
-            if ($student->save()){
-                $this->setSession($student);
-                return redirect()->back()->with('success', 'Data Saved');
-            }
-        } catch (Exception $e) {
-            // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
-        }
+        $finalresult = ExamResult::where('student_id',encryptor('decrypt',$id))->where('exam_id',$exam_id)->get();
+        return response($finalresult, 200);
     }
 
     public function change_password(Request $request)
@@ -116,23 +79,27 @@ class StudentProfileController extends Controller
     }
     
 
-    public function setSession($student)
-    {
-        return request()->session()->put(
-            [
-                'userId' => encryptor('encrypt', $student->id),
-                'userName' => encryptor('encrypt', $student->first_name_en),
-                'emailAddress' => encryptor('encrypt', $student->email),
-                'studentLogin' => 1,
-                'image' => $student->image ?? 'No Image Found' 
+    public function signInCheck(Request $request){
+       
+        $error=array('error'=>'Your phone number or password is wrong!');
+        $student=Student::where('username',$request->username)
+                    ->orWhere('email',$request->username)->first();
+        if($student){
+            if(Hash::check($request->password , $student->password)){
+                $data=array('id'=>encryptor('encrypt',$student->id));
+                return response($data, 200);
+            }else
+                return response($error, 204);
+        }else
+            return response($error, 204);
+        
+    }
+     
+    public function setSession($student){
+        return request()->session()->put([
+                'userName'=>encryptor('encrypt',$student->name),
+                'userEmail'=>encryptor('encrypt',$student->email)
             ]
         );
-    }
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Profile $profile)
-    {
-        //
     }
 }
