@@ -72,7 +72,6 @@
                                         @method('delete')
                                         <button type="submit" style="border:none">
                                             <span class=""><i class="fa fa-trash text-danger"></i></span>
-                                            
                                         </button>
                                     </form>
                                 </div>                                            

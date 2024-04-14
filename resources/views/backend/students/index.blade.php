@@ -60,7 +60,8 @@
 
                                     <form id=""
                                     action="{{ route('student.destroy', encryptor('encrypt', $t->id)) }}"
-                                    method="post">                           @csrf
+                                    method="post">
+                                    @csrf
                                     @method('DELETE')
                                     <button type="submit" style="border:none;background:none;">
                                         <span class=""><i class="fa fa-trash text-danger"></i></span>

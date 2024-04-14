@@ -17,9 +17,8 @@
 										<h5 class="">Admin Login</h5>
 									</div>
 									<div class="form-body">
-										<form action="{{route('login.check')}}" method="POST" class="row g-3">
+							<form action="{{route('login.check')}}" method="POST" class="row g-3">
 								@csrf
-							
 								<div class="col-12">
 									<label for="inputEmailAddress" class="form-label">Contact Number / Email Address </label>
 									<input class="form-control" type="text" required="" id="username" name="username" value="{{old('username')}}" placeholder="Phone Number/hello@example.com">
