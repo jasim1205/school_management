@@ -22,7 +22,7 @@
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
                             <a href="#">
-                                <img class="rounded" alt="User Image"
+                                <img class="rounded" height="300px" width="300px" alt="User Image"
                                     src=" {{asset('public/uploads/students/' . $student_info->image)}}">
                             </a>
                         </div>
