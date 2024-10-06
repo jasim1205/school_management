@@ -51,9 +51,9 @@
 
 <body>
   <!-- preloader start -->
-  <div class="preloader">
+  {{-- <div class="preloader">
     <img src="{{asset('public/frontend/images/preloader.gif')}}" alt="preloader">
-  </div>
+  </div> --}}
   <!-- preloader end -->
 
 <!-- header -->
