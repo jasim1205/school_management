@@ -32,7 +32,7 @@
                                     {{$student_info->last_name_en}}
                                 </h5>
                             </h4>
-                            <h6 class="text-muted">{{$student_info->class->class_nam_en}}UI/UX Design Team</h6>
+                            <h6 class="text-muted">{{$student_info->class->class_name_en}}UI/UX Design Team</h6>
                             <div class="user-Location"><i class="fas fa-map-marker-alt"></i>
                                 {{$student_info->present_address_en}}
                             </div>
