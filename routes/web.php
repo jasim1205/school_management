@@ -146,7 +146,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 
     Route::middleware(['checkstudent'])->prefix('student')->group(function(){
         Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard');
-         Route::get('/profile', [stu_profile::class, 'index'])->name('student_profile');
+        Route::get('/profile', [stu_profile::class, 'index'])->name('student_profile');
         Route::post('/profile/save', [stu_profile::class, 'save_profile'])->name('student_save_profile');
         Route::post('/profile/savePass', [stu_profile::class, 'change_password'])->name('change_password');
         Route::get('result', [stu_profile::class, 'student_result'])->name('studentresult');
